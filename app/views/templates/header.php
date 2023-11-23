@@ -32,7 +32,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"><?= $data['judul']; ?></div>
+                <div class="sidebar-brand-text mx-3">Peminjaman</div>
             </a>
 
             <!-- Divider -->
@@ -63,8 +63,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data User:</h6>
                         <a class="collapse-item" href="<?= BASEURL; ?>/admin/mahasiswa">Mahasiswa</a>
-                        <a class="collapse-item" href="cards.html">Dosen</a>
-                        <a class="collapse-item" href="cards.html">Kepala Jurusan</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/dosen">Dosen</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/kajur">Kepala Jurusan</a>
                     </div>
                 </div>
             </li>
@@ -78,10 +78,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Ruangan JTI</h6>
-                        <a class="collapse-item" href="utilities-color.html">Lantai 6</a>
-                        <a class="collapse-item" href="utilities-border.html">Lantai 7</a>
-                        <a class="collapse-item" href="utilities-animation.html">Lantai 7</a>
-                        <a class="collapse-item" href="utilities-other.html">Lantai 8</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang5">Lantai 5</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang6">Lantai 6</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang7">Lantai 7</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang8">Lantai 8</a>
                     </div>
                 </div>
             </li>

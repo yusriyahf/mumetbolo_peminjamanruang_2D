@@ -10,13 +10,7 @@ class Admin extends Controller
         $this->view('templates/footer');
     }
 
-    public function ruang()
-    {
-        $data['judul'] = 'Ruang';
-        $this->view('templates/header', $data);
-        $this->view('admin/ruang');
-        $this->view('templates/footer');
-    }
+    // ADMIN MANAGE MAHASISWA
 
     public function mahasiswa()
     {
@@ -71,10 +65,52 @@ class Admin extends Controller
         }
     }
 
-    public function getMahasiswaById($id)
+
+    // ADMIN MANAGE DOSEN
+    public function dosen()
     {
-        header('Content-Type: application/json');
-        $data = $this->model('Mahasiswa_model')->getById($id);
-        echo json_encode($data);
+        $data['dsn'] = $this->model('Dosen_model')->fetch();
+        $data['judul'] = 'Dosen';
+        $this->view('templates/header', $data);
+        $this->view('admin/dosen', $data);
+        $this->view('templates/footer');
+    }
+
+
+    // ADMIN MANAGE RUANGAN 6
+    public function ruang5()
+    {
+        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['judul'] = 'Lantai 5';
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang5', $data);
+        $this->view('templates/footer');
+    }
+
+    public function ruang6()
+    {
+        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['judul'] = 'Lantai 6';
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang6', $data);
+        $this->view('templates/footer');
+    }
+
+    public function ruang7()
+    {
+        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['judul'] = 'Lantai 7';
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang7', $data);
+        $this->view('templates/footer');
+    }
+
+    public function ruang8()
+    {
+        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['judul'] = 'Lantai 8';
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang8', $data);
+        $this->view('templates/footer');
     }
 }

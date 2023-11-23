@@ -1,8 +1,8 @@
 <?php
 
-class Mahasiswa_model
+class Dosen_model
 {
-    private $table = 'mahasiswa';
+    private $table = 'dosen';
 
     private $db;
 

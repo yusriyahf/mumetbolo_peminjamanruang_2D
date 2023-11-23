@@ -79,8 +79,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= BASEURL; ?>/admin/ubahMahasiswa/" method="post">
-                        <input type="hidden" name="id" id="id">
+                    <form action="<?= BASEURL; ?>/admin/ubahMahasiswa" method="post">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa">
                         <div class="mb-3">
                             <label for="nim" class="form-label">Nim</label>
                             <input type="text" class="form-control" id="nim" name="nim" autocomplete="off" required>
