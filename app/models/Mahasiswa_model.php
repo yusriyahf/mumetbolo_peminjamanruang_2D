@@ -16,28 +16,53 @@ class Mahasiswa_model
     {
 
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nama']) && isset($_POST['stok']) && isset($_POST['deskripsi'])) {
-                if (!empty($_POST['nama']) && !empty($_POST['stok']) && !empty($_POST['deskripsi'])) {
+            if (isset($_POST['nim']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
+                if (!empty($_POST['nim']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
 
+                    $nim = $_POST['nim'];
                     $nama = $_POST['nama'];
-                    $deskripsi = $_POST['deskripsi'];
-                    $stok = $_POST['stok'];
+                    $jenis_kelamin = $_POST['jenis_kelamin'];
+                    $no_tlp = $_POST['no_tlp'];
+                    $alamat = $_POST['alamat'];
 
-                    $query = "INSERT INTO barang (nama,stok,deskripsi) VALUES ('$nama','$stok','$deskripsi')";
+                    $query = "INSERT INTO " . $this->table . " (nim,nama,jenis_kelamin, no_tlp, alamat) VALUES ('$nim','$nama','$jenis_kelamin','$no_tlp','$alamat')";
                     if ($sql = $this->db->conn->query($query)) {
-                        echo "<script>alert('records added successfully');</script>";
-                        echo "<script>window.location.href = 'admin.php';</script>";
+                        return true;
                     } else {
-                        echo "<script>alert('failed');</script>";
-                        echo "<script>window.location.href = 'admin.php';</script>";
+                        return false;
                     }
                 } else {
-                    echo "<script>alert('empty');</script>";
-                    echo "<script>window.location.href = 'admin.php';</script>";
+                    return false;
                 }
             }
         }
     }
+
+    public function edit($id)
+    {
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['nim']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
+                if (!empty($_POST['nim']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
+
+                    $nim = $_POST['nim'];
+                    $nama = $_POST['nama'];
+                    $jenis_kelamin = $_POST['jenis_kelamin'];
+                    $no_tlp = $_POST['no_tlp'];
+                    $alamat = $_POST['alamat'];
+
+                    $query = "UPDATE " . $this->table . " SET nim='$nim', nama='$nama', jenis_kelamin='$jenis_kelamin', no_tlp='$no_tlp', alamat='$alamat' WHERE id_mahasiswa = $id";
+                    if ($sql = $this->db->conn->query($query)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
 
     public function fetch()
     {
@@ -68,7 +93,7 @@ class Mahasiswa_model
 
         $data = null;
 
-        $query = "SELECT * FROM " . $this->table . " WHERE id_barang = '$id'";
+        $query = "SELECT * FROM " . $this->table . " WHERE id_mahasiswa = '$id'";
         if ($sql = $this->db->conn->query($query)) {
             while ($row = $sql->fetch_assoc()) {
                 $data = $row;
@@ -77,28 +102,29 @@ class Mahasiswa_model
         return $data;
     }
 
-    public function edit($id)
-    {
+    // public function edit($id)
+    // {
 
-        $data = null;
-        $query = "SELECT * FROM " . $this->table . " WHERE id_barang = '$id'";
-        if ($sql = $this->db->conn->query($query)) {
-            while ($row = $sql->fetch_assoc()) {
-                $data = $row;
-            }
-        }
-        return $data;
-    }
+    //     $data = null;
+    //     $query = "SELECT * FROM " . $this->table . " WHERE id_mahasiswa = '$id'";
+    //     if ($sql = $this->db->conn->query($query)) {
+    //         while ($row = $sql->fetch_assoc()) {
+    //             $data = $row;
+    //         }
+    //     }
+    //     return $data;
+    // }
 
-    public function update($data)
-    {
+    // public function update($data)
+    // {
 
-        $query = "UPDATE " . $this->table . " SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
+    //     $query = "UPDATE " . $this->table . " SET nim='$data[nim]', nama='$data[nama]', jenis_kelamin='$data[jenis_kelamin]' , no_tlp='$data[no_tlp]', alamat='$data[alamat]' WHERE id_mahasiswa='$data[id_mahasiswa] '";
 
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if ($sql = $this->db->conn->query($query)) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
 }

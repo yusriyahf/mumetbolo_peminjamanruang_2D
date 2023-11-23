@@ -9,7 +9,9 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Mahasiswa</h6>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa</a>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
+                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa
+            </button>
         </div>
 
         <div class="card-body">
@@ -47,11 +49,16 @@
                                 <td><?= $mhs['jenis_kelamin']; ?></td>
                                 <td><?= $mhs['no_tlp']; ?></td>
                                 <td><?= $mhs['alamat']; ?></td>
-                                <td> <a href="#" class="btn btn-warning btn-split btn-sm" style="margin-right: 4px;">
+                                <td>
+
+                                    <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
                                         <i class="fas fa-trash"></i>
-                                    </a><a href="<?= BASEURL; ?>/admin/hapus/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                    </a>
+
+                                    <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                         <i class="fas fa-trash"></i>
-                                    </a></td>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
