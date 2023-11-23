@@ -1,0 +1,104 @@
+<?php
+
+class Mahasiswa_model
+{
+    private $table = 'mahasiswa';
+
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
+
+
+    public function insert()
+    {
+
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['nama']) && isset($_POST['stok']) && isset($_POST['deskripsi'])) {
+                if (!empty($_POST['nama']) && !empty($_POST['stok']) && !empty($_POST['deskripsi'])) {
+
+                    $nama = $_POST['nama'];
+                    $deskripsi = $_POST['deskripsi'];
+                    $stok = $_POST['stok'];
+
+                    $query = "INSERT INTO barang (nama,stok,deskripsi) VALUES ('$nama','$stok','$deskripsi')";
+                    if ($sql = $this->db->conn->query($query)) {
+                        echo "<script>alert('records added successfully');</script>";
+                        echo "<script>window.location.href = 'admin.php';</script>";
+                    } else {
+                        echo "<script>alert('failed');</script>";
+                        echo "<script>window.location.href = 'admin.php';</script>";
+                    }
+                } else {
+                    echo "<script>alert('empty');</script>";
+                    echo "<script>window.location.href = 'admin.php';</script>";
+                }
+            }
+        }
+    }
+
+    public function fetch()
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table;
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function delete($id)
+    {
+
+        $query = "DELETE FROM " . $this->table . " where id_mahasiswa = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function fetch_single($id)
+    {
+
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE id_barang = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function edit($id)
+    {
+
+        $data = null;
+        $query = "SELECT * FROM " . $this->table . " WHERE id_barang = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function update($data)
+    {
+
+        $query = "UPDATE " . $this->table . " SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
+
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
