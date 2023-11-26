@@ -38,19 +38,20 @@ class Mahasiswa_model
         }
     }
 
-    public function edit($id)
+    public function update($id)
     {
-        if (isset($_POST['update'])) {
-            if (isset($_POST['nama']) && isset($_POST['deskripsi']) && isset($_POST['stok'])) {
-                if (!empty($_POST['nama']) && !empty($_POST['deskripsi']) && !empty($_POST['stok'])) {
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['nim']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
+                if (!empty($_POST['nim']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
 
-                    $data['id_barang'] = $id;
-                    $data['nama'] = $_POST['nama'];
-                    $data['stok'] = $_POST['stok'];
-                    $data['deskripsi'] = $_POST['deskripsi'];
-                    $update = $this->update($data);
+                    $nim = $_POST['nim'];
+                    $nama = $_POST['nama'];
+                    $jenis_kelamin = $_POST['jenis_kelamin'];
+                    $no_tlp = $_POST['no_tlp'];
+                    $alamat = $_POST['alamat'];
 
-                    if ($update) {
+                    $query = "UPDATE " . $this->table . " SET nim='$nim', nama='$nama', jenis_kelamin='$jenis_kelamin' , no_tlp='$no_tlp', alamat='$alamat' WHERE id_mahasiswa='$id'";
+                    if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
                         return false;
@@ -61,19 +62,6 @@ class Mahasiswa_model
             }
         }
     }
-
-    public function update($data)
-    {
-
-        $query = "UPDATE " . $this->table . " SET nim='$data[nim]', nama='$data[nama]', jenis_kelamin='$data[jenis_kelamin]' , no_tlp='$data[no_tlp]', alamat='$data[alamat]' WHERE id_mahasiswa='$data[id_mahasiswa] '";
-
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
     public function fetch()
     {
@@ -112,20 +100,5 @@ class Mahasiswa_model
         }
         return $data;
     }
-
-    // public function edit($id)
-    // {
-
-    //     $data = null;
-    //     $query = "SELECT * FROM " . $this->table . " WHERE id_mahasiswa = '$id'";
-    //     if ($sql = $this->db->conn->query($query)) {
-    //         while ($row = $sql->fetch_assoc()) {
-    //             $data = $row;
-    //         }
-    //     }
-    //     return $data;
-    // }
-
-    // 
 
 }

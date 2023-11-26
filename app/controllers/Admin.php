@@ -49,12 +49,12 @@ class Admin extends Controller
 
     public function getUbahMahasiswa()
     {
-        echo json_encode($this->model('Mahasiswa_model')->fetch_single($_POST['id_mahasiswa']));
+        echo json_encode($this->model('Mahasiswa_model')->fetch_single($_POST['id']));
     }
 
-    public function ubahMahasiswa($id)
+    public function ubahMahasiswa()
     {
-        if ($this->model('Mahasiswa_model')->edit($id)) {
+        if ($this->model('Mahasiswa_model')->update($_POST['id_mahasiswa'])) {
             // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();

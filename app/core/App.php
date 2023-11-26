@@ -11,7 +11,7 @@ class App
         $url = $this->parseUrl();
 
         // controller
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+        if (!empty($url) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
@@ -20,7 +20,7 @@ class App
         $this->controller = new $this->controller;
 
         // methods
-        if (isset($url[1])) {
+        if (!empty($url) && isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
