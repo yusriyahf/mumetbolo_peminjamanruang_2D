@@ -68,6 +68,28 @@
         </div>
     </div>
 
+    <!-- Detail Ruang Modal-->
+    <div class="modal fade" id="ruangModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ruangModalLabel">Detail Ruang</h5>
+                </div>
+                <div class="modal-body">
+                    <h5 id="nama_ruang"></h5>
+                    <h5 id="status_ruang"></h5>
+                    <h5 id="lantai_ruang"></h5>
+                    <h5 id="jenis_ruang"></h5>
+                    <h5 id="fasilitas"></h5>
+                    <h5 id="kapasitas"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Ubah Data Mahasiswa Modal-->
     <div class="modal fade" id="formEditModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog" role="document">

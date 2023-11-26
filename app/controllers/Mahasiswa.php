@@ -17,6 +17,7 @@ class Mahasiswa extends Controller
         $this->view('templates/footer');
     }
 
+
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
     {
