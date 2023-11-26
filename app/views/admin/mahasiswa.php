@@ -14,7 +14,7 @@
             </button>
 
             <div class="row mt-3">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <?php Flasher::flash() ?>
                 </div>
             </div>
