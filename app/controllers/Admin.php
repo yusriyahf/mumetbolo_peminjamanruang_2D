@@ -10,6 +10,15 @@ class Admin extends Controller
         $this->view('templates/footer');
     }
 
+    public function kajur()
+    {
+        $data['kajur'] = $this->model('Kajur_model')->fetch();
+        $data['judul'] = 'Kajur';
+        $this->view('templates/header', $data);
+        $this->view('admin/kajur', $data);
+        $this->view('templates/footer');
+    }
+
     // ADMIN MANAGE MAHASISWA
 
     public function mahasiswa()
