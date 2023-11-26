@@ -1,18 +1,26 @@
-// $(document).ready(function () {
-//     $('.tampilModalUbah').on('click', function () {
-//         const id = $(this).data('id');
-//         $.ajax({
-//             url: '<?= BASEURL; ?>/admin/getMahasiswaById/' + id,
-//             method: 'post',
-//             dataType: 'json',
-//             success: function (data) {
-//                 $('#id').val(data.id_mahasiswa);
-//                 $('#nim').val(data.nim);
-//                 $('#nama').val(data.nama);
-//                 $('#jenis_kelamin').val(data.jenis_kelamin);
-//                 $('#no_tlp').val(data.no_tlp);
-//                 $('#alamat').val(data.alamat);
-//             }
-//         });
-//     });
-// });
+function updateClock() {
+                var now = new Date();
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+
+                // Formatting waktu menjadi HH:MM:SS
+                var timeString = padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
+
+                // Memperbarui elemen dengan ID "clock" dengan waktu yang baru
+                document.getElementById("clock").innerText = timeString;
+            }
+
+function padZero(number) {
+                // Menambahkan nol di depan angka jika hanya satu digit
+                return (number < 10) ? "0" + number : number;
+            }
+
+            // Memperbarui waktu setiap detik
+setInterval(updateClock, 1000);
+
+            // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
+            updateClock();
+
+
+        

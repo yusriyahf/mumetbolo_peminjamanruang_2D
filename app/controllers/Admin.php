@@ -80,7 +80,7 @@ class Admin extends Controller
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(5);
         $data['judul'] = 'Lantai 5';
         $this->view('templates/header', $data);
         $this->view('admin/ruang5', $data);
@@ -89,7 +89,7 @@ class Admin extends Controller
 
     public function ruang6()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(6);
         $data['judul'] = 'Lantai 6';
         $this->view('templates/header', $data);
         $this->view('admin/ruang6', $data);
@@ -98,7 +98,7 @@ class Admin extends Controller
 
     public function ruang7()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(7);
         $data['judul'] = 'Lantai 7';
         $this->view('templates/header', $data);
         $this->view('admin/ruang7', $data);
@@ -107,7 +107,7 @@ class Admin extends Controller
 
     public function ruang8()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(8);
         $data['judul'] = 'Lantai 8';
         $this->view('templates/header', $data);
         $this->view('admin/ruang8', $data);

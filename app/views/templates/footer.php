@@ -154,7 +154,8 @@
     <script src="<?= BASEURL; ?>/js/demo/chart-pie-demo.js"></script>
 
     <!-- Script sendiri -->
-    <!-- <script src="<?= BASEURL; ?>/js/script.js"></script> -->
+    <script src="<?= BASEURL; ?>/js/script.js"></script>
+    <script src="<?= BASEURL; ?>/js/warna.js"></script>
 
     </body>
 

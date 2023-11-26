@@ -13,7 +13,7 @@
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
             </button>
         </div>
-        <img src="<?= BASEURL; ?>/img/6.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/7.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="table-responsive">
