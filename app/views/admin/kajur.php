@@ -2,18 +2,17 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 8</h1>
-    <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
+    <h1 class="h3 mb-2 text-gray-800">Data Kajur</h1>
+    <p class="mb-4">Data Kajur Jurusan Teknik Informatika <b>POLINEMA</b></p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
+            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Kajur</h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
-                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
+                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Kajur
             </button>
         </div>
-        <img src="<?= BASEURL; ?>/img/8.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="table-responsive">
@@ -21,12 +20,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nama Ruang</th>
-                            <th>Lantai</th>
-                            <th>Status</th>
-                            <th>Jenis Ruangan</th>
-                            <th>Kapasitas</th>
-                            <th>Fasilitas</th>
+                            <th>Nama</th>
+                            <th>Jenis Kelamin</th>
+                            <th>No Telp</th>
+                            <th>Alamat</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -42,24 +40,22 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        foreach ($data['ruang'] as $ruang) : ?>
+                        foreach ($data['kajur'] as $kajur) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $ruang['nama_ruang']; ?></td>
-                                <td><?= $ruang['lantai']; ?></td>
-                                <td class="status-cell"><?= $ruang['status']; ?></td>
-                                <td><?= $ruang['jenis_ruang']; ?></td>
-                                <td><?= $ruang['kapasitas']; ?></td>
-                                <td><?= $ruang['fasilitas']; ?></td>
+                                <td><?= $kajur['nama']; ?></td>
+                                <td><?= $kajur['jenis_kelamin']; ?></td>
+                                <td><?= $kajur['no_tlp']; ?></td>
+                                <td><?= $kajur['alamat']; ?></td>
                                 <td>
 
-                                    <!-- <a href="#" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $ruang['id_dosen']; ?>">
+                                    <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
                                         <i class="fas fa-trash"></i>
                                     </a>
 
-                                    <a href="<?= BASEURL; ?>/admin/hapusdosen/<?= $ruang['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                    <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                         <i class="fas fa-trash"></i>
-                                    </a> -->
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

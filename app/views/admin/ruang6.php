@@ -23,6 +23,7 @@
                             <th>#</th>
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
+                            <th>Status</th>
                             <th>Jenis Ruangan</th>
                             <th>Kapasitas</th>
                             <th>Fasilitas</th>
@@ -46,18 +47,12 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $ruang['nama_ruang']; ?></td>
                                 <td><?= $ruang['lantai']; ?></td>
+                                <td class="status-cell"><?= $ruang['status']; ?></td>
                                 <td><?= $ruang['jenis_ruang']; ?></td>
                                 <td><?= $ruang['kapasitas']; ?></td>
                                 <td><?= $ruang['fasilitas']; ?></td>
                                 <td>
 
-                                    <!-- <a href="#" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $ruang['id_dosen']; ?>">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-
-                                    <a href="<?= BASEURL; ?>/admin/hapusdosen/<?= $ruang['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
-                                        <i class="fas fa-trash"></i>
-                                    </a> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

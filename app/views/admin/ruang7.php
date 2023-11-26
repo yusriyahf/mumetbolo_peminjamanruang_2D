@@ -13,7 +13,7 @@
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
             </button>
         </div>
-        <img src="<?= BASEURL; ?>/img/6.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/7.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="table-responsive">
@@ -23,6 +23,7 @@
                             <th>#</th>
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
+                            <th>Status</th>
                             <th>Jenis Ruangan</th>
                             <th>Kapasitas</th>
                             <th>Fasilitas</th>
@@ -46,6 +47,7 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $ruang['nama_ruang']; ?></td>
                                 <td><?= $ruang['lantai']; ?></td>
+                                <td class="status-cell"><?= $ruang['status']; ?></td>
                                 <td><?= $ruang['jenis_ruang']; ?></td>
                                 <td><?= $ruang['kapasitas']; ?></td>
                                 <td><?= $ruang['fasilitas']; ?></td>

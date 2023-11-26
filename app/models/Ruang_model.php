@@ -39,11 +39,11 @@ class Ruang_model
         }
     }
 
-    public function fetch()
+    public function fetch($lantai)
     {
         $data = null;
 
-        $query = "SELECT * FROM " . $this->table;
+        $query = "SELECT * FROM " . $this->table . " WHERE lantai = " . $lantai;
         if ($sql = $this->db->conn->query($query)) {
             while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;
@@ -68,7 +68,7 @@ class Ruang_model
 
         $data = null;
 
-        $query = "SELECT * FROM barang WHERE id_barang = '$id'";
+        $query = "SELECT * FROM " . $this->table . " WHERE id_barang = '$id'";
         if ($sql = $this->db->conn->query($query)) {
             while ($row = $sql->fetch_assoc()) {
                 $data = $row;

@@ -10,6 +10,15 @@ class Admin extends Controller
         $this->view('templates/footer');
     }
 
+    public function kajur()
+    {
+        $data['kajur'] = $this->model('Kajur_model')->fetch();
+        $data['judul'] = 'Kajur';
+        $this->view('templates/header', $data);
+        $this->view('admin/kajur', $data);
+        $this->view('templates/footer');
+    }
+
     // ADMIN MANAGE MAHASISWA
 
     public function mahasiswa()
@@ -24,11 +33,11 @@ class Admin extends Controller
     public function hapusMahasiswa($id)
     {
         if ($this->model('Mahasiswa_model')->delete($id) == true) {
-            // Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         } else {
-            // Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
@@ -37,11 +46,11 @@ class Admin extends Controller
     public function tambahMahasiswa()
     {
         if ($this->model('Mahasiswa_model')->insert($_POST)) {
-            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         } else {
-            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
@@ -80,7 +89,7 @@ class Admin extends Controller
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(5);
         $data['judul'] = 'Lantai 5';
         $this->view('templates/header', $data);
         $this->view('admin/ruang5', $data);
@@ -89,7 +98,7 @@ class Admin extends Controller
 
     public function ruang6()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(6);
         $data['judul'] = 'Lantai 6';
         $this->view('templates/header', $data);
         $this->view('admin/ruang6', $data);
@@ -98,7 +107,7 @@ class Admin extends Controller
 
     public function ruang7()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(7);
         $data['judul'] = 'Lantai 7';
         $this->view('templates/header', $data);
         $this->view('admin/ruang7', $data);
@@ -107,7 +116,7 @@ class Admin extends Controller
 
     public function ruang8()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch();
+        $data['ruang'] = $this->model('Ruang_model')->fetch(8);
         $data['judul'] = 'Lantai 8';
         $this->view('templates/header', $data);
         $this->view('admin/ruang8', $data);

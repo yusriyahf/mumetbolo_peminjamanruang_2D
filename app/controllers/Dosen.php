@@ -4,6 +4,8 @@ class Dosen extends Controller
 {
     public function index()
     {
-        echo "Halaman Dosen";
+        $this->view('templates/header');
+        $this->view('dosen/index');
+        $this->view('templates/footer');
     }
 }
