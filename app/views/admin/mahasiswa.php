@@ -12,6 +12,12 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa
             </button>
+
+            <div class="row mt-3">
+                <div class="col-lg-6">
+                    <?php Flasher::flash() ?>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">

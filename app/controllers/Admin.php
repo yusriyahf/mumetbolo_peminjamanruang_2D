@@ -33,11 +33,11 @@ class Admin extends Controller
     public function hapusMahasiswa($id)
     {
         if ($this->model('Mahasiswa_model')->delete($id) == true) {
-            // Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         } else {
-            // Flasher::setFlash('gagal', 'dihapus', 'danger');
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
@@ -46,11 +46,11 @@ class Admin extends Controller
     public function tambahMahasiswa()
     {
         if ($this->model('Mahasiswa_model')->insert($_POST)) {
-            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         } else {
-            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
