@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 5</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 7</h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
     <div class="clock"></div>
 

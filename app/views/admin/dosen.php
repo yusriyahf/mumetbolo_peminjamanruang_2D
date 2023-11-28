@@ -9,9 +9,15 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Dosen</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahDosenModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Dosen
             </button>
+
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <?php Flasher::flash() ?>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">
@@ -51,11 +57,11 @@
                                 <td><?= $dsn['alamat']; ?></td>
                                 <td>
 
-                                    <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $dsn['id_dosen']; ?>">
-                                        <i class="fas fa-trash"></i>
+                                    <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $dsn['id_dosen']; ?>">
+                                        <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <a href="<?= BASEURL; ?>/admin/hapusdosen/<?= $dsn['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                    <a href="<?= BASEURL; ?>/admin/hapusDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>

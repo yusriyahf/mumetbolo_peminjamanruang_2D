@@ -67,6 +67,53 @@
             </div>
         </div>
     </div>
+    <!-- Tambah Data Dosen Modal-->
+    <div class="modal fade" id="formTambahDosenModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Tambah Data Dosen</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/tambahDosen" method="post">
+                        <input type="hidden" name="id_dosen" id="id_dosen">
+                        <div class="mb-3">
+                            <label for="nip" class="form-label">Nip</label>
+                            <input type="text" class="form-control" id="nip" name="nip" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin:</label>
+                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="no_tlp" class="form-label">No Telepon</label>
+                            <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Detail Ruang Modal-->
     <div class="modal fade" id="ruangModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">

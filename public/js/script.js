@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.tampilModalUbah').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
+            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
             method: 'post',
             data : {id : id},
             dataType: 'json',
