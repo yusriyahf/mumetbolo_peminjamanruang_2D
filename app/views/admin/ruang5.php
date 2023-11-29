@@ -10,12 +10,18 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahRuang">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
             </button>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
+
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <?php Flasher::flash() ?>
+                </div>
+            </div>
 
         </div>
         <img src="<?= BASEURL; ?>/img/5.png" alt="" width="70%" class="mx-auto">
@@ -32,6 +38,7 @@
                             <th>Jenis Ruangan</th>
                             <th>Kapasitas</th>
                             <th>Fasilitas</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -47,20 +54,29 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        foreach ($data['ruang'] as $ruang) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $ruang['nama_ruang']; ?></td>
-                                <td><?= $ruang['lantai']; ?></td>
-                                <td class="status-cell"><?= $ruang['status']; ?></td>
-                                <td><?= $ruang['status']; ?></td>
-                                <td><?= $ruang['jenis_ruang']; ?></td>
-                                <td><?= $ruang['kapasitas']; ?></td>
-                                <td><?= $ruang['fasilitas']; ?></td>
-                                <td>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                        if (!empty($data['ruang']) && is_array($data['ruang'])) {
+                            foreach ($data['ruang'] as $ruang) : ?>
+                                <tr>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $ruang['nama_ruang']; ?></td>
+                                    <td><?= $ruang['lantai']; ?></td>
+                                    <td class="status-cell"><?= $ruang['status']; ?></td>
+                                    <td><?= $ruang['jenis_ruang']; ?></td>
+                                    <td><?= $ruang['kapasitas']; ?></td>
+                                    <td><?= $ruang['fasilitas']; ?></td>
+                                    <td>
+                                        <a href="<?= BASEURL; ?>/admin/ubahRuang/<?= $mhs['id_ruang']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahRuang" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditRuang" data-id="<?= $ruang['id_ruang']; ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="<?= BASEURL; ?>/admin/hapusRuang/<?= $ruang['id_ruang']; ?>/<?= $ruang['lantai'];?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach;
+                        }else {
+                            echo "No data available.";
+                        }?>                        
                     </tbody>
                 </table>
             </div>
