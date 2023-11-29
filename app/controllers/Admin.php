@@ -45,7 +45,19 @@ class Admin extends Controller
 
     public function tambahMahasiswa()
     {
-        if ($this->model('Mahasiswa_model')->insert($_POST)) {
+          $mahasiswaModel = $this->model('Mahasiswa_model');
+
+        // Ambil jumlah mahasiswa sebelum penambahan
+        $jumlahMahasiswaSebelum = $mahasiswaModel->countMahasiswa();
+
+        // Lakukan penambahan mahasiswa
+        if ($mahasiswaModel->insert($_POST)) {
+            // Ambil jumlah mahasiswa setelah penambahan
+            $jumlahMahasiswaSetelah = $mahasiswaModel->countMahasiswa();
+
+            // Hitung selisih untuk mendapatkan jumlah mahasiswa yang ditambahkan
+            $mahasiswaDitambahkan = $jumlahMahasiswaSetelah - $jumlahMahasiswaSebelum;
+
             Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'mahasiswa');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
@@ -73,7 +85,12 @@ class Admin extends Controller
             exit();
         }
     }
-
+    
+    public function countMahasiswa()
+    {
+        $mahasiswaModel = $this->model('Mahasiswa_model');
+        return $mahasiswaModel->countMahasiswa();
+    }
 
     // ADMIN MANAGE DOSEN
     public function dosen()
@@ -130,6 +147,11 @@ class Admin extends Controller
         }
     }
 
+    public function countDosen()
+        {
+            $dosenModel = $this->model('Dosen_model');
+            return $dosenModel->countDosen();
+        }
 
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
@@ -167,4 +189,10 @@ class Admin extends Controller
         $this->view('admin/ruang8', $data);
         $this->view('templates/footer');
     }
+
+    public function countRuang()
+        {
+            $ruangModel = $this->model('Ruang_model');
+            return $ruangModel->countRuang();
+        }
 }

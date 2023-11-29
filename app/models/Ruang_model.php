@@ -101,4 +101,20 @@ class Ruang_model
             return false;
         }
     }
+
+     //Ngitung jml Ruangan
+    public function countRuang()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table;
+        $result = $this->db->conn->query($query);
+        
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
 }
+
+
