@@ -47,26 +47,31 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        foreach ($data['dsn'] as $dsn) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $dsn['nip']; ?></td>
-                                <td><?= $dsn['nama']; ?></td>
-                                <td><?= $dsn['jenis_kelamin']; ?></td>
-                                <td><?= $dsn['no_tlp']; ?></td>
-                                <td><?= $dsn['alamat']; ?></td>
-                                <td>
-
-                                    <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $dsn['id_dosen']; ?>">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                    <a href="<?= BASEURL; ?>/admin/hapusDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                        if (!empty($data['dsn']) && is_array($data['dsn'])) {
+                            foreach ($data['dsn'] as $dsn) : ?>
+                                <tr>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $dsn['nip']; ?></td>
+                                    <td><?= $dsn['nama']; ?></td>
+                                    <td><?= $dsn['jenis_kelamin']; ?></td>
+                                    <td><?= $dsn['no_tlp']; ?></td>
+                                    <td><?= $dsn['alamat']; ?></td>
+                                    <td>
+    
+                                        <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalDosen" data-id="<?= $dsn['id_dosen']; ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+    
+                                        <a href="<?= BASEURL; ?>/admin/hapusDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach;
+                        }else {
+                            echo "No data available.";
+                        }
+                        ?>                        
                     </tbody>
                 </table>
             </div>

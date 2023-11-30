@@ -47,26 +47,31 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        foreach ($data['mhs'] as $mhs) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $mhs['nim']; ?></td>
-                                <td><?= $mhs['nama']; ?></td>
-                                <td><?= $mhs['jenis_kelamin']; ?></td>
-                                <td><?= $mhs['no_tlp']; ?></td>
-                                <td><?= $mhs['alamat']; ?></td>
-                                <td>
-
-                                    <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                    <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                        if (!empty($data['mhs']) && is_array($data['mhs'])) {
+                            foreach ($data['mhs'] as $mhs) : ?>
+                                <tr>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $mhs['nim']; ?></td>
+                                    <td><?= $mhs['nama']; ?></td>
+                                    <td><?= $mhs['jenis_kelamin']; ?></td>
+                                    <td><?= $mhs['no_tlp']; ?></td>
+                                    <td><?= $mhs['alamat']; ?></td>
+                                    <td>
+    
+                                        <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+    
+                                        <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach;
+                        }else {
+                            echo "No data available.";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
