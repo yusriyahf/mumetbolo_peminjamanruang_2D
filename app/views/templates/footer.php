@@ -67,6 +67,7 @@
             </div>
         </div>
     </div>
+
     <!-- Tambah Data Dosen Modal-->
     <div class="modal fade" id="formTambahDosenModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -109,6 +110,102 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tambah Data Ruang Modal-->
+    <div class="modal fade" id="formTambahRuang" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Tambah Data Ruangan Lantai <?= $data['lantai']; ?></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/tambahRuang/<?= $data['lantai']; ?>" method="post">
+                        <input type="hidden" name="id_ruang" id="id_ruang">
+                        <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
+                        <div class="mb-3">
+                            <label for="nama_rg" class="form-label">Nama Ruangan</label>
+                            <input type="text" class="form-control" id="nama_rg" name="nama_rg" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="jenis_rg" class="form-label">Jenis Ruangan</label>
+                            <input type="text" class="form-control" id="jenis_rg" name="jenis_rg" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="kapasitas" class="form-label">Kapasitas</label>
+                            <input type="number" class="form-control" id="kapasitas" name="kapasitas" min="1" max="100" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fasilitas" class="form-label">Fasilitas</label>
+                            <input type="text" class="form-control" id="fasilitas" name="fasilitas" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Status</label>
+                            <input type="text" class="form-control" id="status" name="status" autocomplete="off" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ubah Data Ruang Modal-->
+    <div class="modal fade" id="formEditRuang" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Ubah Data Ruangan Lantai <?= $data['lantai']; ?></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/ubahRuang/<?= $data['lantai']; ?>" method="post">
+                        <input type="hidden" name="id_ruang" id="id_ruang_edit" value="<?= $ruang['id_ruang']; ?>">
+                        <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
+                        <div class="mb-3">
+                            <label for="nama_rg" class="form-label">Nama Ruangan</label>
+                            <input type="text" class="form-control" id="nama_rg_edit" name="nama_rg" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="jenis_rg" class="form-label">Jenis Ruangan</label>
+                            <input type="text" class="form-control" id="jenis_rg_edit" name="jenis_rg" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="kapasitas" class="form-label">Kapasitas</label>
+                            <input type="number" class="form-control" id="kapasitas_edit" name="kapasitas" min="1" max="100" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fasilitas" class="form-label">Fasilitas</label>
+                            <input type="text" class="form-control" id="fasilitas_edit" name="fasilitas" autocomplete="off" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Status</label>
+                            <input type="text" class="form-control" id="status_edit" name="status" autocomplete="off" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
                     </form>
                 </div>
             </div>
@@ -175,6 +272,55 @@
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control" id="alamat_edit" name="alamat" autocomplete="off" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ubah Data Dosen Modal-->
+    <div class="modal fade" id="formEditModalDosen" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Ubah Data Mahasiswa</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/ubahDosen" method="post">
+                        <input type="hidden" name="id_dosen" id="id_dosen_edit" value="<?= $mhs['id_dosen']; ?>">
+                        <div class="mb-3">
+                            <label for="nim" class="form-label">Nim</label>
+                            <input type="text" class="form-control" id="nip_edit" name="nip" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="namaDsn_edit" name="nama" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin:</label>
+                            <select name="jenis_kelamin" id="jkDosen_edit" class="form-control">
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="no_tlp" class="form-label">No Telpon</label>
+                            <input type="text" class="form-control" id="tlpDosen_edit" name="no_tlp" autocomplete="off" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="alamatDsn_edit" name="alamat" autocomplete="off" required>
                         </div>
                 </div>
                 <div class="modal-footer">
