@@ -100,5 +100,4 @@ class Mahasiswa_model
         }
         return $data;
     }
-
 }
