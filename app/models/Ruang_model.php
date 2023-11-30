@@ -102,4 +102,33 @@ class Ruang_model
         return $data;
     }
 
+
+    public function update($data)
+    {
+
+        $query = "UPDATE barang SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
+
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+     //Ngitung jml Ruangan
+    public function countRuang()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table;
+        $result = $this->db->conn->query($query);
+        
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
+
 }
+
+
