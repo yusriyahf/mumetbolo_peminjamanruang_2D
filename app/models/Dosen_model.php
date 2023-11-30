@@ -64,19 +64,6 @@ class Dosen_model
         }
     }
 
-
-    public function update($data)
-    {
-
-        $query = "UPDATE " . $this->table . " SET nim='$data[nim]', nama='$data[nama]', jenis_kelamin='$data[jenis_kelamin]' , no_tlp='$data[no_tlp]', alamat='$data[alamat]' WHERE id_mahasiswa='$data[id_mahasiswa] '";
-
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     //Ngitung jml dosen
     public function countDosen()
     {
@@ -128,5 +115,4 @@ class Dosen_model
         }
         return $data;
     }
-
 }
