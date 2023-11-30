@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Peminjaman</div>
+                <div class="sidebar-brand-text mx-3">Peminjaman Ruang</div>
             </a>
 
             <!-- Divider -->
@@ -67,7 +67,6 @@
                         <h6 class="collapse-header">Data User:</h6>
                         <a class="collapse-item" href="<?= BASEURL; ?>/admin/mahasiswa">Mahasiswa</a>
                         <a class="collapse-item" href="<?= BASEURL; ?>/admin/dosen">Dosen</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/kajur">Kepala Jurusan</a>
                     </div>
                 </div>
             </li>

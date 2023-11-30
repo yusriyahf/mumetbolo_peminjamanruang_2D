@@ -69,7 +69,7 @@ class Dosen_model
     {
         $query = "SELECT COUNT(*) as total FROM " . $this->table;
         $result = $this->db->conn->query($query);
-        
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total'];

@@ -10,14 +10,6 @@ class Admin extends Controller
         $this->view('templates/footer');
     }
 
-    public function kajur()
-    {
-        $data['kajur'] = $this->model('Kajur_model')->fetch();
-        $data['judul'] = 'Kajur';
-        $this->view('templates/header', $data);
-        $this->view('admin/kajur', $data);
-        $this->view('templates/footer');
-    }
 
     // ADMIN MANAGE MAHASISWA
 
@@ -45,7 +37,7 @@ class Admin extends Controller
 
     public function tambahMahasiswa()
     {
-          $mahasiswaModel = $this->model('Mahasiswa_model');
+        $mahasiswaModel = $this->model('Mahasiswa_model');
 
         // Ambil jumlah mahasiswa sebelum penambahan
         $jumlahMahasiswaSebelum = $mahasiswaModel->countMahasiswa();
@@ -85,7 +77,7 @@ class Admin extends Controller
             exit();
         }
     }
-    
+
     public function countMahasiswa()
     {
         $mahasiswaModel = $this->model('Mahasiswa_model');
@@ -147,10 +139,10 @@ class Admin extends Controller
     }
 
     public function countDosen()
-        {
-            $dosenModel = $this->model('Dosen_model');
-            return $dosenModel->countDosen();
-        }
+    {
+        $dosenModel = $this->model('Dosen_model');
+        return $dosenModel->countDosen();
+    }
 
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
@@ -205,7 +197,7 @@ class Admin extends Controller
             exit();
         }
     }
-    
+
     public function hapusRuang($id, $lantai)
     {
         if ($this->model('Ruang_model')->delete($id) == true) {
@@ -226,11 +218,11 @@ class Admin extends Controller
 
 
     public function countRuang()
-        {
-            $ruangModel = $this->model('Ruang_model');
-            return $ruangModel->countRuang();
-        }
-  
+    {
+        $ruangModel = $this->model('Ruang_model');
+        return $ruangModel->countRuang();
+    }
+
     public function ubahRuang($lantai)
     {
         if ($this->model('Ruang_model')->update($_POST['id_ruang'])) {
@@ -242,6 +234,5 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         }
-    }    
-
+    }
 }

@@ -103,24 +103,24 @@ class Ruang_model
     }
 
 
-    public function update($data)
-    {
+    // public function update($data)
+    // {
 
-        $query = "UPDATE barang SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
+    //     $query = "UPDATE barang SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
 
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if ($sql = $this->db->conn->query($query)) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
-     //Ngitung jml Ruangan
+    //Ngitung jml Ruangan
     public function countRuang()
     {
         $query = "SELECT COUNT(*) as total FROM " . $this->table;
         $result = $this->db->conn->query($query);
-        
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total'];
@@ -128,7 +128,4 @@ class Ruang_model
             return 0;
         }
     }
-
 }
-
-
