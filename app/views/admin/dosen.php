@@ -12,6 +12,16 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahDosenModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Dosen
             </button>
+            <form action="<?= BASEURL; ?>/admin/cariDosen" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
             <div class="row mt-3">
                 <div class="col-lg-4">
@@ -57,21 +67,21 @@
                                     <td><?= $dsn['no_tlp']; ?></td>
                                     <td><?= $dsn['alamat']; ?></td>
                                     <td>
-    
+
                                         <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalDosen" data-id="<?= $dsn['id_dosen']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
-    
+
                                         <a href="<?= BASEURL; ?>/admin/hapusDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endforeach;
-                        }else {
+                        <?php endforeach;
+                        } else {
                             echo "No data available.";
                         }
-                        ?>                        
+                        ?>
                     </tbody>
                 </table>
             </div>

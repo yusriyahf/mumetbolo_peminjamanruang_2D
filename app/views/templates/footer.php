@@ -19,6 +19,55 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- Pinjam Ruangan Modal-->
+    <div class="modal fade" id="formPinjamModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Pinjam Ruangan</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/tambahMahasiswa" method="post">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa">
+                        <div class="mb-3">
+                            <label for="nim" class="form-label">Nim</label>
+                            <input type="text" class="form-control" id="nim" name="nim" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin:</label>
+                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="no_tlp" class="form-label">No Telpon</label>
+                            <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Tambah Data Mahasiswa Modal-->
     <div class="modal fade" id="formTambahModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -197,7 +246,7 @@
                             <label for="fasilitas" class="form-label">Fasilitas</label>
                             <input type="text" class="form-control" id="fasilitas_edit" name="fasilitas" autocomplete="off" required>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status_edit" name="status" autocomplete="off" required>
@@ -288,16 +337,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formModalLabel">Ubah Data Mahasiswa</h5>
+                    <h5 class="modal-title" id="formModalLabel">Ubah Data Dosen</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form action="<?= BASEURL; ?>/admin/ubahDosen" method="post">
-                        <input type="hidden" name="id_dosen" id="id_dosen_edit" value="<?= $mhs['id_dosen']; ?>">
+                        <input type="hidden" name="id_dosen" id="id_dosen_edit" value="<?= $dsn['id_dosen']; ?>">
                         <div class="mb-3">
-                            <label for="nim" class="form-label">Nim</label>
+                            <label for="nim" class="form-label">Nip</label>
                             <input type="text" class="form-control" id="nip_edit" name="nip" autocomplete="off" required>
                         </div>
 

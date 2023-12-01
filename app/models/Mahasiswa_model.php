@@ -12,6 +12,25 @@ class Mahasiswa_model
     }
 
 
+    public function cariDataMahasiswa()
+    {
+        $data = null;
+
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%'";
+
+        $result = $this->db->conn->query($query);
+
+        if ($result->num_rows > 0) {
+            // Fetch data and store it in the $data variable
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        return $data;
+    }
+
     public function insert()
     {
 
@@ -68,7 +87,7 @@ class Mahasiswa_model
     {
         $query = "SELECT COUNT(*) as total FROM " . $this->table;
         $result = $this->db->conn->query($query);
-        
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total'];
@@ -77,7 +96,7 @@ class Mahasiswa_model
         }
     }
 
-    
+
 
     public function fetch()
     {

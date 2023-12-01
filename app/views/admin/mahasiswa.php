@@ -12,6 +12,16 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa
             </button>
+            <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
             <div class="row mt-3">
                 <div class="col-lg-4">
@@ -19,6 +29,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="card-body">
             <div class="table-responsive">
@@ -57,18 +68,18 @@
                                     <td><?= $mhs['no_tlp']; ?></td>
                                     <td><?= $mhs['alamat']; ?></td>
                                     <td>
-    
+
                                         <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
-    
+
                                         <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endforeach;
-                        }else {
+                        <?php endforeach;
+                        } else {
                             echo "No data available.";
                         }
                         ?>

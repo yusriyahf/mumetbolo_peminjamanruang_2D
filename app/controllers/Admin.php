@@ -12,6 +12,28 @@ class Admin extends Controller
 
 
     // ADMIN MANAGE MAHASISWA
+    public function cariMahasiswa()
+    {
+        $data['mhs'] = $this->model('Mahasiswa_model')->cariDataMahasiswa();
+        $this->view('templates/header', $data);
+        $this->view('admin/mahasiswa', $data);
+        $this->view('templates/footer');
+    }
+    public function cariDosen()
+    {
+        $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
+        $this->view('templates/header', $data);
+        $this->view('admin/dosen', $data);
+        $this->view('templates/footer');
+    }
+
+    public function cariRuang($lantai)
+    {
+        $data['ruang'] = $this->model('Ruang_model')->cariDataRuang($lantai);
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang' . $lantai, $data);
+        $this->view('templates/footer');
+    }
 
     public function mahasiswa()
     {

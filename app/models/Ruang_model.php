@@ -11,6 +11,25 @@ class Ruang_model
         $this->db = new Database;
     }
 
+    public function cariDataRuang($lantai)
+    {
+        $data = null;
+
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM " . $this->table . " WHERE nama_ruang LIKE '%$keyword%' AND lantai = '$lantai'";
+
+        $result = $this->db->conn->query($query);
+
+        if ($result->num_rows > 0) {
+            // Fetch data and store it in the $data variable
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        return $data;
+    }
+
 
     public function insert()
     {
