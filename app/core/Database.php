@@ -5,7 +5,7 @@ class Database
     private $server = "localhost";
     private $username = "root";
     private $password;
-    private $db = "peminjaman_ruangan";
+    private $db = "peminjaman_ruangan2";
     public $conn;
 
     public function __construct()

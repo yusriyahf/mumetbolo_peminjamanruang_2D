@@ -4,16 +4,23 @@ class Admin extends Controller
 {
     public function index()
     {
-        if(isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin'){
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
             $data['judul'] = 'Admin';
             $this->view('templates/header', $data);
             $this->view('admin/index');
             $this->view('templates/footer');
-        }else{
-            if(isset($_SESSION['tipe'])){
+        } else {
+            // if (isset($_SESSION['tipe'])) {
+            //     echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+            //     header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            // } else {
+            //     echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+            //     header('Refresh: 0; url=' . BASEURL);
+            // }
+            if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
-            }else{
+            } else {
                 echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
                 header('Refresh: 0; url=' . BASEURL);
             }
@@ -47,22 +54,32 @@ class Admin extends Controller
 
     public function mahasiswa()
     {
-        $data['mhs'] = $this->model('Mahasiswa_model')->fetch();
-        $data['judul'] = 'Mahasiswa';
-        $this->view('templates/header', $data);
-        $this->view('admin/mahasiswa', $data);
-        $this->view('templates/footer');
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['mhs'] = $this->model('Mahasiswa_model')->fetch();
+            $data['judul'] = 'Mahasiswa';
+            $this->view('templates/header', $data);
+            $this->view('admin/mahasiswa', $data);
+            $this->view('templates/footer');
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
     }
 
     public function hapusMahasiswa($id)
     {
         $delMhs = $this->model('Mahasiswa_model')->delete($id);
         if ($delMhs != null) {
-            if($this->model('User_model')->delete($delMhs)){
+            if ($this->model('User_model')->delete($delMhs)) {
                 Flasher::setFlash('berhasil', 'dihapus', 'success', 'mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
-            }else{
+            } else {
                 Flasher::setFlash('gagal', 'dihapus', 'danger', 'user mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
@@ -77,7 +94,7 @@ class Admin extends Controller
     public function tambahMahasiswa()
     {
         $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
-        if($result != null){
+        if ($result != null) {
             $mahasiswaModel = $this->model('Mahasiswa_model');
 
             // Ambil jumlah mahasiswa sebelum penambahan
@@ -129,11 +146,22 @@ class Admin extends Controller
     // ADMIN MANAGE DOSEN
     public function dosen()
     {
-        $data['dsn'] = $this->model('Dosen_model')->fetch();
-        $data['judul'] = 'Dosen';
-        $this->view('templates/header', $data);
-        $this->view('admin/dosen', $data);
-        $this->view('templates/footer');
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['dsn'] = $this->model('Dosen_model')->fetch();
+            $data['judul'] = 'Dosen';
+            $this->view('templates/header', $data);
+            $this->view('admin/dosen', $data);
+            $this->view('templates/footer');
+            # code...
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
     }
 
     public function hapusDosen($id)
@@ -149,7 +177,7 @@ class Admin extends Controller
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             }
-        }else {
+        } else {
             Flasher::setFlash('gagal', 'dihapus', 'danger', 'user dosen');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit();
@@ -159,7 +187,7 @@ class Admin extends Controller
     public function tambahDosen()
     {
         $result = $this->model('User_model')->add($_POST['nama'], $_POST['nip'], 'dosen');
-        if(isset($result)){
+        if (isset($result)) {
             if ($this->model('Dosen_model')->insert($result)) {
                 Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
@@ -199,12 +227,23 @@ class Admin extends Controller
     // ADMIN MANAGE RUANGAN 6
     public function ruang5()
     {
-        $data['ruang'] = $this->model('Ruang_model')->fetch(5);
-        $data['judul'] = 'Lantai 5';
-        $data['lantai'] = '5';
-        $this->view('templates/header', $data);
-        $this->view('admin/ruang5', $data);
-        $this->view('templates/footer', $data);
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            # code...
+            $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            $data['judul'] = 'Lantai 5';
+            $data['lantai'] = '5';
+            $this->view('templates/header', $data);
+            $this->view('admin/ruang5', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
     }
 
     public function ruang6()

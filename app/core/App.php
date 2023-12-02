@@ -1,10 +1,10 @@
     <?php
 
-class App
-{
-    protected $controller = 'Auth';
-    protected $method = 'index';
-    protected $params = [];
+    class App
+    {
+        protected $controller = 'Auth';
+        protected $method = 'index';
+        public $params = [];
 
         public function __construct()
         {
