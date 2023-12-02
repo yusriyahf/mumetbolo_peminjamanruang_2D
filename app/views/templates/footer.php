@@ -111,7 +111,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>
@@ -138,6 +138,15 @@
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="jabatan" class="form-label">Jabatan:</label>
+                            <select name="jabatan" id="jabatan" class="form-control">
+                                <option value="kajur">Ketua Jurusan</option>
+                                <option value="sekjur">Sekretaris Jurusan</option>
+                                <option value="dosen">Dosen</option>
+                            </select>
                         </div>
 
                         <div class="mb-3 form-group">
@@ -394,7 +403,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="<?= BASEURL; ?>/auth/logOut">Logout</a>
                 </div>
             </div>
         </div>

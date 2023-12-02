@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Mahasiswa</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahModal">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tambah" data-toggle="modal" data-target="#formTambahModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa
             </button>
             <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

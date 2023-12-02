@@ -31,20 +31,20 @@ class Dosen_model
     }
 
 
-    public function insert()
+    public function insert($username)
     {
-
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
-                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
+            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat']) && isset($_POST['jabatan']) && isset($username)) {
+                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat']) && !empty($_POST['jabatan']) && !empty($username)) {
 
                     $nip = $_POST['nip'];
                     $nama = $_POST['nama'];
                     $jenis_kelamin = $_POST['jenis_kelamin'];
                     $no_tlp = $_POST['no_tlp'];
                     $alamat = $_POST['alamat'];
+                    $jabatan = $_POST['jabatan'];
 
-                    $query = "INSERT INTO " . $this->table . " (nip,nama,jenis_kelamin, no_tlp, alamat) VALUES ('$nip','$nama','$jenis_kelamin','$no_tlp','$alamat')";
+                    $query = "INSERT INTO " . $this->table . " (nip, nama, jabatan, jenis_kelamin, no_tlp, alamat, username) VALUES ('$nip','$nama','$jabatan','$jenis_kelamin','$no_tlp','$alamat', '$username')";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -112,12 +112,12 @@ class Dosen_model
 
     public function delete($id)
     {
-
+        $delete = $this->fetch_single($id);
         $query = "DELETE FROM " . $this->table . " where id_dosen = '$id'";
         if ($sql = $this->db->conn->query($query)) {
-            return true;
+            return $delete['username'];
         } else {
-            return false;
+            return null;
         }
     }
 

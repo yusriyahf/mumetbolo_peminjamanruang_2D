@@ -4,10 +4,20 @@ class Mahasiswa extends Controller
 {
     public function index()
     {
-        $data['judul'] = 'Mahasiswa';
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/index');
-        $this->view('templates/footer');
+        if(isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa'){
+            $data['judul'] = 'Mahasiswa';
+            $this->view('templates/header', $data);
+            $this->view('mahasiswa/index');
+            $this->view('templates/footer');
+        }else{
+            if(isset($_SESSION['tipe'])){
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            }else{
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
     }
 
     public function peminjaman()
