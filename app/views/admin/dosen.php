@@ -38,6 +38,7 @@
                             <th>#</th>
                             <th>Nip</th>
                             <th>Nama</th>
+                            <th>Jabatan</th>
                             <th>Jenis Kelamin</th>
                             <th>No Telp</th>
                             <th>Alamat</th>
@@ -63,6 +64,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $dsn['nip']; ?></td>
                                     <td><?= $dsn['nama']; ?></td>
+                                    <td><?= $dsn['jabatan']; ?></td>
                                     <td><?= $dsn['jenis_kelamin']; ?></td>
                                     <td><?= $dsn['no_tlp']; ?></td>
                                     <td><?= $dsn['alamat']; ?></td>

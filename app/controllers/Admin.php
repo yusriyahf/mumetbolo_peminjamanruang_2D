@@ -4,10 +4,20 @@ class Admin extends Controller
 {
     public function index()
     {
-        $data['judul'] = 'Admin';
-        $this->view('templates/header', $data);
-        $this->view('admin/index');
-        $this->view('templates/footer');
+        if(isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin'){
+            $data['judul'] = 'Admin';
+            $this->view('templates/header', $data);
+            $this->view('admin/index');
+            $this->view('templates/footer');
+        }else{
+            if(isset($_SESSION['tipe'])){
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            }else{
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
     }
 
 
@@ -46,12 +56,19 @@ class Admin extends Controller
 
     public function hapusMahasiswa($id)
     {
-        if ($this->model('Mahasiswa_model')->delete($id) == true) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success', 'mahasiswa');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
-            exit();
+        $delMhs = $this->model('Mahasiswa_model')->delete($id);
+        if ($delMhs != null) {
+            if($this->model('User_model')->delete($delMhs)){
+                Flasher::setFlash('berhasil', 'dihapus', 'success', 'mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            }else{
+                Flasher::setFlash('gagal', 'dihapus', 'danger', 'user mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            }
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger', 'mahasiswa');
+            Flasher::setFlash('gagal', 'dihapus', 'danger', 'user mahasiswa');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
@@ -59,26 +76,29 @@ class Admin extends Controller
 
     public function tambahMahasiswa()
     {
-        $mahasiswaModel = $this->model('Mahasiswa_model');
+        $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
+        if($result != null){
+            $mahasiswaModel = $this->model('Mahasiswa_model');
 
-        // Ambil jumlah mahasiswa sebelum penambahan
-        $jumlahMahasiswaSebelum = $mahasiswaModel->countMahasiswa();
+            // Ambil jumlah mahasiswa sebelum penambahan
+            $jumlahMahasiswaSebelum = $mahasiswaModel->countMahasiswa();
 
-        // Lakukan penambahan mahasiswa
-        if ($mahasiswaModel->insert($_POST)) {
-            // Ambil jumlah mahasiswa setelah penambahan
-            $jumlahMahasiswaSetelah = $mahasiswaModel->countMahasiswa();
+            // Lakukan penambahan mahasiswa
+            if ($mahasiswaModel->insert($result)) {
+                // Ambil jumlah mahasiswa setelah penambahan
+                $jumlahMahasiswaSetelah = $mahasiswaModel->countMahasiswa();
 
-            // Hitung selisih untuk mendapatkan jumlah mahasiswa yang ditambahkan
-            $mahasiswaDitambahkan = $jumlahMahasiswaSetelah - $jumlahMahasiswaSebelum;
+                // Hitung selisih untuk mendapatkan jumlah mahasiswa yang ditambahkan
+                $mahasiswaDitambahkan = $jumlahMahasiswaSetelah - $jumlahMahasiswaSebelum;
 
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'mahasiswa');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
-            exit();
-        } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'mahasiswa');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
-            exit();
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            }
         }
     }
 
@@ -118,12 +138,19 @@ class Admin extends Controller
 
     public function hapusDosen($id)
     {
-        if ($this->model('Dosen_model')->delete($id) == true) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success', 'dosen');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            exit();
-        } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger', 'dosen');
+        $delDsn = $this->model('Dosen_model')->delete($id);
+        if ($delDsn != null) {
+            if ($this->model('User_model')->delete($delDsn)) {
+                Flasher::setFlash('berhasil', 'dihapus', 'success', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'dihapus', 'danger', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            }
+        }else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger', 'user dosen');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit();
         }
@@ -131,14 +158,17 @@ class Admin extends Controller
 
     public function tambahDosen()
     {
-        if ($this->model('Dosen_model')->insert()) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'dosen');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            exit();
-        } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'dosen');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            exit();
+        $result = $this->model('User_model')->add($_POST['nama'], $_POST['nip'], 'dosen');
+        if(isset($result)){
+            if ($this->model('Dosen_model')->insert($result)) {
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            }
         }
     }
 

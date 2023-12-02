@@ -31,12 +31,12 @@ class Mahasiswa_model
         return $data;
     }
 
-    public function insert()
+    public function insert($username)
     {
 
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nim']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
-                if (!empty($_POST['nim']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
+            if (isset($_POST['nim']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat']) && isset($username)) {
+                if (!empty($_POST['nim']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat']) && !empty($username)) {
 
                     $nim = $_POST['nim'];
                     $nama = $_POST['nama'];
@@ -44,7 +44,7 @@ class Mahasiswa_model
                     $no_tlp = $_POST['no_tlp'];
                     $alamat = $_POST['alamat'];
 
-                    $query = "INSERT INTO " . $this->table . " (nim,nama,jenis_kelamin, no_tlp, alamat) VALUES ('$nim','$nama','$jenis_kelamin','$no_tlp','$alamat')";
+                    $query = "INSERT INTO " . $this->table . " (nim,nama,jenis_kelamin, no_tlp, alamat, username) VALUES ('$nim','$nama','$jenis_kelamin','$no_tlp','$alamat', '$username')";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -113,12 +113,12 @@ class Mahasiswa_model
 
     public function delete($id)
     {
-
+        $delete = $this->fetch_single($id);
         $query = "DELETE FROM " . $this->table . " where id_mahasiswa = '$id'";
         if ($sql = $this->db->conn->query($query)) {
-            return true;
+            return $delete['username'];
         } else {
-            return false;
+            return null;
         }
     }
 
