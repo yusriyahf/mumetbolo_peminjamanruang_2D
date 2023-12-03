@@ -255,6 +255,39 @@
         </div>
     </div>
 
+    <!-- Ubah Password mahasiswa Modal-->
+    <div class="modal fade" id="formEditPasswordModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Ubah Password</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/mahasiswa/ubahPassword" method="post">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa_edit" value="<?= $mhs['id_mahasiswa']; ?>">
+                        <div class="mb-3">
+                            <label for="nim" class="form-label">Password Lama</label>
+                            <input type="text" class="form-control" id="nim_edit" name="nim" autocomplete="off" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Password Baru</label>
+                            <input type="text" class="form-control" id="nama_edit" name="nama" autocomplete="off" required>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Ubah Data Ruang Modal-->
     <div class="modal fade" id="formEditRuang" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog" role="document">

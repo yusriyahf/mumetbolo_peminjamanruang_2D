@@ -13,13 +13,6 @@ class Admin extends Controller
             $this->view('admin/index', $data);
             $this->view('templates/footer');
         } else {
-            // if (isset($_SESSION['tipe'])) {
-            //     echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
-            //     header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
-            // } else {
-            //     echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
-            //     header('Refresh: 0; url=' . BASEURL);
-            // }
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
@@ -29,7 +22,6 @@ class Admin extends Controller
             }
         }
     }
-
 
     // ADMIN MANAGE MAHASISWA
     public function cariMahasiswa()

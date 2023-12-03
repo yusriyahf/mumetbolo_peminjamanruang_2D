@@ -84,6 +84,10 @@ class Mahasiswa_model
         }
     }
 
+    public function updatePassword($id)
+    {
+    }
+
     // Ngitung jml mhs
     public function countMahasiswa()
     {
@@ -130,6 +134,18 @@ class Mahasiswa_model
         $data = null;
 
         $query = "SELECT * FROM " . $this->table . " WHERE id_mahasiswa = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+    public function fetch_profile($nama)
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE nama = '$nama'";
         if ($sql = $this->db->conn->query($query)) {
             while ($row = $sql->fetch_assoc()) {
                 $data = $row;

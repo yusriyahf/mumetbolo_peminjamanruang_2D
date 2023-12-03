@@ -20,6 +20,18 @@ class Mahasiswa extends Controller
         }
     }
 
+    public function ubahPassword()
+    {
+    }
+
+    public function profile()
+    {
+        $data['profile'] = $this->model('Mahasiswa_model')->fetch_profile($_SESSION['username']);
+        $this->view('templates/header');
+        $this->view('mahasiswa/profile', $data);
+        $this->view('templates/footer');
+    }
+
     public function peminjaman()
     {
         $this->view('templates/header');

@@ -54,13 +54,14 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Manage
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item active"> -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
+
+                <div class="sidebar-heading">
+                    Manage
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <!-- <li class="nav-item active"> -->
                 <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
@@ -96,7 +97,7 @@
             <?php endif; ?>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <?php if ($_SESSION['tipe'] == 'mahasiswa') : ?>
+            <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
                         <i class="fas fa-fw fa-wrench"></i>
@@ -131,12 +132,12 @@
                 </li>
             <?php endif; ?>
 
-            <?php if ($_SESSION['tipe'] == 'mahasiswa') : ?>
+            <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/peminjaman">
                         <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Req Peminjaman</span></a>
+                        <span>Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
@@ -236,7 +237,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?= BASEURL; ?>/mahasiswa/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
