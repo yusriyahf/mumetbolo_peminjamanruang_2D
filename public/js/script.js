@@ -14,7 +14,8 @@ $(document).ready(function () {
                 $("#nama_edit").val(data.nama);
                 $("#jenis_kelamin_edit").val(data.jenis_kelamin);
                 $("#no_tlp_edit").val(data.no_tlp);
-                $("#alamat_edit").val(data.alamat);
+                $("#kelas_edit").val(data.kelas);
+                $("#prodi_edit").val(data.prodi);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);

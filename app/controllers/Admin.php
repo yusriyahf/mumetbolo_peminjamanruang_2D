@@ -41,6 +41,7 @@ class Admin extends Controller
     }
     public function cariDosen()
     {
+        $data['judul'] = "Cari Dosen";
         $data['dsn'] = $this->model('Dosen_model')->cariDataDosen();
         $this->view('templates/header', $data);
         $this->view('admin/dosen', $data);

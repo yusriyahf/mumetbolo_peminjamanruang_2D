@@ -55,8 +55,8 @@
                             <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off" required>
+                            <label for="prodi" class="form-label">prodi</label>
+                            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -103,9 +103,39 @@
                             <label for="no_tlp" class="form-label">No Telpon</label>
                             <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off" required>
+                        <!-- <div class="mb-3">
+                            <label for="prodi" class="form-label">prodi</label>
+                            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
+                        </div> -->
+                        <div class="mb-3 form-group">
+                            <label for="kelas" class="form-label">Kelas:</label>
+                            <select name="kelas" id="kelas" class="form-control">
+                                <option value="1A">1A</option>
+                                <option value="1B">1B</option>
+                                <option value="1C">1C</option>
+                                <option value="1D">1D</option>
+                                <option value="1E">1E</option>
+                                <option value="1F">1F</option>
+                                <option value="1G">1G</option>
+                                <option value="1H">1H</option>
+                                <option value="1I">1I</option>
+                                <option value="2A">2A</option>
+                                <option value="2B">2B</option>
+                                <option value="2C">2C</option>
+                                <option value="2D">2D</option>
+                                <option value="2E">2E</option>
+                                <option value="2F">2F</option>
+                                <option value="2G">2G</option>
+                                <option value="2H">2H</option>
+                                <option value="2I">2I</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="prodi" class="form-label">Prodi:</label>
+                            <select name="prodi" id="prodi" class="form-control">
+                                <option value="D-IV TI">D-IV TI</option>
+                                <option value="DI-IV SIB">D-IV SIB</option>
+                            </select>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -161,8 +191,8 @@
                             <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off" required>
+                            <label for="prodi" class="form-label">prodi</label>
+                            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -193,9 +223,12 @@
                             <input type="text" class="form-control" id="nama_rg" name="nama_rg" autocomplete="off" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="jenis_rg" class="form-label">Jenis Ruangan</label>
-                            <input type="text" class="form-control" id="jenis_rg" name="jenis_rg" autocomplete="off" required>
+                        <div class="mb-3 form-group">
+                            <label for="jenis_rg" class="form-label">Jenis Ruangan:</label>
+                            <select name="jenis_rg" id="rg" class="form-control">
+                                <option value="Teori">Teori</option>
+                                <option value="Praktikum">Praktikum</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -209,7 +242,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="alamat" class="form-label">Status</label>
+                            <label for="prodi" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status" name="status" autocomplete="off" required>
                         </div>
                 </div>
@@ -241,9 +274,12 @@
                             <input type="text" class="form-control" id="nama_rg_edit" name="nama_rg" autocomplete="off" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="jenis_rg" class="form-label">Jenis Ruangan</label>
-                            <input type="text" class="form-control" id="jenis_rg_edit" name="jenis_rg" autocomplete="off" required>
+                        <div class="mb-3 form-group">
+                            <label for="jenis_rg" class="form-label">Jenis Ruangan:</label>
+                            <select name="jenis_rg" id="rg" class="form-control">
+                                <option value="Teori">Teori</option>
+                                <option value="Praktikum">Praktikum</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -257,7 +293,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="alamat" class="form-label">Status</label>
+                            <label for="prodi" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status_edit" name="status" autocomplete="off" required>
                         </div>
                 </div>
@@ -327,9 +363,39 @@
                             <label for="no_tlp" class="form-label">No Telpon</label>
                             <input type="text" class="form-control" id="no_tlp_edit" name="no_tlp" autocomplete="off" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat_edit" name="alamat" autocomplete="off" required>
+                        <!-- <div class="mb-3">
+                            <label for="prodi" class="form-label">prodi</label>
+                            <input type="text" class="form-control" id="prodi_edit" name="prodi" autocomplete="off" required>
+                        </div> -->
+                        <div class="mb-3 form-group">
+                            <label for="kelas" class="form-label">Kelas:</label>
+                            <select name="kelas" id="kelas_edit" class="form-control">
+                                <option value="1A">1A</option>
+                                <option value="1B">1B</option>
+                                <option value="1C">1C</option>
+                                <option value="1D">1D</option>
+                                <option value="1E">1E</option>
+                                <option value="1F">1F</option>
+                                <option value="1G">1G</option>
+                                <option value="1H">1H</option>
+                                <option value="1I">1I</option>
+                                <option value="2A">2A</option>
+                                <option value="2B">2B</option>
+                                <option value="2C">2C</option>
+                                <option value="2D">2D</option>
+                                <option value="2E">2E</option>
+                                <option value="2F">2F</option>
+                                <option value="2G">2G</option>
+                                <option value="2H">2H</option>
+                                <option value="2I">2I</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="prodi" class="form-label">Prodi:</label>
+                            <select name="prodi" id="prodi_edit" class="form-control">
+                                <option value="D-IV TI">D-IV TI</option>
+                                <option value="DI-IV SIB">D-IV SIB</option>
+                            </select>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -375,10 +441,6 @@
                         <div class="mb-3">
                             <label for="no_tlp" class="form-label">No Telpon</label>
                             <input type="text" class="form-control" id="tlpDosen_edit" name="no_tlp" autocomplete="off" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamatDsn_edit" name="alamat" autocomplete="off" required>
                         </div>
                 </div>
                 <div class="modal-footer">

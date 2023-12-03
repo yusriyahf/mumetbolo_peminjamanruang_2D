@@ -41,7 +41,8 @@
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
                             <th>No Telp</th>
-                            <th>Alamat</th>
+                            <th>Kelas</th>
+                            <th>Prodi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -52,7 +53,7 @@
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
                             <th>No Telp</th>
-                            <th>Alamat</th>
+                            <th>prodi</th>
                             <th>Action</th>
                         </tr>
                     </tfoot> -->
@@ -66,7 +67,8 @@
                                     <td><?= $mhs['nama']; ?></td>
                                     <td><?= $mhs['jenis_kelamin']; ?></td>
                                     <td><?= $mhs['no_tlp']; ?></td>
-                                    <td><?= $mhs['alamat']; ?></td>
+                                    <td><?= $mhs['kelas']; ?></td>
+                                    <td><?= $mhs['prodi']; ?></td>
                                     <td>
 
                                         <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
