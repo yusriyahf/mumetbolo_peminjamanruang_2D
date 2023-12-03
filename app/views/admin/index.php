@@ -1,4 +1,3 @@
-<?php $admin = new Admin(); ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -20,8 +19,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Total Ruangan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php $totalRuang = $admin->countRuang();
-                                                                                    echo $totalRuang; ?></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalRuang']; ?></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -41,8 +39,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total Mahasiswa</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php $totalMahasiswa = $admin->countMahasiswa();
-                                                                                    echo $totalMahasiswa; ?></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalMhs']; ?></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -62,8 +59,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total Dosen</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php $totalDosen = $admin->countDosen();
-                                                                                    echo $totalDosen; ?></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalDosen']; ?></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

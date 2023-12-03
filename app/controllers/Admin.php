@@ -5,9 +5,12 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['totalDosen'] = $this->model('Dosen_model')->countDosen();
+            $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa();
+            $data['totalRuang'] = $this->model('Ruang_model')->countRuang();
             $data['judul'] = 'Admin';
             $this->view('templates/header', $data);
-            $this->view('admin/index');
+            $this->view('admin/index', $data);
             $this->view('templates/footer');
         } else {
             // if (isset($_SESSION['tipe'])) {
@@ -228,7 +231,6 @@ class Admin extends Controller
     public function ruang5()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            # code...
             $data['ruang'] = $this->model('Ruang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['lantai'] = '5';

@@ -16,7 +16,7 @@ class Dosen_model
         $data = null;
 
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM dosen WHERE nama LIKE '%$keyword%'";
+        $query = "SELECT * FROM " . $this->table . " WHERE nama LIKE '%$keyword%' or nip LIKE '$keyword%'";
 
         $result = $this->db->conn->query($query);
 
