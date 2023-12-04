@@ -116,19 +116,38 @@
             <?php endif; ?>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <?php if ($_SESSION['tipe'] == 'admin') : ?>
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Proses
-            </div>
+                <!-- Heading -->
+
+                <div class="sidebar-heading">
+                    Proses
+                </div>
+            <?php endif; ?>
+            <?php if ($_SESSION['tipe'] == 'admin') : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASEURL; ?>/admin/permintaanPeminjaman">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Permintaan Peminjaman</span></a>
+                </li>
+            <?php endif; ?>
 
             <!-- Nav Item - Data Peminjaman Menu -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="<?= BASEURL; ?>/admin/peminjaman">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Data Peminjaman</span></a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
+                <!-- Nav Item - Req Peminjaman Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Proses Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
@@ -142,14 +161,12 @@
             <?php endif; ?>
 
 
-            <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Laporan</span></a>
-                </li>
-            <?php endif; ?>
+            <!-- Nav Item - Charts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Laporan</span></a>
+            </li> -->
 
 
             <!-- Nav Item - Tables -->
@@ -237,7 +254,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="<?= BASEURL; ?>/mahasiswa/profile">
+                                <a class="dropdown-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

@@ -34,7 +34,7 @@
             </div>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/5.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/5new.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="table-responsive">

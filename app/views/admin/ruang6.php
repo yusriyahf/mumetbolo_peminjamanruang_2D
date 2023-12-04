@@ -30,7 +30,7 @@
                 <div class="col-lg-4">
                     <?php Flasher::flash() ?>
                 </div>
-                <img src="<?= BASEURL; ?>/img/6.png" alt="" width="70%" class="mx-auto">
+                <img src="<?= BASEURL; ?>/img/6new.png" alt="" width="70%" class="mx-auto">
 
                 <div class="card-body">
                     <div class="table-responsive">

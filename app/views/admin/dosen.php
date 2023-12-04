@@ -12,6 +12,7 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahDosenModal">
                 <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Dosen
             </button>
+            <!-- <a href="#" data-toggle="modal" data-target="#formTambahDosenModal" class="btn-sm btn-primary text-decoration-none">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariDosen" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">

@@ -23,6 +23,59 @@ class Admin extends Controller
         }
     }
 
+    public function tolakPeminjaman()
+    {
+        $id_proses = $_POST['id_proses'];
+        $status = $_POST['status'];
+
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
+            header('Location: ' . BASEURL . '/admin/peminjaman');
+            exit();
+        } else {
+            header('Location: ' . BASEURL . '/admin/peminjaman');
+            exit();
+        }
+    }
+
+    public function peminjaman()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['status'] = $this->model('Proses_model')->getStatus();
+            $data['proses'] = $this->model('Proses_model')->fetch();
+            $data['judul'] = 'Peminjaman';
+            $this->view('templates/header', $data);
+            $this->view('admin/peminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+    public function permintaanPeminjaman()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['proses'] = $this->model('Proses_model')->fetch();
+            $data['proses'] = $this->model('Proses_model')->fetch(null);
+            $data['judul'] = 'Lantai 5';
+            $this->view('templates/header', $data);
+            $this->view('admin/permintaanPeminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+
     // ADMIN MANAGE MAHASISWA
     public function cariMahasiswa()
     {

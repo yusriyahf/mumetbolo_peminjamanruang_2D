@@ -1,6 +1,7 @@
 <?php
 
-class User_model{
+class User_model
+{
     private $table = 'user';
 
     private $db;
@@ -10,30 +11,32 @@ class User_model{
         $this->db = new Database;
     }
 
-    public function validasi($username, $pass){
+    public function validasi($username, $pass)
+    {
         $result = $this->fetch_single($username);
 
-        if($result != null){
+        if ($result != null) {
             $salt = $result['salt'];
             $password = $result['password'];
 
-            if($salt !== null && $password !== null){
+            if ($salt !== null && $password !== null) {
                 $combined_password = $salt . $pass;
-                if(password_verify($combined_password, $password)){
+                if (password_verify($combined_password, $password)) {
                     return true;
-                }else{
+                } else {
                     return false; //password salah
                 }
-            }else{
+            } else {
                 return false; //di database, kolom salt dan password kosong
             }
-        }else{
+        } else {
             return false; //Username tidak ditemukan
         }
     }
 
     //menambah user
-    public function add($username, $pass, $tipe){
+    public function add($username, $pass, $tipe)
+    {
         $salt = bin2hex(random_bytes(16));
         $combined_password = $salt . $pass;
         $hashed_password = password_hash($combined_password, PASSWORD_BCRYPT);
@@ -44,9 +47,10 @@ class User_model{
             return null;
         }
     }
-    
+
     //menghapus user
-    public function delete($username){
+    public function delete($username)
+    {
         $query = "DELETE from " . $this->table . " where username = '$username'";
         if ($sql = $this->db->conn->query($query)) {
             return true;
