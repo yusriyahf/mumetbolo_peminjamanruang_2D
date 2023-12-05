@@ -68,4 +68,19 @@ class User_model{
         }
         return $data;
     }
+
+    //ubah password
+    public function ubah($passBaru){
+        $user = $_SESSION['username'];
+        $salt = bin2hex(random_bytes(16));
+        $combined_password = $salt . $passBaru;
+        $hashed_password = password_hash($combined_password, PASSWORD_BCRYPT);
+        $query = "UPDATE " . $this->table . " SET salt='$salt', password='$hashed_password' WHERE username= '$user'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

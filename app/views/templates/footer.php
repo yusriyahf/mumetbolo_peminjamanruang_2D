@@ -267,21 +267,20 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= BASEURL; ?>/mahasiswa/ubahPassword" method="post">
-                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa_edit" value="<?= $mhs['id_mahasiswa']; ?>">
                         <div class="mb-3">
                             <label for="nim" class="form-label">Password Lama</label>
-                            <input type="text" class="form-control" id="nim_edit" name="nim" autocomplete="off" required>
+                            <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="nama" class="form-label">Password Baru</label>
-                            <input type="text" class="form-control" id="nama_edit" name="nama" autocomplete="off" required>
+                            <input type="text" class="form-control" id="password_edit" name="password_edit" autocomplete="off" required>
                         </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Ubah Password</button>
                     </form>
                 </div>
             </div>
@@ -373,7 +372,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= BASEURL; ?>/admin/ubahMahasiswa" method="post">
-                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa_edit" value="<?= $mhs['id_mahasiswa']; ?>">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa_edit" value="">
                         <div class="mb-3">
                             <label for="nim" class="form-label">Nim</label>
                             <input type="text" class="form-control" id="nim_edit" name="nim" autocomplete="off" required>
@@ -452,7 +451,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= BASEURL; ?>/admin/ubahDosen" method="post">
-                        <input type="hidden" name="id_dosen" id="id_dosen_edit" value="<?= $dsn['id_dosen']; ?>">
+                        <input type="hidden" name="id_dosen" id="id_dosen_edit" value="">
                         <div class="mb-3">
                             <label for="nim" class="form-label">Nip</label>
                             <input type="text" class="form-control" id="nip_edit" name="nip" autocomplete="off" required>
