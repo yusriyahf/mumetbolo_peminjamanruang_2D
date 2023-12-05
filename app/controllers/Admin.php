@@ -175,11 +175,17 @@ class Admin extends Controller
 
     public function ubahMahasiswa()
     {
-        if ($this->model('Mahasiswa_model')->update($_POST['id_mahasiswa'])) {
-            Flasher::setFlash('berhasil', 'diubah', 'success', 'mahasiswa');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
-            exit();
-        } else {
+        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+            if ($this->model('Mahasiswa_model')->update($_POST['id_mahasiswa'])) {
+                Flasher::setFlash('berhasil', 'diubah', 'success', 'mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'diubah', 'danger', 'mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            }
+        }else {
             Flasher::setFlash('gagal', 'diubah', 'danger', 'mahasiswa');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
@@ -256,11 +262,17 @@ class Admin extends Controller
 
     public function ubahDosen()
     {
-        if ($this->model('Dosen_model')->update($_POST['id_dosen'])) {
-            Flasher::setFlash('berhasil', 'diubah', 'success', 'dosen');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            exit();
-        } else {
+        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+            if ($this->model('Dosen_model')->update($_POST['id_dosen'])) {
+                Flasher::setFlash('berhasil', 'diubah', 'success', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'diubah', 'danger', 'dosen');
+                header('Location: ' . BASEURL . '/admin/dosen');
+                exit();
+            }
+        }else {
             Flasher::setFlash('gagal', 'diubah', 'danger', 'dosen');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit();

@@ -40,9 +40,9 @@
                             <th>Nip</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
+                            <th>Prodi</th>
                             <th>Jenis Kelamin</th>
                             <th>No Telp</th>
-                            <th>Alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -66,9 +66,9 @@
                                     <td><?= $dsn['nip']; ?></td>
                                     <td><?= $dsn['nama']; ?></td>
                                     <td><?= $dsn['jabatan']; ?></td>
+                                    <td><?= $dsn['prodi']; ?></td>
                                     <td><?= $dsn['jenis_kelamin']; ?></td>
                                     <td><?= $dsn['no_tlp']; ?></td>
-                                    <td><?= $dsn['alamat']; ?></td>
                                     <td>
 
                                         <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalDosen" data-id="<?= $dsn['id_dosen']; ?>">

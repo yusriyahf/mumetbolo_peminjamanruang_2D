@@ -34,17 +34,17 @@ class Dosen_model
     public function insert($username)
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat']) && isset($_POST['jabatan']) && isset($username)) {
-                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat']) && !empty($_POST['jabatan']) && !empty($username)) {
+            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['prodi']) && isset($_POST['jabatan']) && isset($username)) {
+                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['prodi']) && !empty($_POST['jabatan']) && !empty($username)) {
 
                     $nip = $_POST['nip'];
                     $nama = $_POST['nama'];
                     $jenis_kelamin = $_POST['jenis_kelamin'];
                     $no_tlp = $_POST['no_tlp'];
-                    $alamat = $_POST['alamat'];
                     $jabatan = $_POST['jabatan'];
+                    $prodi = $_POST['prodi'];
 
-                    $query = "INSERT INTO " . $this->table . " (nip, nama, jabatan, jenis_kelamin, no_tlp, alamat, username) VALUES ('$nip','$nama','$jabatan','$jenis_kelamin','$no_tlp','$alamat', '$username')";
+                    $query = "INSERT INTO " . $this->table . " (nip, nama, jabatan, prodi, jenis_kelamin, no_tlp, username) VALUES ('$nip','$nama','$jabatan', '$prodi','$jenis_kelamin','$no_tlp', '$username')";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -61,16 +61,17 @@ class Dosen_model
     {
 
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['alamat'])) {
-                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['alamat'])) {
+            if (isset($_POST['nip']) && isset($_POST['nama']) && isset($_POST['jenis_kelamin']) && isset($_POST['no_tlp']) && isset($_POST['prodi'])) {
+                if (!empty($_POST['nip']) && !empty($_POST['nama']) && !empty($_POST['jenis_kelamin']) && !empty($_POST['no_tlp']) && !empty($_POST['prodi'])) {
 
                     $nim = $_POST['nip'];
                     $nama = $_POST['nama'];
                     $jenis_kelamin = $_POST['jenis_kelamin'];
                     $no_tlp = $_POST['no_tlp'];
-                    $alamat = $_POST['alamat'];
+                    $prodi = $_POST['prodi'];
+                    $jabatan = $_POST['jabatan'];
 
-                    $query = "UPDATE " . $this->table . " SET nip='$nim', nama='$nama', jenis_kelamin='$jenis_kelamin' , no_tlp='$no_tlp', alamat='$alamat' WHERE id_dosen='$id'";
+                    $query = "UPDATE " . $this->table . " SET nip='$nim', nama='$nama', jenis_kelamin='$jenis_kelamin', jabatan='$jabatan' , no_tlp='$no_tlp', prodi='$prodi' WHERE id_dosen='$id'";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {

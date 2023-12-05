@@ -16,6 +16,7 @@ $(document).ready(function () {
                 $("#no_tlp_edit").val(data.no_tlp);
                 $("#kelas_edit").val(data.kelas);
                 $("#prodi_edit").val(data.prodi);
+                $("#usernameMhs").val(data.username);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -36,9 +37,11 @@ $(document).ready(function () {
                 $("#id_dosen_edit").val(data.id_dosen);
                 $("#nip_edit").val(data.nip);
                 $("#namaDsn_edit").val(data.nama);
+                $("#jabatan_edit").val(data.jabatan);
+                $("#prodiDsn_edit").val(data.prodi);
                 $("#jkDosen_edit").val(data.jenis_kelamin);
                 $("#tlpDosen_edit").val(data.no_tlp);
-                $("#alamatDsn_edit").val(data.alamat);
+                $("#usernameDsn").val(data.username);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);

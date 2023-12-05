@@ -87,4 +87,15 @@ class User_model
         }
     }
 
+    //ubah username
+    public function ubahUsername($usnBaru, $usnLama){
+        
+        $query = "UPDATE " . $this->table . " SET username='$usnBaru' WHERE username= '$usnLama'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
