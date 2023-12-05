@@ -78,6 +78,16 @@ class Mahasiswa extends Controller
 
     public function ubahPassword()
     {
+        if($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])){
+            if($this->model('User_model')->ubah($_POST['password_edit'])){
+                echo "<script>alert('Berhasil Ubah Password')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
+            }else{
+                echo "GAGAL UBAH";
+            }
+        }else{
+            echo "GAGAL, pass lama salah";
+        }
     }
 
     public function profile()

@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.tampilModalUbah').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
             method: 'post',
             data : {id : id},
             dataType: 'json',
@@ -16,6 +16,7 @@ $(document).ready(function () {
                 $("#no_tlp_edit").val(data.no_tlp);
                 $("#kelas_edit").val(data.kelas);
                 $("#prodi_edit").val(data.prodi);
+                $("#usernameMhs").val(data.username);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -27,7 +28,7 @@ $(document).ready(function () {
     $('.tampilModalUbahDosen').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahDosen/' + id,
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahDosen/' + id,
             method: 'post',
             data : {id : id},
             dataType: 'json',
@@ -36,9 +37,11 @@ $(document).ready(function () {
                 $("#id_dosen_edit").val(data.id_dosen);
                 $("#nip_edit").val(data.nip);
                 $("#namaDsn_edit").val(data.nama);
+                $("#jabatan_edit").val(data.jabatan);
+                $("#prodiDsn_edit").val(data.prodi);
                 $("#jkDosen_edit").val(data.jenis_kelamin);
                 $("#tlpDosen_edit").val(data.no_tlp);
-                $("#alamatDsn_edit").val(data.alamat);
+                $("#usernameDsn").val(data.username);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -50,7 +53,7 @@ $(document).ready(function () {
     $('.tampilModalUbahRuang').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahRuang/' + id,
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahRuang/' + id,
             method: 'post',
             data : {id : id},
             dataType: 'json',
@@ -68,6 +71,8 @@ $(document).ready(function () {
             }
         });
     });
+    
+    
 });
 
 function updateClock() {

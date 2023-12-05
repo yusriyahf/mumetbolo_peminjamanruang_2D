@@ -72,7 +72,7 @@
                                     <td><?= $mhs['prodi']; ?></td>
                                     <td>
 
-                                        <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
+                                        <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['nama']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
 
