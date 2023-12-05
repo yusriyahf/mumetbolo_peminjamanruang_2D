@@ -495,9 +495,55 @@
                     </button>
                 </div>
                 <div class="modal-body">Klik logout jika anda yakin untuk keluar.</div>
+
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="<?= BASEURL; ?>/auth/logOut">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acc Permintaan Peminjaman Modal-->
+    <div class="modal fade" id="accPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Permintaan Peminjaman</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Klik Acc jika anda yakin untuk menyetujui permintaan peminjaman.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-success" href="<?= BASEURL; ?>/auth/logOut">Acc</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tolak Permintaan Peminjaman Modal-->
+    <div class="modal fade" id="tolakPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Permintaan Peminjaman</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= BASEURL; ?>/admin/tolakPeminjaman" method="post">
+                        <input type="hidden" name="id_proses" id="id_proses" value="<?= $proses['id_proses']; ?>">
+                        <input type="hidden" name="status" id="status" value="ditolak">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" name="submit" type="submit">Tolak</button>
+                    </form>
                 </div>
             </div>
         </div>

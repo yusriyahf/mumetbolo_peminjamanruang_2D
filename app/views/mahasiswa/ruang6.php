@@ -10,13 +10,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
-
+            <h6 class="m-0 font-weight-b    old text-primary mb-3">Anda booking untuk tanggal <b><?= $data['tanggal']; ?></b></h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/6.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/6new.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="row">
@@ -29,7 +29,7 @@
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>
                                     <a href="#" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#ruangModal" data-nama="<?= $ruang['nama_ruang']; ?>" data-kapasitas="<?= $ruang['kapasitas']; ?>" data-status="<?= $ruang['status']; ?>" data-lantai="<?= $ruang['lantai']; ?>" data-fasilitas="<?= $ruang['fasilitas']; ?>" data-jenis_ruang="<?= $ruang['jenis_ruang']; ?>">Detail</a>
-                                    <a href="#" class="btn btn-outline-light btn-sm <?= ($ruang['status'] !== 'tersedia') ? 'disabled' : ''; ?>">Pinjam</a>
+                                    <a href="<?= BASEURL; ?>/mahasiswa/pinjamRuang/<?= $ruang['id_ruang']; ?>/<?= $data['tanggal']; ?>" class="btn btn-outline-light btn-sm">Pinjam</a>
                                 </div>
                             </div>
                         </div>

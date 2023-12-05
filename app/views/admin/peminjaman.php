@@ -2,16 +2,16 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Mahasiswa</h1>
-    <p class="mb-4">Data Mahasiswa Jurusan Teknik Informatika <b>POLINEMA</b></p>
+    <h1 class="h3 mb-2 text-gray-800">Data Peminjaman</h1>
+    <p class="mb-4">Data Peminjaman Ruang Jurusan Teknik Informatika <b>POLINEMA</b></p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Mahasiswa</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tambah" data-toggle="modal" data-target="#formTambahModal">
-                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Mahasiswa
-            </button>
+            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Peminjaman</h6>
+            <!-- <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tambah" data-toggle="modal" data-target="#formTambahModal">
+                <i class="fas fa-download fa-sm text-white-50"></i> Cetak Data Peminjaman
+            </button> -->
             <!-- <a href="#" data-toggle="modal" class="btn btn-sm btn-primary" data-target="#formTambahModal">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
@@ -38,13 +38,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>Kelas</th>
-                            <th>Prodi</th>
-                            <th>Action</th>
+                            <th>id_ruang</th>
+                            <th>Peminjam</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Surat</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -60,28 +58,21 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        if (!empty($data['mhs']) && is_array($data['mhs'])) {
-                            foreach ($data['mhs'] as $mhs) : ?>
-                                <tr>
-                                    <td><?= $i++; ?></td>
-                                    <td><?= $mhs['nim']; ?></td>
-                                    <td><?= $mhs['nama']; ?></td>
-                                    <td><?= $mhs['jenis_kelamin']; ?></td>
-                                    <td><?= $mhs['no_tlp']; ?></td>
-                                    <td><?= $mhs['kelas']; ?></td>
-                                    <td><?= $mhs['prodi']; ?></td>
-                                    <td>
-
-                                        <a href="<?= BASEURL; ?>/admin/ubahMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbah" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModal" data-id="<?= $mhs['id_mahasiswa']; ?>">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-
-                                        <a href="<?= BASEURL; ?>/admin/hapusMahasiswa/<?= $mhs['id_mahasiswa']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                        <?php endforeach;
+                        if (!empty($data['proses']) && is_array($data['proses'])) {
+                            foreach ($data['proses'] as $proses) :
+                                if ($proses['status'] != null) {
+                        ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $proses['id_ruang']; ?></td>
+                                        <td><?= $proses['username']; ?></td>
+                                        <td><?= $proses['tanggal_pinjam']; ?></td>
+                                        <td><a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
+                                        <td><?= $proses['status']; ?></td>
+                                    </tr>
+                        <?php
+                                }
+                            endforeach;
                         } else {
                             echo "No data available.";
                         }

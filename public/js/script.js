@@ -98,4 +98,7 @@ setInterval(updateClock, 1000);
 
 
         
-
+            $('.tolak-btn').click(function() {
+                var idProses = $(this).data('id');
+                $('#tolakPeminjamanModal').find('#id_proses').val(idProses);
+            });

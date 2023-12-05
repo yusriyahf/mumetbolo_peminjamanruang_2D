@@ -10,13 +10,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
-
+            <h6 class="m-0 font-weight-b    old text-primary mb-3">Anda booking untuk tanggal <b><?= $data['tanggal']; ?></b></h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/7.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/7new.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="row">
