@@ -20,8 +20,7 @@
                 <h6 class="m-0 font-weight-bold text-primary mb-3">Kelas : <?= $data['profile']['kelas']; ?></h6>
                 <h6 class="m-0 font-weight-bold text-primary mb-3">Prodi : <?= $data['profile']['prodi']; ?></h6>
 
-                <a href="<?= BASEURL; ?>/mahasiswa" class="card-link">Kembali</a>
-
+                <a href="<?= BASEURL; ?>/mahasiswa" class="card-link btn btn-sm btn-primary">Kembali</a>
                 <a href="<?= BASEURL; ?>/mahasiswa/ubahPassword/<?= $data['profile']['id_mahasiswa']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahPassword" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditPasswordModal" data-id="<?= $data['profile']['id_mahasiswa']; ?>">
                     <i class="fas fa-edit"></i>
                 </a>

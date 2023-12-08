@@ -16,7 +16,7 @@ class Proses_model
         $username = $username;
         $tanggalPeminjam = $tanggalPeminjam;
 
-        $query = "INSERT INTO " . $this->table . " (id_ruang,username, tanggal_pinjam) VALUES ('$idRuang','$username', $tanggalPeminjam)";
+        $query = "INSERT INTO " . $this->table . " (id_ruang,username, tanggal_pinjam) VALUES ('$idRuang','$username', '$tanggalPeminjam')";
         if ($sql = $this->db->conn->query($query)) {
             return true;
         } else {

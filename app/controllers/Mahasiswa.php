@@ -43,6 +43,7 @@ class Mahasiswa extends Controller
             // Ambil informasi dari query string
             $idRuang = $id;
             $tanggalPeminjam = $tanggal;
+            // var_dump($tanggalPeminjam);
 
             // Jika id_ruang dan tanggalPeminjam ada, panggil model untuk menyimpan data peminjaman
             if ($idRuang && $tanggalPeminjam) {
@@ -50,7 +51,7 @@ class Mahasiswa extends Controller
                 $this->model('Proses_model')->insert($idRuang, $username, $tanggalPeminjam);
 
                 // Redirect atau lakukan tindakan lainnya
-                header('Location: ' . BASEURL . '/mahasiswa/peminjaman');
+                header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
                 exit();
             } else {
                 // Jika id_ruang atau tanggalPeminjam tidak ada, arahkan ke halaman sebelumnya
@@ -78,14 +79,14 @@ class Mahasiswa extends Controller
 
     public function ubahPassword()
     {
-        if($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])){
-            if($this->model('User_model')->ubah($_POST['password_edit'])){
+        if ($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])) {
+            if ($this->model('User_model')->ubah($_POST['password_edit'])) {
                 echo "<script>alert('Berhasil Ubah Password')</script>";
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
-            }else{
+            } else {
                 echo "GAGAL UBAH";
             }
-        }else{
+        } else {
             echo "GAGAL, pass lama salah";
         }
     }
@@ -108,6 +109,7 @@ class Mahasiswa extends Controller
 
             // Simpan nilai input ke dalam session
             $_SESSION['tanggal'] = $tanggal;
+            // var_dump($_SESSION['tanggal']);
 
             // Redirect atau lakukan tindakan lainnya
             header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
@@ -142,6 +144,7 @@ class Mahasiswa extends Controller
             $data['ruang'] = $this->model('Ruang_model')->fetch(6);
             $data['judul'] = 'Lantai 6';
             $data['tanggal'] = $_SESSION['tanggal'];
+            // var_dump($data['tanggal']);
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang6', $data);
             $this->view('templates/footer');
