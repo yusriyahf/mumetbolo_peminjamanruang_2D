@@ -105,7 +105,7 @@
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
-                        <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
                     </a>
                     <div id="ruangPinjam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -151,7 +151,7 @@
                 <!-- Nav Item - Req Peminjaman Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fa fa-list-ul" aria-hidden="true"></i>
                         <span>Proses Peminjaman</span></a>
                 </li>
             <?php endif; ?>
