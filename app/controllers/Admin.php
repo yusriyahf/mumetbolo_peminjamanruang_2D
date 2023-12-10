@@ -26,12 +26,27 @@ class Admin extends Controller
     public function tolakPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        $status = $_POST['status'];
+        $status = 'ditolak' ;
+        $alasan = $_POST['alasan'];
 
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
+            header('Location: ' . BASEURL . '/admin/peminjaman');
+            exit();
+        }
+    }
+
+    public function accPeminjaman($id_proses)
+    {
+        $status = 'disetujui' ;
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
+            echo "<script>alert('ACC BERHASIL')</script>";
+            header('Location: ' . BASEURL . '/admin/peminjaman');
+            exit();
+        } else {
+            echo "<script>alert('ACC GAGAL')</script>";
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         }
@@ -59,9 +74,9 @@ class Admin extends Controller
     public function permintaanPeminjaman()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['proses'] = $this->model('Proses_model')->fetch();
-            $data['proses'] = $this->model('Proses_model')->fetch(null);
-            $data['judul'] = 'Lantai 5';
+            $data['proses'] = $this->model('Proses_model')->fetch();
+            // $data['proses'] = $this->model('Proses_model')->fetch(null);
+            $data['judul'] = 'Permintaan Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/permintaanPeminjaman', $data);
             $this->view('templates/footer', $data);

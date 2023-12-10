@@ -72,7 +72,32 @@ $(document).ready(function () {
         });
     });
     
-    
+    //formPinjam
+    $('.tampilFormPinjam').on('click', function () {
+        const id_ruang = $(this).data('id_ruang');
+        const tgl = $(this).data('tgl');
+        $('#id_ruang').val(id_ruang);
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time;
+        $('#tgl_pinjam').val(dateTime);
+        $('#tgl').val(tgl);
+    });
+
+    //admin acc peminjaman
+    $('.accPeminjaman').on('click', function () {
+        const id_proses = $(this).data('id_proses');
+        var acc = document.getElementById('accPeminjaman');
+
+        // Mengubah atribut href
+        acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
+    });
+    //admin tolak peminjaman
+    $('.tolakPeminjaman').on('click', function () {
+        const id_proses = $(this).data('id_proses');
+        $("#tolak_id_proses").val(id_proses);
+    });
 });
 
 function updateClock() {

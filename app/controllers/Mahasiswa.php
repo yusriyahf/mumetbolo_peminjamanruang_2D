@@ -50,7 +50,7 @@ class Mahasiswa extends Controller
                 $this->model('Proses_model')->insert($idRuang, $username, $tanggalPeminjam);
 
                 // Redirect atau lakukan tindakan lainnya
-                header('Location: ' . BASEURL . '/mahasiswa/peminjaman');
+                header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
                 exit();
             } else {
                 // Jika id_ruang atau tanggalPeminjam tidak ada, arahkan ke halaman sebelumnya
@@ -99,6 +99,14 @@ class Mahasiswa extends Controller
         $this->view('templates/footer');
     }
 
+    public function formPinjam(){
+        if($this->model('Proses_model')->insert()){
+            header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
+            exit();
+        }else{
+            echo "SEK GAGAL";
+        }
+    }
 
     public function processForm()
     {
@@ -116,13 +124,14 @@ class Mahasiswa extends Controller
         }
     }
 
-    // ADMIN MANAGE RUANGAN 6
+    // ruangan
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
             # code...
-            $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            // $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);

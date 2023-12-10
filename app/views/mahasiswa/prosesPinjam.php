@@ -46,7 +46,7 @@
                         <?php $i = 1;
                         if (!empty($data['proses']) && is_array($data['proses'])) {
                             foreach ($data['proses'] as $proses) :
-                                if ($proses['status'] == null) {
+                                if ($proses['status'] == 'diproses' && $proses['username'] == $_SESSION['username']) {
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
@@ -59,7 +59,7 @@
                                                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
                                             </div>
                                         </td>
-                                        <td>menunggu persetujuan</td>
+                                        <td><?= $proses['status']; ?></td>
                                     </tr>
                         <?php
                                 }
