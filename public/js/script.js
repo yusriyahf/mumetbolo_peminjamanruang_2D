@@ -72,10 +72,12 @@ $(document).ready(function () {
         });
     });
     
-    //formPinjam
+    //User formPinjam
     $('.tampilFormPinjam').on('click', function () {
         const id_ruang = $(this).data('id_ruang');
         const tgl = $(this).data('tgl');
+        const status = $(this).data('status');
+
         $('#id_ruang').val(id_ruang);
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -83,6 +85,31 @@ $(document).ready(function () {
         var dateTime = date+' '+time;
         $('#tgl_pinjam').val(dateTime);
         $('#tgl').val(tgl);
+    });
+
+    //user tampil detail ruangan
+    $('.tampilDetailRuang').on('click', function () {
+        const id_ruang = $(this).data('id_ruang');
+        const status = $(this).data('status');
+        $('#ruangModal #status_ruang').text('Status: ' + status);
+
+        $.ajax({
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/mahasiswa/detailRuang/' + id_ruang,
+            method: 'post',
+            data : {id : id_ruang},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $('#ruangModal #nama_ruang').text('Nama ruang: ' + data.nama_ruang);
+                $('#ruangModal #lantai_ruang').text('Lantai: ' + data.lantai);
+                $('#ruangModal #jenis_ruang').text('Jenis: ' + data.jenis_ruang);
+                $('#ruangModal #fasilitas').text('Fasilitas: ' + data.fasilitas);
+                $('#ruangModal #kapasitas').text('kapasitas: ' + data.kapasitas);
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error);
+            }
+        });
     });
 
     //admin acc peminjaman
@@ -93,6 +120,7 @@ $(document).ready(function () {
         // Mengubah atribut href
         acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
     });
+
     //admin tolak peminjaman
     $('.tolakPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
@@ -123,10 +151,3 @@ setInterval(updateClock, 1000);
 
             // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
             updateClock();
-
-
-        
-            $('.tolak-btn').click(function() {
-                var idProses = $(this).data('id');
-                $('#tolakPeminjamanModal').find('#id_proses').val(idProses);
-            });

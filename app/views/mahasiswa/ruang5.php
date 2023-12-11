@@ -28,8 +28,8 @@
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetail" data-toggle="modal" data-target="#ruangModal" data-nama="<?= $ruang['nama_ruang']; ?>" data-status="<?= $ruang['status']; ?>" data-lantai="<?= $ruang['lantai']; ?>">Detail</a>
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Pinjam</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Detail</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-status="<?= $ruang['status']; ?>">Pinjam</a>
 
                                 </div>
                             </div>

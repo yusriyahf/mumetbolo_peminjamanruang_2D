@@ -137,7 +137,7 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang5', $data);
             $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
+            // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
@@ -154,7 +154,7 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang6', $data);
             $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
+            // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
@@ -193,5 +193,10 @@ class Mahasiswa extends Controller
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
         }
+    }
+
+    //menampilkan detail ruangan
+    public function detailRuang($id_ruang){
+        echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
 }

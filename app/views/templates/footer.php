@@ -347,11 +347,11 @@
                 </div>
                 <div class="modal-body">
                     <h5 id="nama_ruang"></h5>
-                    <h5 id="status_ruang"></h5>
                     <h5 id="lantai_ruang"></h5>
                     <h5 id="jenis_ruang"></h5>
                     <h5 id="fasilitas"></h5>
                     <h5 id="kapasitas"></h5>
+                    <h5 id="status_ruang"></h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -83,6 +83,17 @@ class Ruang_model
         }
     }
 
+    public function delete($id)
+    {
+
+        $query = "DELETE FROM " . $this->table . " WHERE id_ruang = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function fetch($lantai)
     {
         $data = null;
@@ -94,17 +105,6 @@ class Ruang_model
             }
         }
         return $data;
-    }
-
-    public function delete($id)
-    {
-
-        $query = "DELETE FROM " . $this->table . " WHERE id_ruang = '$id'";
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function fetch_single($id)
@@ -120,19 +120,6 @@ class Ruang_model
         }
         return $data;
     }
-
-
-    // public function update($data)
-    // {
-
-    //     $query = "UPDATE barang SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
-
-    //     if ($sql = $this->db->conn->query($query)) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
 
     //Ngitung jml Ruangan
     public function countRuang()
