@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Proses Peminjaman</h6>
-            <a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
+            <a href="<?= BASEURL; ?>/file/suratIzin.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
             <div class="row mt-3">
                 <div class="col-lg-4">
                     <?php Flasher::flash() ?>
@@ -24,24 +24,14 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id_ruang</th>
+                            <th>Nama ruang</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
+                            <!-- <th>Cetak PDF</th> -->
                             <th>Action</th>
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>prodi</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['proses']) && is_array($data['proses'])) {

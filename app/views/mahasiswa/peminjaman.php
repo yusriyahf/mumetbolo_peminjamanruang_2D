@@ -38,7 +38,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id_ruang</th>
+                            <th>Nama ruang</th>
+                            <th>Lantai</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Surat</th>
@@ -65,6 +66,7 @@
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $proses['id_ruang']; ?></td>
+                                        <td></td>
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td><a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>

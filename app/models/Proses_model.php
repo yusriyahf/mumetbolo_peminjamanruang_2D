@@ -25,9 +25,10 @@ class Proses_model
     //     }
     // }
 
-    public function insert(){
-        $id_ruang= $_POST['id_ruang'];
-        $username= $_POST['nama'];
+    public function insert()
+    {
+        $id_ruang = $_POST['id_ruang'];
+        $username = $_POST['nama'];
         $tgl_pinjam = $_POST['tgl_pinjam'];
         $tujuan = $_POST['tujuan'];
         $mulai = $_POST['tgl'] . ' ' . $_POST['mulai'];
@@ -78,6 +79,45 @@ class Proses_model
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function countPeminjaman()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table;
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
+
+    public function countDiacc()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'disetujui'";;
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
+
+    public function countDitolak()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'ditolak'";;
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
         }
     }
 }

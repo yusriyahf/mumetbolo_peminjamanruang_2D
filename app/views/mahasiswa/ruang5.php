@@ -22,9 +22,29 @@
             <div class="row">
                 <?php $i = 1;
                 if (!empty($data['ruang']) && is_array($data['ruang'])) {
-                    foreach ($data['ruang'] as $ruang) : ?>
+                    foreach ($data['ruang'] as $ruang) :
+                        $ruangClass = ''; // Inisialisasi class
+
+                        switch ($ruang['status']) {
+                            case 'Tersedia':
+                                $ruangClass = 'bg-success';
+                                break;
+                            case 'dipakai':
+                                $ruangClass = 'bg-danger';
+                                break;
+                            case 'Dibooking':
+                                $ruangClass = 'bg-secondary';
+                                break;
+                            case 'tidak tersedia':
+                                $ruangClass = 'bg-secondary';
+                                break;
+                            default:
+                                // Default class jika tidak ada kondisi yang sesuai
+                                $ruangClass = 'bg-primary';
+                                break;
+                        } ?>
                         <div class="col-lg-3 mb-4">
-                            <div class="card text-white shadow ruang-card" style="" data-status="<?= $ruang['status']; ?>">
+                            <div class="card text-white shadow <?= $ruangClass; ?>">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>

@@ -5,9 +5,12 @@ class Mahasiswa extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
+            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
+            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
             $data['judul'] = 'Mahasiswa';
             $this->view('templates/header', $data);
-            $this->view('mahasiswa/index');
+            $this->view('mahasiswa/index', $data);
             $this->view('templates/footer');
         } else {
             if (isset($_SESSION['tipe'])) {
@@ -78,14 +81,14 @@ class Mahasiswa extends Controller
 
     public function ubahPassword()
     {
-        if($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])){
-            if($this->model('User_model')->ubah($_POST['password_edit'])){
+        if ($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])) {
+            if ($this->model('User_model')->ubah($_POST['password_edit'])) {
                 echo "<script>alert('Berhasil Ubah Password')</script>";
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
-            }else{
+            } else {
                 echo "GAGAL UBAH";
             }
-        }else{
+        } else {
             echo "GAGAL, pass lama salah";
         }
     }
@@ -99,11 +102,13 @@ class Mahasiswa extends Controller
         $this->view('templates/footer');
     }
 
-    public function formPinjam(){
-        if($this->model('Proses_model')->insert()){
+    public function formPinjam()
+    {
+        $_SESSION['tujuan'] = $_POST['tujuan'];
+        if ($this->model('Proses_model')->insert()) {
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
-        }else{
+        } else {
             echo "SEK GAGAL";
         }
     }
@@ -196,7 +201,8 @@ class Mahasiswa extends Controller
     }
 
     //menampilkan detail ruangan
-    public function detailRuang($id_ruang){
+    public function detailRuang($id_ruang)
+    {
         echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
 }
