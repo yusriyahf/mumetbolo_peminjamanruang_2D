@@ -133,7 +133,7 @@
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/permintaanPeminjaman">
-                        <i class="fa fa-list-ul" aria-hidden="true"></i>
+                        <i class="fas fa-comments"></i>
                         <span>Permintaan Peminjaman</span></a>
                 </li>
             <?php endif; ?>
@@ -151,7 +151,7 @@
                 <!-- Nav Item - Req Peminjaman Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
-                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                    <i class="fas fa-comments"></i>
                         <span>Proses Peminjaman</span></a>
                 </li>
             <?php endif; ?>

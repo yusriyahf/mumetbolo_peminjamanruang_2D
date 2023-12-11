@@ -22,7 +22,8 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalRuang']; ?></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <span class="text-gray-300">
+                            <i class="fa fa-building fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -42,7 +43,8 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalMhs']; ?></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <span class="text-gray-300">
+                            <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -62,7 +64,8 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalDosen']; ?></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <span class="text-gray-300">   
+                            <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -124,7 +127,8 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <span class="text-gray-300"> 
+                        <i class="fa fa-list-ul fa-2x" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
