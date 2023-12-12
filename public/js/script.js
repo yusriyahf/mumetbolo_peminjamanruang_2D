@@ -4,6 +4,7 @@ $(document).ready(function () {
         const id = $(this).data('id');
         $.ajax({
             url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
+
             method: 'post',
             data : {id : id},
             dataType: 'json',
@@ -29,6 +30,7 @@ $(document).ready(function () {
         const id = $(this).data('id');
         $.ajax({
             url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahDosen/' + id,
+
             method: 'post',
             data : {id : id},
             dataType: 'json',
@@ -54,6 +56,7 @@ $(document).ready(function () {
         const id = $(this).data('id');
         $.ajax({
             url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahRuang/' + id,
+
             method: 'post',
             data : {id : id},
             dataType: 'json',

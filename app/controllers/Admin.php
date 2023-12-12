@@ -26,7 +26,7 @@ class Admin extends Controller
     public function tolakPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        $status = 'ditolak' ;
+        $status = 'ditolak';
         $alasan = $_POST['alasan'];
 
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
@@ -40,7 +40,7 @@ class Admin extends Controller
 
     public function accPeminjaman($id_proses)
     {
-        $status = 'disetujui' ;
+        $status = 'disetujui';
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
             echo "<script>alert('ACC BERHASIL')</script>";
             header('Location: ' . BASEURL . '/admin/peminjaman');
@@ -140,7 +140,7 @@ class Admin extends Controller
         $delMhs = $this->model('Mahasiswa_model')->delete($id);
         if ($delMhs != null) {
             if ($this->model('User_model')->delete($delMhs)) {
-                Flasher::setFlash('berhasil', 'dihapus', 'success', 'mahasiswa');
+                Flasher::setFlash('berhasil', 'dihapus', 'success', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             } else {
@@ -172,36 +172,36 @@ class Admin extends Controller
                 // Hitung selisih untuk mendapatkan jumlah mahasiswa yang ditambahkan
                 $mahasiswaDitambahkan = $jumlahMahasiswaSetelah - $jumlahMahasiswaSebelum;
 
-                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'mahasiswa');
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             } else {
-                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'mahasiswa');
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             }
         }
     }
 
-    public function getUbahMahasiswa()
+    public function getUbahMahasiswa($id)
     {
-        echo json_encode($this->model('Mahasiswa_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Mahasiswa_model')->fetch_single($id));
     }
 
     public function ubahMahasiswa()
     {
-        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+        if ($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])) {
             if ($this->model('Mahasiswa_model')->update($_POST['id_mahasiswa'])) {
-                Flasher::setFlash('berhasil', 'diubah', 'success', 'mahasiswa');
+                Flasher::setFlash('berhasil', 'diubah', 'success', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             } else {
-                Flasher::setFlash('gagal', 'diubah', 'danger', 'mahasiswa');
+                Flasher::setFlash('gagal', 'diubah', 'danger', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             }
-        }else {
-            Flasher::setFlash('gagal', 'diubah', 'danger', 'mahasiswa');
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger', 'Data mahasiswa');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
         }
@@ -239,11 +239,11 @@ class Admin extends Controller
         $delDsn = $this->model('Dosen_model')->delete($id);
         if ($delDsn != null) {
             if ($this->model('User_model')->delete($delDsn)) {
-                Flasher::setFlash('berhasil', 'dihapus', 'success', 'dosen');
+                Flasher::setFlash('berhasil', 'dihapus', 'success', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             } else {
-                Flasher::setFlash('gagal', 'dihapus', 'danger', 'dosen');
+                Flasher::setFlash('gagal', 'dihapus', 'danger', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             }
@@ -259,36 +259,36 @@ class Admin extends Controller
         $result = $this->model('User_model')->add($_POST['nama'], $_POST['nip'], 'dosen');
         if (isset($result)) {
             if ($this->model('Dosen_model')->insert($result)) {
-                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'dosen');
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             } else {
-                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'dosen');
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             }
         }
     }
 
-    public function getUbahDosen()
+    public function getUbahDosen($id)
     {
-        echo json_encode($this->model('Dosen_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Dosen_model')->fetch_single($id));
     }
 
     public function ubahDosen()
     {
-        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+        if ($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])) {
             if ($this->model('Dosen_model')->update($_POST['id_dosen'])) {
-                Flasher::setFlash('berhasil', 'diubah', 'success', 'dosen');
+                Flasher::setFlash('berhasil', 'diubah', 'success', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             } else {
-                Flasher::setFlash('gagal', 'diubah', 'danger', 'dosen');
+                Flasher::setFlash('gagal', 'diubah', 'danger', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             }
-        }else {
-            Flasher::setFlash('gagal', 'diubah', 'danger', 'dosen');
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger', 'Data dosen');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit();
         }
@@ -304,6 +304,7 @@ class Admin extends Controller
     public function ruang5()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['ruang'] = $this->model('Ruang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['lantai'] = '5';
@@ -354,11 +355,11 @@ class Admin extends Controller
     public function tambahRuang($lantai)
     {
         if ($this->model('Ruang_model')->insert()) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'ruangan');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'ruangan');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         }
@@ -367,19 +368,19 @@ class Admin extends Controller
     public function hapusRuang($id, $lantai)
     {
         if ($this->model('Ruang_model')->delete($id) == true) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success', 'ruangan');
+            Flasher::setFlash('berhasil', 'dihapus', 'success', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger', 'ruangan');
+            Flasher::setFlash('gagal', 'dihapus', 'danger', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         }
     }
 
-    public function getUbahRuang()
+    public function getUbahRuang($id)
     {
-        echo json_encode($this->model('Ruang_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Ruang_model')->fetch_single($id));
     }
 
 
@@ -392,11 +393,11 @@ class Admin extends Controller
     public function ubahRuang($lantai)
     {
         if ($this->model('Ruang_model')->update($_POST['id_ruang'])) {
-            Flasher::setFlash('berhasil', 'diubah', 'success', 'ruangan');
+            Flasher::setFlash('berhasil', 'diubah', 'success', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         } else {
-            Flasher::setFlash('gagal', 'diubah', 'danger', 'ruangan');
+            Flasher::setFlash('gagal', 'diubah', 'danger', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang' . $lantai);
             exit();
         }

@@ -10861,7 +10861,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("http://localhost/mumetbolo_peminjamanruang_2d/public/img/jti.jpg");
+  background: url("http://localhost:8080/mumetbolo_peminjamanruang_2d/public/img/jti.jpg");
   /* background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800"); */
   background-position: center;
   background-size: cover;

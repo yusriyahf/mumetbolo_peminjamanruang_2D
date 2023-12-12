@@ -27,7 +27,6 @@
                             <th>Nama ruang</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
-                            <!-- <th>Cetak PDF</th> -->
                             <th>Action</th>
                             <th>Status</th>
                         </tr>
@@ -45,11 +44,13 @@
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+                                                <input type="file" name="uploaded_file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
                                             </div>
                                         </td>
+
                                         <td><?= $proses['status']; ?></td>
+                                        </form>
                                     </tr>
                         <?php
                                 }

@@ -29,7 +29,7 @@
                             case 'Tersedia':
                                 $ruangClass = 'bg-success';
                                 break;
-                            case 'dipakai':
+                            case 'KBM':
                                 $ruangClass = 'bg-danger';
                                 break;
                             case 'Dibooking':

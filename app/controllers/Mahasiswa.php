@@ -46,6 +46,7 @@ class Mahasiswa extends Controller
             // Ambil informasi dari query string
             $idRuang = $id;
             $tanggalPeminjam = $tanggal;
+            // var_dump($tanggalPeminjam);
 
             // Jika id_ruang dan tanggalPeminjam ada, panggil model untuk menyimpan data peminjaman
             if ($idRuang && $tanggalPeminjam) {
@@ -121,6 +122,7 @@ class Mahasiswa extends Controller
 
             // Simpan nilai input ke dalam session
             $_SESSION['tanggal'] = $tanggal;
+            // var_dump($_SESSION['tanggal']);
 
             // Redirect atau lakukan tindakan lainnya
             header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
@@ -156,6 +158,7 @@ class Mahasiswa extends Controller
             $data['ruang'] = $this->model('Ruang_model')->fetch(6);
             $data['judul'] = 'Lantai 6';
             $data['tanggal'] = $_SESSION['tanggal'];
+            // var_dump($data['tanggal']);
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang6', $data);
             $this->view('templates/footer');

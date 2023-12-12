@@ -96,6 +96,5 @@ class User_model
         } else {
             return false;
         }
-    }
-
+    } 
 }
