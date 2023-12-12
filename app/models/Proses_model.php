@@ -34,8 +34,8 @@ class Proses_model
         $mulai = $_POST['tgl'] . ' ' . $_POST['mulai'];
         $selesai = $_POST['tgl'] . ' ' . $_POST['selesai'];
         $status = 'diproses';
-
         $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, tujuan, mulai, selesai, status) VALUES ('$id_ruang','$username', '$tgl_pinjam', '$tujuan', '$mulai', '$selesai', '$status')";
+
         if ($sql = $this->db->conn->query($query)) {
             return true;
         } else {

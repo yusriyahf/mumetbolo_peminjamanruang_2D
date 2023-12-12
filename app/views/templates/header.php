@@ -12,16 +12,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    
+
     <title><?= $data['judul']; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= BASEURL; ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    
     <!-- Custom styles for this template-->
 
     <link href="<?= BASEURL; ?>/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="icon" href="<?= BASEURL; ?>/img/JTI.png" type="image/png">
+
 
 </head>
 
@@ -34,8 +39,8 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon ">
+                    <img src="<?= BASEURL; ?>/img/JTI.png" width=45>
                 </div>
                 <div class="sidebar-brand-text mx-3">Peminjaman Ruang</div>
             </a>
@@ -46,7 +51,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="<?= BASEURL . '/' . $_SESSION['tipe']; ?>">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -64,7 +69,7 @@
                 <!-- <li class="nav-item active"> -->
                 <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fa fa-users" aria-hidden="true"></i>
                         <span>User</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -81,7 +86,7 @@
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
+                        <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -128,7 +133,7 @@
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/permintaanPeminjaman">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fa fa-list-ul" aria-hidden="true"></i>
                         <span>Permintaan Peminjaman</span></a>
                 </li>
             <?php endif; ?>
