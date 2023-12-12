@@ -46,6 +46,10 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" autocomplete="off" required>
                                         </div>
+                                        <div class="text">
+                                         <?php Flasher::flash() ?>
+                                        </div>
+                                        
                                         <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
