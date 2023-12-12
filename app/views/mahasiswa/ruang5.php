@@ -22,14 +22,34 @@
             <div class="row">
                 <?php $i = 1;
                 if (!empty($data['ruang']) && is_array($data['ruang'])) {
-                    foreach ($data['ruang'] as $ruang) : ?>
+                    foreach ($data['ruang'] as $ruang) :
+                        $ruangClass = ''; // Inisialisasi class
+
+                        switch ($ruang['status']) {
+                            case 'Tersedia':
+                                $ruangClass = 'bg-success';
+                                break;
+                            case 'KBM':
+                                $ruangClass = 'bg-danger';
+                                break;
+                            case 'Dibooking':
+                                $ruangClass = 'bg-secondary';
+                                break;
+                            case 'tidak tersedia':
+                                $ruangClass = 'bg-secondary';
+                                break;
+                            default:
+                                // Default class jika tidak ada kondisi yang sesuai
+                                $ruangClass = 'bg-primary';
+                                break;
+                        } ?>
                         <div class="col-lg-3 mb-4">
-                            <div class="card text-white shadow ruang-card" style="" data-status="<?= $ruang['status']; ?>">
+                            <div class="card text-white shadow <?= $ruangClass; ?>">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>
-                                    <a href="#" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#ruangModal" data-nama="<?= $ruang['nama_ruang']; ?>" data-kapasitas="<?= $ruang['kapasitas']; ?>" data-status="<?= $ruang['status']; ?>" data-lantai="<?= $ruang['lantai']; ?>" data-fasilitas="<?= $ruang['fasilitas']; ?>" data-jenis_ruang="<?= $ruang['jenis_ruang']; ?>">Detail</a>
-                                    <a href="#" class="btn btn-outline-light btn-sm <?= ($ruang['status'] !== 'tersedia') ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#formPinjamModal">Pinjam</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Detail</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-status="<?= $ruang['status']; ?>">Pinjam</a>
 
                                 </div>
                             </div>
