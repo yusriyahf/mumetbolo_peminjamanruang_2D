@@ -11,7 +11,7 @@ function setCardClasses() {
             case "dipakai":
                 card.classList.add("bg-danger");
                 break;
-            case "Dibooking":
+            case "dibooking":
                 card.classList.add("bg-secondary");
                 break;
             case "diacc":
