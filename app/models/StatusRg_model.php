@@ -1,5 +1,6 @@
 <?php
-class StatusRg_model{
+class StatusRg_model
+{
     private $table = 'cek_status';
 
     private $db;
@@ -22,4 +23,3 @@ class StatusRg_model{
         return $data;
     }
 }
-?>
