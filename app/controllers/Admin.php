@@ -183,9 +183,9 @@ class Admin extends Controller
         }
     }
 
-    public function getUbahMahasiswa()
+    public function getUbahMahasiswa($id)
     {
-        echo json_encode($this->model('Mahasiswa_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Mahasiswa_model')->fetch_single($id));
     }
 
     public function ubahMahasiswa()
@@ -270,9 +270,9 @@ class Admin extends Controller
         }
     }
 
-    public function getUbahDosen()
+    public function getUbahDosen($id)
     {
-        echo json_encode($this->model('Dosen_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Dosen_model')->fetch_single($id));
     }
 
     public function ubahDosen()
@@ -378,9 +378,9 @@ class Admin extends Controller
         }
     }
 
-    public function getUbahRuang()
+    public function getUbahRuang($id)
     {
-        echo json_encode($this->model('Ruang_model')->fetch_single($_POST['id']));
+        echo json_encode($this->model('Ruang_model')->fetch_single($id));
     }
 
 
