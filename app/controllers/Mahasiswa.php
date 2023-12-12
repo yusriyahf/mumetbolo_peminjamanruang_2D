@@ -5,9 +5,12 @@ class Mahasiswa extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
+            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
+            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
             $data['judul'] = 'Mahasiswa';
             $this->view('templates/header', $data);
-            $this->view('mahasiswa/index');
+            $this->view('mahasiswa/index', $data);
             $this->view('templates/footer');
         } else {
             if (isset($_SESSION['tipe'])) {
@@ -100,6 +103,16 @@ class Mahasiswa extends Controller
         $this->view('templates/footer');
     }
 
+    public function formPinjam()
+    {
+        $_SESSION['tujuan'] = $_POST['tujuan'];
+        if ($this->model('Proses_model')->insert()) {
+            header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
+            exit();
+        } else {
+            echo "SEK GAGAL";
+        }
+    }
 
     public function processForm()
     {
@@ -118,19 +131,20 @@ class Mahasiswa extends Controller
         }
     }
 
-    // ADMIN MANAGE RUANGAN 6
+    // ruangan
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
             # code...
-            $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            // $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang5', $data);
             $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
+            // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
@@ -148,7 +162,7 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang6', $data);
             $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
+            // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
@@ -187,5 +201,11 @@ class Mahasiswa extends Controller
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
         }
+    }
+
+    //menampilkan detail ruangan
+    public function detailRuang($id_ruang)
+    {
+        echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
 }
