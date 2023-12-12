@@ -70,7 +70,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $ruang['nama_ruang']; ?></td>
                                     <td><?= $ruang['lantai']; ?></td>
-                                    <td class="status-cell"><?= $ruang['status']; ?></td>
+                                    <td><?= $ruang['status']; ?></td>
                                     <td><?= $ruang['jenis_ruang']; ?></td>
                                     <td><?= $ruang['kapasitas']; ?></td>
                                     <td><?= $ruang['fasilitas']; ?></td>

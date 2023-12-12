@@ -26,7 +26,7 @@ class Admin extends Controller
     public function tolakPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        $status = 'ditolak' ;
+        $status = 'ditolak';
         $alasan = $_POST['alasan'];
 
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
@@ -40,7 +40,7 @@ class Admin extends Controller
 
     public function accPeminjaman($id_proses)
     {
-        $status = 'disetujui' ;
+        $status = 'disetujui';
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
             echo "<script>alert('ACC BERHASIL')</script>";
             header('Location: ' . BASEURL . '/admin/peminjaman');
@@ -190,7 +190,7 @@ class Admin extends Controller
 
     public function ubahMahasiswa()
     {
-        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+        if ($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])) {
             if ($this->model('Mahasiswa_model')->update($_POST['id_mahasiswa'])) {
                 Flasher::setFlash('berhasil', 'diubah', 'success', 'Data mahasiswa');
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
@@ -200,7 +200,7 @@ class Admin extends Controller
                 header('Location: ' . BASEURL . '/admin/mahasiswa');
                 exit();
             }
-        }else {
+        } else {
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Data mahasiswa');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit();
@@ -277,7 +277,7 @@ class Admin extends Controller
 
     public function ubahDosen()
     {
-        if($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])){
+        if ($this->model('User_model')->ubahUsername($_POST['nama'], $_POST['username'])) {
             if ($this->model('Dosen_model')->update($_POST['id_dosen'])) {
                 Flasher::setFlash('berhasil', 'diubah', 'success', 'Data dosen');
                 header('Location: ' . BASEURL . '/admin/dosen');
@@ -287,7 +287,7 @@ class Admin extends Controller
                 header('Location: ' . BASEURL . '/admin/dosen');
                 exit();
             }
-        }else {
+        } else {
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Data dosen');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit();
@@ -304,6 +304,7 @@ class Admin extends Controller
     public function ruang5()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['ruang'] = $this->model('Ruang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['lantai'] = '5';

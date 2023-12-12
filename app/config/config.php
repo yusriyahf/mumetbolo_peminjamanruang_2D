@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/tugasbesar/mumetbolo_peminjamanruang_2D/public/');
+define('BASEURL', 'http://localhost:8080/mumetbolo_peminjamanruang_2D/public');
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
