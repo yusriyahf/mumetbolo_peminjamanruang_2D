@@ -23,13 +23,20 @@ class Admin extends Controller
         }
     }
 
+    public function alasanPenolakan($id_ruang)
+    {
+        $result = $this->model('Proses_model')->fetch_single($id_ruang);
+        echo json_encode($result);
+    }
+
+
     public function tolakPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
         $status = 'ditolak';
-        $alasan = $_POST['alasan'];
+        $pesan = $_POST['pesan'];
 
-        if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {

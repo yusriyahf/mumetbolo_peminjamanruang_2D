@@ -70,10 +70,10 @@ class Proses_model
         return $data;
     }
 
-    public function ubahStatus($id, $status)
+    public function ubahStatus($id, $status, $pesan)
     {
         // Lakukan query untuk mengubah status berdasarkan ID
-        $query = "UPDATE " . $this->table . " SET status = '$status' WHERE id_proses = $id";
+        $query = "UPDATE " . $this->table . " SET status = '$status', pesan = '$pesan' WHERE id_proses = $id";
 
         if ($sql = $this->db->conn->query($query)) {
             return true;
@@ -119,5 +119,19 @@ class Proses_model
         } else {
             return 0;
         }
+    }
+
+    public function fetch_single($id)
+    {
+
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE id_ruang = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
     }
 }
