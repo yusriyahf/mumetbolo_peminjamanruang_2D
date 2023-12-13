@@ -24,6 +24,7 @@ class auth extends Controller
                 $_SESSION['tipe'] = $data['tipe'];
 
                 header('Location: ' . BASEURL . '/' . $_SESSION['tipe']);
+                
             } else {
                 echo "<script>alert('Login Gagal. Periksa kembali username dan password Anda.')</script>";
                 header('Refresh: 0; url=' . BASEURL); // Redirect ke halaman login
