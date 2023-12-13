@@ -70,7 +70,12 @@
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td><a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
-                                        <td><?= $proses['status']; ?></td>
+                                        <td>
+                                            <a href="#" class="alasanPenolakan" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status'];?>">
+                                                <?= $proses['status']; ?>
+                                            </a>
+                                        </td>
+                                        
                                     </tr>
                         <?php
                                 }
