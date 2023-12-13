@@ -48,7 +48,7 @@ class Admin extends Controller
     public function accPeminjaman($id_proses)
     {
         $status = 'disetujui';
-        if ($this->model('Proses_model')->ubahStatus($id_proses, $status)) {
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, NULL)) {
             echo "<script>alert('ACC BERHASIL')</script>";
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();

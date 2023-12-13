@@ -27,7 +27,7 @@
                             <th>Nama ruang</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
-                            <th>Action</th>
+                            <th>Upload Surat Peminjaman</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -43,11 +43,27 @@
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td>
+                                            <?php if($proses['file'] == NULL ){?>
+                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
                                             <div class="input-group">
-                                                <input type="file" name="uploaded_file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
+                                                <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
                                             </div>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>">Sudah upload Surat Pengajuan Peminjaman</a>
+                                        <?php } ?>
                                         </td>
+                                        
+                                        
+                                        <!-- <td>
+                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
+                                                <div class="input-group">
+                                                    <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                                </div>
+                                            </form>
+                                        </td> -->
 
                                         <td><?= $proses['status']; ?></td>
                                         </form>

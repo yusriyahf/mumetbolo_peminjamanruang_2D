@@ -52,7 +52,16 @@
                                         <td><?= $proses['id_ruang']; ?></td>
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
-                                        <td><a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
+                                        <!-- <td><a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td> -->
+
+                                        <td>
+                                            <?php if($proses['file'] == NULL ){?>
+                                            <h5>BELUM UPLOAD SURAT</h5>
+                                        <?php }else{ ?>
+                                            <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a>
+                                        <?php } ?>
+                                        </td>
+                                        
                                         <td>
                                             <a href="#" class="btn btn-success btn-split btn-sm accPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#accPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>">
                                                 <i class="fas fa-check"></i>
