@@ -114,24 +114,7 @@ class Mahasiswa extends Controller
         }
     }
 
-    public function processForm()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tanggal = $_POST['tanggal'];
-            $waktuMulai = $_POST['waktuMulai'];
-            $waktuSelesai = $_POST['waktuSelesai'];
 
-            $_SESSION['tanggal'] = $tanggal;
-            $_SESSION['waktuMulai'] = $waktuMulai;
-            $_SESSION['waktuSelesai'] = $waktuSelesai;
-
-            // var_dump($waktuMulai);
-
-            header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
-            unset($_SESSION['ruang']);
-            exit();
-        }
-    }
 
     public function uploadFile($id_proses)
     {
@@ -171,15 +154,54 @@ class Mahasiswa extends Controller
         }
     }
 
+    public function processForm()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tanggal = $_POST['tanggal'];
+            $waktuMulai = $_POST['waktuMulai'];
+            $waktuSelesai = $_POST['waktuSelesai'];
+
+            $_SESSION['tanggal'] = $tanggal;
+            $_SESSION['waktuMulai'] = $waktuMulai;
+            $_SESSION['waktuSelesai'] = $waktuSelesai;
+
+            $hari = $this->getIndonesianDayName($tanggal);
+
+            // Simpan nama hari ke dalam session
+            $_SESSION['hari'] = $hari;
+            // var_dump($_SESSION['hari']);
+
+            header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
+            unset($_SESSION['ruang']);
+        }
+    }
+
+    private function getIndonesianDayName($tanggal)
+    {
+        $days = array(
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        );
+
+        $dayInEnglish = date('l', strtotime($tanggal));
+
+        return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
+    }
+
     // ruangan
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
             # code...
-            $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
             // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
-            // $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
