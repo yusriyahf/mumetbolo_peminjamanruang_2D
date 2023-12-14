@@ -44,11 +44,11 @@
 
                     <div class="mb-3">
                         <label for="waktu" class="form-label">Waktu Mulai</label>
-                        <input type="time" class="form-control" id="mulai" name="mulai" required>
+                        <input type="time" class="form-control" id="mulai" name="mulai" value="<?= $_SESSION['waktuMulai']; ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="waktu" class="form-label">Waktu Selesai</label>
-                        <input type="time" class="form-control" id="selesai" name="selesai" required>
+                        <input type="time" class="form-control" id="selesai" name="selesai" value="<?= $_SESSION['waktuSelesai']; ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Tujuan Peminjaman</label>
@@ -57,7 +57,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                <button type="submit" name="submit" class="btn btn-primary">Pinjam</button>
                 </form>
             </div>
         </div>
