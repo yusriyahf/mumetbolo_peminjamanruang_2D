@@ -62,12 +62,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
+                $("#id_ruang_lama").val(data.id_ruang);
                 $("#id_ruang_edit").val(data.id_ruang);
                 $("#nama_rg_edit").val(data.nama_ruang);
                 $("#jenis_rg_edit").val(data.jenis_ruang);
                 $("#kapasitas_edit").val(data.kapasitas);
                 $("#fasilitas_edit").val(data.fasilitas);
-                $("#status_edit").val(data.status);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
