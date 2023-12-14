@@ -22,34 +22,14 @@
             <div class="row">
                 <?php $i = 1;
                 if (!empty($data['ruang']) && is_array($data['ruang'])) {
-                    foreach ($data['ruang'] as $ruang) :
-                        $ruangClass = ''; // Inisialisasi class
-
-                        switch ($ruang['status']) {
-                            case 'Tersedia':
-                                $ruangClass = 'bg-success';
-                                break;
-                            case 'KBM':
-                                $ruangClass = 'bg-danger';
-                                break;
-                            case 'Dibooking':
-                                $ruangClass = 'bg-secondary';
-                                break;
-                            case 'tidak tersedia':
-                                $ruangClass = 'bg-secondary';
-                                break;
-                            default:
-                                // Default class jika tidak ada kondisi yang sesuai
-                                $ruangClass = 'bg-primary';
-                                break;
-                        } ?>
+                    foreach ($data['ruang'] as $ruang) : ?>
                         <div class="col-lg-3 mb-4">
-                            <div class="card text-white shadow <?= $ruangClass; ?>">
+                            <div class="card text-white shadow bg-success">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
-                                    <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Detail</a>
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-status="<?= $ruang['status']; ?>">Pinjam</a>
+                                    <div class="text-white-50 small mb-3">Status</div>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>">Detail</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Pinjam</a>
                                 </div>
                             </div>
                         </div>

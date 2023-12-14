@@ -117,23 +117,26 @@ class Mahasiswa extends Controller
     public function processForm()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ambil nilai input dari formulir
             $tanggal = $_POST['tanggal'];
+            $waktuMulai = $_POST['waktuMulai'];
+            $waktuSelesai = $_POST['waktuSelesai'];
 
-            // Simpan nilai input ke dalam session
             $_SESSION['tanggal'] = $tanggal;
-            // var_dump($_SESSION['tanggal']);
+            $_SESSION['waktuMulai'] = $waktuMulai;
+            $_SESSION['waktuSelesai'] = $waktuSelesai;
 
-            // Redirect atau lakukan tindakan lainnya
+            // var_dump($waktuMulai);
+
             header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
             unset($_SESSION['ruang']);
             exit();
         }
     }
 
-    public function uploadFile($id_proses){
+    public function uploadFile($id_proses)
+    {
         // var_dump($_FILES); die;
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $nama_file = $_FILES['suratPinjam']['name'];
             $ukuran = $_FILES['suratPinjam']['size'];
             $error = $_FILES['suratPinjam']['error'];
@@ -142,27 +145,26 @@ class Mahasiswa extends Controller
 
             $maxFileSize = 10 * 1024 * 1024; //10mb
 
-            if($error === 0){
+            if ($error === 0) {
                 $ekstensi = ['pdf'];
-                $ekstensiFile = explode( '.' , $nama_file );
+                $ekstensiFile = explode('.', $nama_file);
                 $ekstensiFile = strtolower(end($ekstensiFile));
-                if(in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize){
+                if (in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize) {
                     $nama = $id_proses . '-' . $_SESSION['username'] . '.' . $ekstensiFile;
-                    if(move_uploaded_file($tmp, '../public/uploadFile/' . $nama)){
-                        if($this->model('Proses_model')->upFile($id_proses, $nama)){
+                    if (move_uploaded_file($tmp, '../public/uploadFile/' . $nama)) {
+                        if ($this->model('Proses_model')->upFile($id_proses, $nama)) {
                             echo "<script> alert('berhasil nambah ke db'); </script>";
                             header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                         }
-                    }else{
+                    } else {
                         echo "<script> alert('gagal upload'); </script>";
                         header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                     }
-                }else{
+                } else {
                     echo "<script> alert('file tidak sesuai, periksa ekstensi dan ukuran file'); </script>";
                     header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                 }
-            }
-            else if($error === 4){
+            } else if ($error === 4) {
                 echo "<script> alert('belum pilih file'); </script>";
                 header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
             }
@@ -175,8 +177,9 @@ class Mahasiswa extends Controller
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
             # code...
-            // $data['ruang'] = $this->model('Ruang_model')->fetch(5);
-            $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
+            $data['ruang'] = $this->model('Ruang_model')->fetch(5);
+            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
+            // $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
@@ -193,7 +196,7 @@ class Mahasiswa extends Controller
     {
         $_SESSION['ruang'] = 6;
         if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(6);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(6);
             $data['judul'] = 'Lantai 6';
             $data['tanggal'] = $_SESSION['tanggal'];
             // var_dump($data['tanggal']);

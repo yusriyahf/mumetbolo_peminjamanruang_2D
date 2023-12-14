@@ -31,7 +31,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
-                    <input type="hidden" name="id_proses" id="id_proses">
+                    <!-- <input type="hidden" name="id_proses" id="id_proses"> -->
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
                     <input type="hidden" name="tgl_pinjam" id="tgl_pinjam" value="">
                     <input type="hidden" name="tgl" id="tgl" value="">
@@ -581,10 +581,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="pesan" class="form-label">Alasan Penolakan</label>
-                        <h5 id="alasan"></h5>
-                    </div>
+                <div class="mb-3">
+                    <label for="pesan" class="form-label">Alasan Penolakan</label>
+                    <h5 id="alasan"></h5>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

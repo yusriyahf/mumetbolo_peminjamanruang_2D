@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.tampilModalUbah').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
+            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
 
             method: 'post',
             data : {id : id},
@@ -29,7 +29,7 @@ $(document).ready(function () {
     $('.tampilModalUbahDosen').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahDosen/' + id,
+            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahDosen/' + id,
 
             method: 'post',
             data : {id : id},
@@ -55,7 +55,7 @@ $(document).ready(function () {
     $('.tampilModalUbahRuang').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahRuang/' + id,
+            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/getUbahRuang/' + id,
 
             method: 'post',
             data : {id : id},
@@ -97,7 +97,7 @@ $(document).ready(function () {
         $('#ruangModal #status_ruang').text('Status: ' + status);
 
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/mahasiswa/detailRuang/' + id_ruang,
+            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/mahasiswa/detailRuang/' + id_ruang,
             method: 'post',
             data : {id : id_ruang},
             dataType: 'json',
@@ -128,7 +128,7 @@ $(document).ready(function () {
         var acc = document.getElementById('accPeminjaman');
 
         // Mengubah atribut href
-        acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
+        acc.href = "http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
     });
 
     //admin tolak peminjaman
