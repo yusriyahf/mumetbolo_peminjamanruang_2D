@@ -37,7 +37,7 @@
                     <input type="hidden" name="tgl" id="tgl" value="">
 
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Username</label>
+                        <label for="nama" class="form-label">Peminjam</label>
                         <div id="username-display"><?= $_SESSION['username'] ?></div>
                         <input type="hidden" class="form-control" id="nama" name="nama" value="<?= $_SESSION['username'] ?>" autocomplete="off" required>
                     </div>
@@ -216,8 +216,12 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/admin/tambahRuang/<?= $data['lantai']; ?>" method="post">
-                    <input type="hidden" name="id_ruang" id="id_ruang">
                     <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">ID Ruangan</label>
+                        <input type="text" class="form-control" id="id_ruang" name="id_ruang" autocomplete="off" required>
+                    </div>
+
                     <div class="mb-3">
                         <label for="nama_rg" class="form-label">Nama Ruangan</label>
                         <input type="text" class="form-control" id="nama_rg" name="nama_rg" autocomplete="off" required>
@@ -239,11 +243,6 @@
                     <div class="mb-3">
                         <label for="fasilitas" class="form-label">Fasilitas</label>
                         <input type="text" class="form-control" id="fasilitas" name="fasilitas" autocomplete="off" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="prodi" class="form-label">Status</label>
-                        <input type="text" class="form-control" id="status" name="status" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -299,8 +298,13 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/admin/ubahRuang/<?= $data['lantai']; ?>" method="post">
-                    <input type="hidden" name="id_ruang" id="id_ruang_edit" value="<?= $ruang['id_ruang']; ?>">
                     <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
+                    <input type="hidden" name="id_ruang_lama" id="id_ruang_lama" value="">
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">ID Ruangan</label>
+                        <input type="text" class="form-control" id="id_ruang_edit" name="id_ruang_edit" autocomplete="off" required>
+                    </div>
+
                     <div class="mb-3">
                         <label for="nama_rg" class="form-label">Nama Ruangan</label>
                         <input type="text" class="form-control" id="nama_rg_edit" name="nama_rg" autocomplete="off" required>
@@ -308,7 +312,7 @@
 
                     <div class="mb-3 form-group">
                         <label for="jenis_rg" class="form-label">Jenis Ruangan:</label>
-                        <select name="jenis_rg" id="rg" class="form-control">
+                        <select name="jenis_rg" id="jenis_rg_edit" class="form-control">
                             <option value="Teori">Teori</option>
                             <option value="Praktikum">Praktikum</option>
                         </select>
@@ -322,11 +326,6 @@
                     <div class="mb-3">
                         <label for="fasilitas" class="form-label">Fasilitas</label>
                         <input type="text" class="form-control" id="fasilitas_edit" name="fasilitas" autocomplete="off" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="prodi" class="form-label">Status</label>
-                        <input type="text" class="form-control" id="status_edit" name="status" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">

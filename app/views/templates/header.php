@@ -92,10 +92,10 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Ruangan JTI</h6>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang5">Lantai 5</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang6">Lantai 6</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang7">Lantai 7</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang8">Lantai 8</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/5">Lantai 5</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/6">Lantai 6</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/7">Lantai 7</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/8">Lantai 8</a>
                         </div>
                     </div>
                 </li>
