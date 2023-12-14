@@ -582,17 +582,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/tolakPeminjaman" method="post">
-                    <input type="hidden" name="id_proses" id="tolak_id_proses" value="">
                     <div class="mb-3">
                         <label for="pesan" class="form-label">Alasan Penolakan</label>
                         <h5 id="alasan"></h5>
                     </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" name="button" type="modal">Tolak</button>
-                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

@@ -117,22 +117,8 @@ $(document).ready(function () {
 
     //Alasan Penolakan
     $('.alasanPenolakan').on('click', function () {
-        const id_ruang = $(this).data('id_ruang');
-        const status = $(this).data('status');
-        $('#ruangModal #status_ruang').text('Status: ' + status);
-    
-        $.ajax({
-            url: 'http://localhost:8080/mumetbolo_peminjamanruang_2d/public/admin/alasanPenolakan/' + id_ruang,
-            method: 'get', // Change method to 'get' since you're retrieving data
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-                $('#ruangModal #pesan').text('Nama ruang: ' + data.nama_ruang); // Adjust to the actual column name
-            },
-            error: function (xhr, status, error) {
-                console.log('Error: ' + error);
-            }
-        });
+        const pesan = $(this).data('pesan');
+        $('#pesanPenolakanModal #alasan').text(pesan);
     });
     
 

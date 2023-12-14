@@ -134,4 +134,13 @@ class Proses_model
         }
         return $data;
     }
+
+    public function upFile($id_proses, $namaFile ){
+        $query = "UPDATE " . $this->table . " SET file = '$namaFile' WHERE id_proses = $id_proses";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
