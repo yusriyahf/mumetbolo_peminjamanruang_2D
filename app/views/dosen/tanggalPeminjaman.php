@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Peminjaman Ruang Mahasiswa</h1>
+    <h1 class="h3 mb-2 text-gray-800">Peminjaman Ruang Dosen</h1>
     <p class="mb-4">Peminjaman ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
 
     <!-- DataTales Example -->
@@ -12,7 +12,7 @@
             <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-primary btn-sm" target="_blank">Download File</a>
         </div>
         <div class="card-body">
-            <form method="post" action="<?= BASEURL; ?>/mahasiswa/processForm">
+            <form method="post" action="<?= BASEURL; ?>/dosen/processForm">
                 <div class="form-group row">
                     <div class="col-md-2">
                         <label for="tanggal" class="form-label">Pilih Tanggal:</label>

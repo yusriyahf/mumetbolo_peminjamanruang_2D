@@ -52,7 +52,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<?= BASEURL . '/' . $_SESSION['tipe']; ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Dashboard</span></a>
+                    <span>Beranda</span></a>
             </li>
 
             <!-- Divider -->
@@ -111,10 +111,10 @@
                     <div id="ruangPinjam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Ruangan JTI</h6>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang5">Lantai 5</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang6">Lantai 6</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang7">Lantai 7</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang8">Lantai 8</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/ruang5">Lantai 5</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/ruang5">Lantai 6</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/ruang5">Lantai 7</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/ruang5">Lantai 8</a>
                         </div>
                     </div>
                 </li>

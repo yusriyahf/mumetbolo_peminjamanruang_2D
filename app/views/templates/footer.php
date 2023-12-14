@@ -269,6 +269,7 @@
                     <div class="mb-3">
                         <label for="nim" class="form-label">Password Lama</label>
                         <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
+                        
                     </div>
 
                     <div class="mb-3">

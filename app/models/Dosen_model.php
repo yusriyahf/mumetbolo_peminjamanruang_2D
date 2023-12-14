@@ -135,4 +135,16 @@ class Dosen_model
         }
         return $data;
     }
+    public function fetch_profile($username)
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE username = '$username'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
 }
