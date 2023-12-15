@@ -193,12 +193,15 @@ class Mahasiswa extends Controller
         return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
     }
 
+    // public function getStatusRg($id){
+    //     echo "oke";
+    // }
+
     // ruangan
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
-            # code...
             // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
             // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);

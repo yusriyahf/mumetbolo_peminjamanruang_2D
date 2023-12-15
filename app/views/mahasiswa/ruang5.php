@@ -27,7 +27,7 @@
                             <div class="card text-white shadow bg-success">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
-                                    <div class="text-white-50 small mb-3">Status</div>
+                                    <div class="text-white-50 small mb-3 statusRg" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Status</div>
                                     <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>">Detail</a>
                                     <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Pinjam</a>
                                 </div>

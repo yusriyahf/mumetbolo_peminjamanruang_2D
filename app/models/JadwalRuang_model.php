@@ -22,4 +22,17 @@ class JadwalRuang_model
         }
         return $data;
     }
+
+    public function status($id)
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE id_ruang='$id' ORDER BY tgl_mulai";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
