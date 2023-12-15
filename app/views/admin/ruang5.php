@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 5</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai <?= $data['lantai'] ;?></h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
     <div class="clock"></div>
 
@@ -11,14 +11,15 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahRuang">
-                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
+                <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
+                    <span style="margin-left: 5px;">Tambah Data Ruangan
             </button>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
             <form action="<?= BASEURL; ?>/admin/cariRuang/5" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Ruang" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -42,9 +43,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>ID Ruang</th>
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
-                            <th>Status</th>
                             <th>Jenis Ruangan</th>
                             <th>Kapasitas</th>
                             <th>Fasilitas</th>
@@ -68,9 +69,9 @@
                             foreach ($data['ruang'] as $ruang) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
+                                    <td><?= $ruang['id_ruang']; ?></td>
                                     <td><?= $ruang['nama_ruang']; ?></td>
                                     <td><?= $ruang['lantai']; ?></td>
-                                    <td class="status-cell"><?= $ruang['status']; ?></td>
                                     <td><?= $ruang['jenis_ruang']; ?></td>
                                     <td><?= $ruang['kapasitas']; ?></td>
                                     <td><?= $ruang['fasilitas']; ?></td>

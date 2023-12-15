@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    
+
 
     <title><?= $data['judul']; ?></title>
 
@@ -20,7 +20,9 @@
     <link href="<?= BASEURL; ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <!-- Custom styles for this template-->
 
@@ -53,7 +55,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<?= BASEURL . '/' . $_SESSION['tipe']; ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Dashboard</span></a>
+                    <span>Beranda</span></a>
             </li>
 
             <!-- Divider -->
@@ -85,7 +87,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
@@ -93,10 +95,10 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Ruangan JTI</h6>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang5">Lantai 5</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang6">Lantai 6</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang7">Lantai 7</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang8">Lantai 8</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/5">Lantai 5</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/6">Lantai 6</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/7">Lantai 7</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/8">Lantai 8</a>
                         </div>
                     </div>
                 </li>
@@ -104,9 +106,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
-                        <i class="fas fa-fw fa-wrench"></i>
+                        <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
                     </a>
                     <div id="ruangPinjam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -132,36 +134,36 @@
                 </div>
             <?php endif; ?>
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/permintaanPeminjaman">
-                        <i class="fa fa-list-ul" aria-hidden="true"></i>
+                        <i class="fas fa-comments"></i>
                         <span>Permintaan Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
             <!-- Nav Item - Data Peminjaman Menu -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/peminjaman">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Data Peminjaman</span></a>
+                        <i class="fa fa-history" aria-hidden="true"></i>
+                        <span>Riwayat Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fas fa-comments"></i>
                         <span>Proses Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/peminjaman">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fa fa-history" aria-hidden="true"></i>
                         <span>Peminjaman</span></a>
                 </li>
             <?php endif; ?>

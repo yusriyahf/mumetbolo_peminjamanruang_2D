@@ -14,15 +14,22 @@
         <div class="card-body">
             <form method="post" action="<?= BASEURL; ?>/mahasiswa/processForm">
                 <div class="form-group row">
-                    <label for="tanggal" class="col-md-2 col-form-label">Pilih Tanggal:</label>
                     <div class="col-md-2">
+                        <label for="tanggal" class="form-label">Pilih Tanggal:</label>
                         <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                     </div>
-                </div>
+                    <div class="col-md-2">
+                        <label for="waktu" class="form-label">Waktu Mulai</label>
+                        <input type="time" class="form-control" id="mulai" name="waktu_mulai" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="waktu" class="form-label">Waktu Selesai</label>
+                        <input type="time" class="form-control" id="selesai" name="waktu_selesai" required>
+                    </div>
 
                 <!-- Tombol Submit (Opsional) -->
                 <div class="form-group row">
-                    <div class="col-md-6 offset-md-2">
+                    <div class="col-md-2 offset-md-2">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>

@@ -38,7 +38,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id_ruang</th>
+                            <th>Nama ruang</th>
+                            <th>Lantai</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Surat</th>
@@ -60,15 +61,21 @@
                         <?php $i = 1;
                         if (!empty($data['proses']) && is_array($data['proses'])) {
                             foreach ($data['proses'] as $proses) :
-                                if ($proses['status'] != null) {
+                                if ($proses['status'] != 'diproses' && $proses['username'] == $_SESSION['username']) {
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $proses['id_ruang']; ?></td>
+                                        <td></td>
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
-                                        <td><a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
-                                        <td><?= $proses['status']; ?></td>
+                                        <td><a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
+                                        <td>
+                                            <a href="#" class="alasanPenolakan" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status'];?>">
+                                                <?= $proses['status']; ?>
+                                            </a>
+                                        </td>
+                                        
                                     </tr>
                         <?php
                                 }

@@ -10,14 +10,15 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahRuang">
-                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Ruangan
+                <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
+                        <span style="margin-left: 5px;">Tambah Data Ruangan
             </button>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
             <form action="<?= BASEURL; ?>/admin/cariRuang/8" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Ruang" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>

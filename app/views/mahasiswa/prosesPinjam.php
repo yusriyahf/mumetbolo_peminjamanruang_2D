@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Proses Peminjaman</h6>
-            <a href="<?= BASEURL; ?>/file/suratPinjam.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
+            <a href="<?= BASEURL; ?>/file/suratIzin.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
             <div class="row mt-3">
                 <div class="col-lg-4">
                     <?php Flasher::flash() ?>
@@ -24,29 +24,18 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id_ruang</th>
+                            <th>Nama ruang</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
-                            <th>Action</th>
+                            <th>Upload Surat Peminjaman</th>
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>prodi</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['proses']) && is_array($data['proses'])) {
                             foreach ($data['proses'] as $proses) :
-                                if ($proses['status'] == null) {
+                                if ($proses['status'] == 'diproses' && $proses['username'] == $_SESSION['username']) {
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
@@ -54,18 +43,36 @@
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td>
-                                            <form action="proses_upload.php" method="post" enctype="multipart/form-data">
-                                                <!-- Kolom-kolom lain di sini -->
-                                        <td>
+                                            <?php if($proses['file'] == NULL ){?>
+                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
                                             <div class="input-group">
-                                                <input type="file" name="uploaded_file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload</button>
+                                                <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                 <!-- <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button> -->
+                                                <button class="btn btn-primary" type="submit" name="submit" id="inputGroupFileAddon04">
+                                                    <i class="fa fa-upload fa-sm text-white-50" aria-hidden="true"></i>
+                                                    <span class="text-white">Upload</span>
+                                                </button>
+  
+                                                <!-- <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04"s><i class="class="fa fa-upload fa-sm text-white-50"></i> Upload</button> -->
                                             </div>
+                                            </form>
+                                        <?php }else{ ?>
+                                            <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>">Sudah upload Surat Pengajuan Peminjaman</a>
+                                        <?php } ?>
                                         </td>
-                                        <!-- Kolom-kolom lain di sini -->
+                                        
+                                        
+                                        <!-- <td>
+                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
+                                                <div class="input-group">
+                                                    <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                                </div>
+                                            </form>
+                                        </td> -->
+
+                                        <td><?= $proses['status']; ?></td>
                                         </form>
-                                        </td>
-                                        <td>menunggu persetujuan</td>
                                     </tr>
                         <?php
                                 }

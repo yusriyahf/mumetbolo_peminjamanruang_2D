@@ -34,17 +34,17 @@ class Ruang_model
     public function insert()
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['status']) && isset($_POST['lantai'])) {
-                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['status']) && !empty($_POST['lantai'])) {
+            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['lantai'])) {
+                if (!empty($_POST['id_ruang']) && !empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['lantai'])) {
 
+                    $id_ruang = $_POST['id_ruang'];
                     $nama_rg = $_POST['nama_rg'];
                     $jenis_rg = $_POST['jenis_rg'];
                     $kapasitas = $_POST['kapasitas'];
                     $fasilitas = $_POST['fasilitas'];
-                    $status = $_POST['status'];
                     $lantai = $_POST['lantai'];
 
-                    $query = "INSERT INTO " . $this->table . " (nama_ruang, lantai, jenis_ruang, kapasitas, fasilitas, status) VALUES ('$nama_rg','$lantai','$jenis_rg','$kapasitas','$fasilitas','$status')";
+                    $query = "INSERT INTO " . $this->table . " (id_ruang, nama_ruang, lantai, jenis_ruang, kapasitas, fasilitas) VALUES ('$id_ruang','$nama_rg','$lantai','$jenis_rg','$kapasitas','$fasilitas')";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -60,17 +60,17 @@ class Ruang_model
     public function update($id)
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['status']) && isset($_POST['lantai'])) {
-                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['status']) && !empty($_POST['lantai'])) {
+            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['lantai']) && isset($_POST['id_ruang_edit'])) {
+                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang_edit'])) {
 
+                    $id_ruang = $_POST['id_ruang_edit'];
                     $nama_rg = $_POST['nama_rg'];
                     $jenis_rg = $_POST['jenis_rg'];
                     $kapasitas = $_POST['kapasitas'];
                     $fasilitas = $_POST['fasilitas'];
-                    $status = $_POST['status'];
                     $lantai = $_POST['lantai'];
 
-                    $query = "UPDATE " . $this->table . " SET nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , fasilitas='$fasilitas', status='$status' WHERE id_ruang='$id'";
+                    $query = "UPDATE " . $this->table . " SET id_ruang='$id_ruang', nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , fasilitas='$fasilitas' WHERE id_ruang='$id'";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -80,6 +80,17 @@ class Ruang_model
                     return false;
                 }
             }
+        }
+    }
+
+    public function delete($id)
+    {
+
+        $query = "DELETE FROM " . $this->table . " WHERE id_ruang = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -96,17 +107,6 @@ class Ruang_model
         return $data;
     }
 
-    public function delete($id)
-    {
-
-        $query = "DELETE FROM " . $this->table . " WHERE id_ruang = '$id'";
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function fetch_single($id)
     {
 
@@ -120,19 +120,6 @@ class Ruang_model
         }
         return $data;
     }
-
-
-    // public function update($data)
-    // {
-
-    //     $query = "UPDATE barang SET nama='$data[nama]', deskripsi='$data[deskripsi]', stok='$data[stok]' WHERE id_barang='$data[id_barang] '";
-
-    //     if ($sql = $this->db->conn->query($query)) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
 
     //Ngitung jml Ruangan
     public function countRuang()
