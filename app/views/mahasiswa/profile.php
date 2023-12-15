@@ -11,25 +11,15 @@
             <h4 class="m-0 font-weight-bold text-primary mb-3" >Profil Mahasiswa</h4>
         </div>
 
-        <div class="card-body">
-            <div class="row">
-                <!-- <h6 class="m-0 font-weight-bold text-primary mb-3">Username : <?= $data['profile']['username']; ?></h6> -->
-                <h6 class="m-0 font-weight-bold text-primary mb-3">Nama Mahasiswa: <?= $data['profile']['nama']; ?></h6>
-                <h6 class="m-0 font-weight-bold text-primary mb-3">Nim : <?= $data['profile']['nim']; ?></h6>
-                <h6 class="m-0 font-weight-bold text-primary mb-3">Jenis Kelamin : <?= $data['profile']['jenis_kelamin']; ?></h6>
-                <h6 class="m-0 font-weight-bold text-primary mb-3">No Telp : <?= $data['profile']['no_tlp']; ?></h6>
-                <h6 class="m-0 font-weight-bold text-primary mb-3">Kelas : <?= $data['profile']['kelas']; ?></h6>
-                <h6 class="m-0 font-weight-bold text-primary mb-3">Prodi : <?= $data['profile']['prodi']; ?></h6>
-
-        <hr>
+      
 
         <div class="isi">
             <div class="baris">
             <table >
                 <tr>
-                    <td style="border: 0px;">
-                        <img src="../img/foto.png">
-                    </td>
+                    <!-- <td style="border: 0px;">
+                        <img src="../img/foto.png" width=100>
+                    </td> -->
                     <td style="border: 0px;">
                         <h6 class="m-0 font-weight-bold text-primary mb-3">Nama </h6>
                         <h6 class="m-0 font-weight-bold text-primary mb-3">Nim </h6>

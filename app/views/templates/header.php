@@ -164,7 +164,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/peminjaman">
                         <i class="fa fa-history" aria-hidden="true"></i>
-                        <span>Peminjaman</span></a>
+                        <span>Riwayat Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 

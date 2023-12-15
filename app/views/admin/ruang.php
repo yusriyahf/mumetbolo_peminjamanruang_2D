@@ -47,7 +47,7 @@
                             <th>Lantai</th>
                             <th>Jenis Ruangan</th>
                             <th>Kapasitas</th>
-                            <th>Fasilitas</th>
+                            <!-- <th>Fasilitas</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,7 +73,7 @@
                                     <td><?= $ruang['lantai']; ?></td>
                                     <td><?= $ruang['jenis_ruang']; ?></td>
                                     <td><?= $ruang['kapasitas']; ?></td>
-                                    <td><?= $ruang['fasilitas']; ?></td>
+                                    <!-- <td><?= $ruang['fasilitas']; ?></td> -->
                                     <td>
                                         <a href="<?= BASEURL; ?>/admin/ubahRuang/<?= $mhs['id_ruang']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahRuang" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditRuang" data-id="<?= $ruang['id_ruang']; ?>">
                                             <i class="fas fa-edit"></i>

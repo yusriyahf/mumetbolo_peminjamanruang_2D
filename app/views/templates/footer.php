@@ -268,12 +268,12 @@
                 <form action="<?= BASEURL; ?>/mahasiswa/ubahPassword" method="post">
                     <div class="mb-3">
                         <label for="nim" class="form-label">Password Lama</label>
-                        <input type="text" class="form-control" id="password" name="password" autocomplete="off" required>
+                        <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="nama" class="form-label">Password Baru</label>
-                        <input type="text" class="form-control" id="password_edit" name="password_edit" autocomplete="off" required>
+                        <input type="password" class="form-control" id="password_edit" name="password_edit" autocomplete="off" required>
                     </div>
 
             </div>
