@@ -402,4 +402,25 @@ class Admin extends Controller
             exit();
         }
     }
+
+    //admin manage jadwal
+    public function jadwal()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['jd'] = $this->model('JadwalRuang_model')->fetchAll();
+            $data['judul'] = 'Jadwal';
+            $this->view('templates/header', $data);
+            $this->view('admin/jadwal', $data);
+            $this->view('templates/footer');
+            # code...
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
 }

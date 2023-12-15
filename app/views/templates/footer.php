@@ -64,6 +64,85 @@
     </div>
 </div>
 
+<!-- Tambah Data Jadwal Modal-->
+<div class="modal fade" id="formTambahJadwalModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Tambah Data Jadwal</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/admin/tambahMahasiswa" method="post">
+                    <input type="hidden" name="id_mahasiswa" id="id_mahasiswa">
+                    <div class="mb-3">
+                        <label for="nim" class="form-label">Nim</label>
+                        <input type="text" class="form-control" id="nim" name="nim" autocomplete="off" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin:</label>
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="no_tlp" class="form-label">No Telpon</label>
+                        <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
+                    </div>
+                    <!-- <div class="mb-3">
+                            <label for="prodi" class="form-label">prodi</label>
+                            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
+                        </div> -->
+                    <div class="mb-3 form-group">
+                        <label for="kelas" class="form-label">Kelas:</label>
+                        <select name="kelas" id="kelas" class="form-control">
+                            <option value="1A">1A</option>
+                            <option value="1B">1B</option>
+                            <option value="1C">1C</option>
+                            <option value="1D">1D</option>
+                            <option value="1E">1E</option>
+                            <option value="1F">1F</option>
+                            <option value="1G">1G</option>
+                            <option value="1H">1H</option>
+                            <option value="1I">1I</option>
+                            <option value="2A">2A</option>
+                            <option value="2B">2B</option>
+                            <option value="2C">2C</option>
+                            <option value="2D">2D</option>
+                            <option value="2E">2E</option>
+                            <option value="2F">2F</option>
+                            <option value="2G">2G</option>
+                            <option value="2H">2H</option>
+                            <option value="2I">2I</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="prodi" class="form-label">Prodi:</label>
+                        <select name="prodi" id="prodi" class="form-control">
+                            <option value="D-IV TI">D-IV TI</option>
+                            <option value="DI-IV SIB">D-IV SIB</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Tambah Data Mahasiswa Modal-->
 <div class="modal fade" id="formTambahModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
     <div class="modal-dialog" role="document">

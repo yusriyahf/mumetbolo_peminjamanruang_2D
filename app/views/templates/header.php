@@ -99,6 +99,11 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASEURL; ?>/admin/jadwal">
+                        <i class="fas fa-comments"></i>
+                        <span>Jadwal</span></a>
+                </li>
             <?php endif; ?>
 
             <!-- Nav Item - Utilities Collapse Menu -->
