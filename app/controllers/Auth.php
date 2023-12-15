@@ -24,6 +24,7 @@ class auth extends Controller
                 $_SESSION['tipe'] = $data['tipe'];
 
                 header('Location: ' . BASEURL . '/' . $_SESSION['tipe']);
+                
             } else {
                 //'gagal', 'diubah', 'danger', 'ruangan'
                 Flasher::setFlash('Login Gagal', 'Periksa kembali username dan password Anda!', 'danger', ' ');

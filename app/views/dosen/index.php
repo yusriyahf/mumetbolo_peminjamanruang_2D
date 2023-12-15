@@ -1,3 +1,14 @@
+<!-- Muncul Popup -->
+<script>
+        Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Selamat <?= $_SESSION['username']; ?> Berhasil Login",
+                showConfirmButton: false,
+                timer: 3500
+            });
+        </script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

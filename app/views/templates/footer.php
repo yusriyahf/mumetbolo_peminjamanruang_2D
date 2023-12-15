@@ -615,6 +615,9 @@
 
 <script src="<?= BASEURL; ?>/js/warna.js"></script>
 
+    <!-- Pop Up -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 </body>
 

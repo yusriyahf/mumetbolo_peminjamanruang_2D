@@ -10861,7 +10861,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("http://localhost:8080/mumetbolo_peminjamanruang_2d/public/img/jti.jpg");
+  background: url("http://localhost/tugasbesar/mumetbolo_peminjamanruang_2d/public/img/jti.jpg");
   /* background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800"); */
   background-position: center;
   background-size: cover;
@@ -11283,4 +11283,42 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+.judul h4{
+  font-size: 40px;
+  padding:10px ;
+  margin-left: 20px;
+}
+
+.isi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.baris table {
+  justify-content: center;
+  border: 0px;
+}
+
+.baris td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.baris img {
+  width: auto;
+  height: 350px;
+}
+
+.baris h6 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.tombol {
+  margin-top: 100x;
 }
