@@ -52,7 +52,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<?= BASEURL . '/' . $_SESSION['tipe']; ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Dashboard</span></a>
+                    <span>Beranda</span></a>
             </li>
 
             <!-- Divider -->
@@ -84,7 +84,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
@@ -103,7 +103,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <span>Ruang</span>
@@ -131,7 +131,7 @@
                 </div>
             <?php endif; ?>
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/permintaanPeminjaman">
                         <i class="fas fa-comments"></i>
                         <span>Permintaan Peminjaman</span></a>
@@ -140,16 +140,16 @@
 
             <!-- Nav Item - Data Peminjaman Menu -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/peminjaman">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Data Peminjaman</span></a>
+                        <i class="fa fa-history" aria-hidden="true"></i>
+                        <span>Riwayat Peminjaman</span></a>
                 </li>
             <?php endif; ?>
 
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
                         <i class="fas fa-comments"></i>
                         <span>Proses Peminjaman</span></a>
@@ -158,9 +158,9 @@
 
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/peminjaman">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fa fa-history" aria-hidden="true"></i>
                         <span>Peminjaman</span></a>
                 </li>
             <?php endif; ?>
