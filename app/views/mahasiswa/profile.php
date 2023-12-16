@@ -8,7 +8,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="judul">
-            <h4 class="m-0 font-weight-bold text-primary mb-3" >Profil Mahasiswa</h4>
+            <h5 class="m-0 font-weight-bold text-primary mb-3 mr-5" >Profil Mahasiswa</h5>
         </div>
 
       
@@ -17,9 +17,9 @@
             <div class="baris">
             <table >
                 <tr>
-                    <!-- <td style="border: 0px;">
+                    <td style="border: 0px;">
                         <img src="../img/foto.png" width=100>
-                    </td> -->
+                    </td>
                     <td style="border: 0px;">
                         <h6 class="m-0 font-weight-bold text-primary mb-3">Nama </h6>
                         <h6 class="m-0 font-weight-bold text-primary mb-3">Nim </h6>

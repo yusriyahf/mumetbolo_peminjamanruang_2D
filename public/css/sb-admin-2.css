@@ -11285,40 +11285,6 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
-.judul h4{
-  font-size: 40px;
-  padding:10px ;
-  margin-left: 20px;
-}
-
-.isi{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.baris table {
-  justify-content: center;
-  border: 0px;
-}
-
-.baris td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.baris img {
-  width: auto;
-  height: 350px;
-}
-
-.baris h6 {
-  margin: 0;
-  font-weight: bold;
-  font-size: 25px;
-  margin-bottom: 5px;
-}
-
 .tombol {
   margin-top: 100x;
 }
