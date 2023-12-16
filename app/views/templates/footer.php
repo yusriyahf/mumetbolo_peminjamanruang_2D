@@ -628,17 +628,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Permintaan Peminjaman</h5>
+                <h5 class="modal-title" id="exampleModalLabel">acc Permintaan Peminjaman</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                Klik Setuju jika anda yakin untuk menyetujui permintaan peminjaman.
+                <form action="<?= BASEURL; ?>/admin/accPeminjaman" method="post">
+                    <input type="hidden" name="id_proses" id="acc_id_proses" value="">
+                    <div class="mb-3">
+                        <!-- <label for="pesan" class="form-label">Alasan Penolakan</label> -->
+                        <input type="hidden" class="form-control" id="pesan" name="pesan" autocomplete="off" required value="disetujui">
+                    </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a id="accPeminjaman" class="btn btn-success" href="">Setuju</a>
+                <button class="btn btn-danger" name="submit" type="submit">acc</button>
+                </form>
             </div>
         </div>
     </div>
@@ -718,7 +724,6 @@
 
 <!-- Pop Up -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 
 </body>
 
