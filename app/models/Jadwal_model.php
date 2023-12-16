@@ -27,17 +27,51 @@ class Jadwal_model
     public function insert()
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['lantai'])) {
-                if (!empty($_POST['id_ruang']) && !empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['lantai'])) {
+            if (isset($_POST['id_ruang']) && isset($_POST['jenis_kegiatan']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
+                if (!empty($_POST['id_ruang']) && !empty($_POST['jenis_kegiatan']) && !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
 
                     $id_ruang = $_POST['id_ruang'];
-                    $nama_rg = $_POST['nama_rg'];
-                    $jenis_rg = $_POST['jenis_rg'];
-                    $kapasitas = $_POST['kapasitas'];
-                    $fasilitas = $_POST['fasilitas'];
-                    $lantai = $_POST['lantai'];
+                    $jenis_kegiatan = $_POST['jenis_kegiatan'];
+                    $hari = $_POST['hari'];
+                    $keterangan = $_POST['keterangan'];
 
-                    $query = "INSERT INTO " . $this->table . " (id_ruang, nama_ruang, lantai, jenis_ruang, kapasitas, fasilitas) VALUES ('$id_ruang','$nama_rg','$lantai','$jenis_rg','$kapasitas','$fasilitas')";
+                    $query = "INSERT INTO " . $this->table . " (id_ruang, jenis_kegiatan, hari, keterangan) VALUES ('$id_ruang','$jenis_kegiatan','$hari','$keterangan')";
+                    if ($sql = $this->db->conn->query($query)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+
+        $query = "DELETE FROM " . $this->table . " WHERE id_jadwal = '$id'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function update($id)
+    {
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['id_ruang']) && isset($_POST['jenis_kegiatan']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
+                if (!empty($_POST['id_ruang']) && !empty($_POST['jenis_kegiatan']) && !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
+
+                    $id_jadwal = $_POST['id_jadwal'];
+                    $id_ruang = $_POST['id_ruang'];
+                    $jenis_kegiatan = $_POST['jenis_kegiatan'];
+                    $hari = $_POST['hari'];
+                    $keterangan = $_POST['keterangan'];
+
+                    $query = "UPDATE " . $this->table . " SET id_ruang='$id_ruang', jenis_kegiatan='$jenis_kegiatan', hari='$hari' , keterangan='$keterangan' WHERE id_jadwal='$id'";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {

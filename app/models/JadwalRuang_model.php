@@ -10,6 +10,19 @@ class JadwalRuang_model
         $this->db = new Database;
     }
 
+    public function fetchAdmin()
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table;
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
     public function fetch($lantai, $hari)
     {
         $data = null;
@@ -33,6 +46,24 @@ class JadwalRuang_model
                 $data[] = $row;
             }
         }
+        return $data;
+    }
+
+    public function cariDataJadwal()
+    {
+        $data = null;
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM " . $this->table . " WHERE id_ruang LIKE '%$keyword%' OR nama_ruang LIKE '%$keyword%'";
+
+        $result = $this->db->conn->query($query);
+
+        if ($result->num_rows > 0) {
+            // Fetch data and store it in the $data variable
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
         return $data;
     }
 }

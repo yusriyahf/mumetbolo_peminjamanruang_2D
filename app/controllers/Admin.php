@@ -443,11 +443,11 @@ class Admin extends Controller
         }
     }
 
-    //admin manage jadwal
+    //ADMIN MANAGE JADWAL
     public function jadwal()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['jd'] = $this->model('Jadwal_model')->fetch();
+            $data['jd'] = $this->model('JadwalRuang_model')->fetchAdmin();
             $data['judul'] = 'Jadwal';
             $this->view('templates/header', $data);
             $this->view('admin/jadwal', $data);
@@ -466,21 +466,49 @@ class Admin extends Controller
 
     public function tambahJadwal()
     {
-        $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
-        if ($result != null) {
-            $mahasiswaModel = $this->model('Mahasiswa_model');
-
-            // Lakukan penambahan mahasiswa
-            if ($mahasiswaModel->insert($result)) {
-
-                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data mahasiswa');
-                header('Location: ' . BASEURL . '/admin/mahasiswa');
-                exit();
-            } else {
-                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data mahasiswa');
-                header('Location: ' . BASEURL . '/admin/mahasiswa');
-                exit();
-            }
+        if ($this->model('Jadwal_model')->insert()) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
         }
+    }
+
+    public function hapusJadwal($id)
+    {
+        if ($this->model('Jadwal_model')->delete($id)) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        }
+    }
+
+    public function ubahJadwal()
+    {
+        if ($this->model('Jadwal_model')->update($_POST['id_jadwal'])) {
+            Flasher::setFlash('berhasil', 'diubah', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        }
+    }
+
+    public function cariJadwal()
+    {
+        $data['jd'] = $this->model('JadwalRuang_model')->cariDataJadwal();
+        $data['judul'] = 'Jadwal';
+        $this->view('templates/header', $data);
+        $this->view('admin/jadwal', $data);
+        $this->view('templates/footer');
     }
 }
