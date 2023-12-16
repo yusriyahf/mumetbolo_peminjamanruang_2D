@@ -41,10 +41,7 @@
                             <!-- <th>Lantai</th> -->
                             <th>Jenis Kegiatan</th>
                             <th>Keterangan</th>
-                            <th>Tanggal Mulai</th>
-                            <th>Tanggal Selesai</th>
                             <th>Hari</th>
-                            <th>Waktu</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -68,12 +65,8 @@
                                     <td><?= $jadwal['id_ruang']; ?></td>
                                     <td><?= $jadwal['jenis_kegiatan']; ?></td>
                                     <td><?= $jadwal['keterangan']; ?></td>
-                                    <td><?= $jadwal['tgl_mulai']; ?></td>
-                                    <td><?= $jadwal['tgl_selesai']; ?></td>
                                     <td><?= $jadwal['hari']; ?></td>
-                                    <td><?= $jadwal['waktu_mulai'] . '-' . $jadwal['waktu_selesai']; ?></td>
                                     <td>
-
                                         <a href="<?= BASEURL; ?>/admin/ubahDosen/<?= $dsn['id_dosen']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalDosen" data-id="<?= $dsn['id_dosen']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>

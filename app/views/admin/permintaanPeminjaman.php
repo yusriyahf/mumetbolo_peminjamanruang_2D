@@ -58,7 +58,7 @@
 
                                         <td>
                                             <?php if ($proses['file'] == NULL) { ?>
-                                                <p class="text-danger">surat belum diunggah</p>
+                                                <p class="text-danger">File belum diunggah</p>
                                             <?php } else { ?>
                                                 <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
                                             <?php } ?>

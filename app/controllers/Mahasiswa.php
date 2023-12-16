@@ -203,11 +203,6 @@ class Mahasiswa extends Controller
         return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
     }
 
-    // public function getStatusRg($id){
-    //     echo "oke";
-    // }
-
-    // ruangan
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;

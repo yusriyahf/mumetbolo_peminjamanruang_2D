@@ -30,6 +30,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <!-- <form action="<?= BASEURL; ?>/mahasiswa/generatePDF" method="post"> -->
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
                     <!-- <input type="hidden" name="id_proses" id="id_proses"> -->
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
@@ -47,15 +48,6 @@
                         <div id="username-display"><?= $_SESSION['hari']; ?>, <?= $_SESSION['tanggal'] ?></div>
                         <input type="hidden" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $_SESSION['tanggal']; ?>" autocomplete="off" required>
                     </div>
-
-                    <!-- <div class="mb-3">
-                        <label for="waktu" class="form-label">Waktu Mulai</label>
-                        <input type="time" class="form-control" id="mulai" name="mulai" value="<?= $_SESSION['waktuMulai']; ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="waktu" class="form-label">Waktu Selesai</label>
-                        <input type="time" class="form-control" id="selesai" name="selesai" value="<?= $_SESSION['waktuSelesai']; ?>" required>
-                    </div> -->
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Tujuan Peminjaman</label>
                         <input type="text" class="form-control" id="tujuan" name="tujuan" autocomplete="off" required>

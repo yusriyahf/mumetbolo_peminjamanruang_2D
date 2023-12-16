@@ -65,7 +65,7 @@
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <td><?php if ($proses['file'] == NULL) { ?>
-                                                <a href="#" class="text-danger text-decoration-none">Surat belum diunggah</a>
+                                                <a href="#" class="text-danger text-decoration-none">File belum diunggah</a>
                                             <?php } else { ?>
                                                 <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
                                             <?php } ?>
