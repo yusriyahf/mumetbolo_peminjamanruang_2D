@@ -5,7 +5,8 @@ class Mahasiswa extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjamanMHS($_SESSION['username']);
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
             $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
             $data['judul'] = 'Mahasiswa';
@@ -41,6 +42,24 @@ class Mahasiswa extends Controller
     {
         $data['judul'] = 'Peminjaman';
         $data['proses'] = $this->model('Proses_model')->fetch();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/peminjaman', $data);
+        $this->view('templates/footer');
+    }
+
+    public function peminjamanDiAcc()
+    {
+        $data['judul'] = 'Peminjaman';
+        $data['proses'] = $this->model('Proses_model')->fetchAcc();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/peminjaman', $data);
+        $this->view('templates/footer');
+    }
+
+    public function peminjamanDiTolak()
+    {
+        $data['judul'] = 'Peminjaman';
+        $data['proses'] = $this->model('Proses_model')->fetchTolak();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
@@ -83,8 +102,6 @@ class Mahasiswa extends Controller
         }
     }
 
-
-
     public function tanggalPeminjaman()
     {
         $data['judul'] = 'Tanggal Peminjaman';
@@ -92,8 +109,6 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/tanggalPeminjaman');
         $this->view('templates/footer');
     }
-
-
 
     public function ubahPassword()
     {
@@ -135,8 +150,9 @@ class Mahasiswa extends Controller
 
     public function formPinjam()
     {
-        // $_SESSION['tujuan'] = $_POST['tujuan'];
-        if ($this->model('Proses_model')->insert()) {
+
+        $_SESSION['tujuan'] = $_POST['tujuan'];
+        if ($this->model('Proses2_model')->insert()) {
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
         } else {
@@ -144,22 +160,7 @@ class Mahasiswa extends Controller
         }
     }
 
-    public function processForm()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Ambil nilai input dari formulir
-            $tanggal = $_POST['tanggal'];
 
-            // Simpan nilai input ke dalam session
-            $_SESSION['tanggal'] = $tanggal;
-            // var_dump($_SESSION['tanggal']);
-
-            // Redirect atau lakukan tindakan lainnya
-            header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
-            unset($_SESSION['ruang']);
-            exit();
-        }
-    }
 
     public function uploadFile($id_proses)
     {
@@ -199,14 +200,47 @@ class Mahasiswa extends Controller
         }
     }
 
-    // ruangan
+    public function processForm()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tanggal = $_POST['tanggal'];
+
+            $_SESSION['tanggal'] = $tanggal;
+
+            $hari = $this->getIndonesianDayName($tanggal);
+
+            $_SESSION['hari'] = $hari;
+
+            header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
+            unset($_SESSION['ruang']);
+        }
+    }
+
+    private function getIndonesianDayName($tanggal)
+    {
+        $days = array(
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        );
+
+        $dayInEnglish = date('l', strtotime($tanggal));
+
+        return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
+    }
+
     public function ruang5()
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
-            # code...
-            // $data['ruang'] = $this->model('Ruang_model')->fetch(5);
-            $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
+            // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
+            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
+            // var_dump($_SESSION['hari']);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['hari']);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
@@ -223,7 +257,7 @@ class Mahasiswa extends Controller
     {
         $_SESSION['ruang'] = 6;
         if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(6);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(6);
             $data['judul'] = 'Lantai 6';
             $data['tanggal'] = $_SESSION['tanggal'];
             // var_dump($data['tanggal']);

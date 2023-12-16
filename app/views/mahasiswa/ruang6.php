@@ -18,14 +18,13 @@
 
         </div>
         <img src="<?= BASEURL; ?>/img/6new.png" alt="" width="70%" class="mx-auto">
-
         <div class="card-body">
             <div class="row">
                 <?php $i = 1;
                 if (!empty($data['ruang']) && is_array($data['ruang'])) {
                     foreach ($data['ruang'] as $ruang) : ?>
                         <div class="col-lg-3 mb-4">
-                            <div class="card text-white shadow ruang-card" style="" data-status="<?= $ruang['status']; ?>">
+                            <div class="card text-white shadow ruang-card">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3">Status <?= $ruang['status']; ?></div>

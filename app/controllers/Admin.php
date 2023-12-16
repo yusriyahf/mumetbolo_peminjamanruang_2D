@@ -5,6 +5,8 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalDosen'] = $this->model('Dosen_model')->countDosen();
             $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa();
             $data['totalRuang'] = $this->model('Ruang_model')->countRuang();
@@ -78,6 +80,44 @@ class Admin extends Controller
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
             // $data['status'] = $this->model('Proses_model')->getStatus();
             $data['proses'] = $this->model('Proses_model')->fetch();
+            $data['judul'] = 'Peminjaman';
+            $this->view('templates/header', $data);
+            $this->view('admin/peminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+    public function peminjamanDiAcc()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['status'] = $this->model('Proses_model')->getStatus();
+            $data['proses'] = $this->model('Proses_model')->fetchAcc();
+            $data['judul'] = 'Peminjaman';
+            $this->view('templates/header', $data);
+            $this->view('admin/peminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+    public function peminjamanDitolak()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['status'] = $this->model('Proses_model')->getStatus();
+            $data['proses'] = $this->model('Proses_model')->fetchTolak();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
@@ -415,5 +455,74 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
             exit();
         }
+    }
+
+    //ADMIN MANAGE JADWAL
+    public function jadwal()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['jd'] = $this->model('JadwalRuang_model')->fetchAdmin();
+            $data['judul'] = 'Jadwal';
+            $this->view('templates/header', $data);
+            $this->view('admin/jadwal', $data);
+            $this->view('templates/footer');
+            # code...
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+
+    public function tambahJadwal()
+    {
+        if ($this->model('Jadwal_model')->insert()) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        }
+    }
+
+    public function hapusJadwal($id)
+    {
+        if ($this->model('Jadwal_model')->delete($id)) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        }
+    }
+
+    public function ubahJadwal()
+    {
+        if ($this->model('Jadwal_model')->update($_POST['id_jadwal'])) {
+            Flasher::setFlash('berhasil', 'diubah', 'success', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger', 'Data jadwal');
+            header('Location: ' . BASEURL . '/admin/jadwal/');
+            exit();
+        }
+    }
+
+    public function cariJadwal()
+    {
+        $data['jd'] = $this->model('JadwalRuang_model')->cariDataJadwal();
+        $data['judul'] = 'Jadwal';
+        $this->view('templates/header', $data);
+        $this->view('admin/jadwal', $data);
+        $this->view('templates/footer');
     }
 }

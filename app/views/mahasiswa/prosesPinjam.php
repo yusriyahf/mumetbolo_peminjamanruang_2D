@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Proses Peminjaman</h6>
-            <a href="<?= BASEURL; ?>/file/suratIzin.pdf" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
+            <a href="localhost/mumetbolo_peminjamanruang_2d/dompdf/cetak.php" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
             <div class="row mt-3">
                 <div class="col-lg-4">
                     <?php Flasher::flash() ?>
@@ -25,6 +25,8 @@
                         <tr>
                             <th>#</th>
                             <th>Nama ruang</th>
+                            <th>Lantai</th>
+                            <!-- <th>Tujuan</th> -->
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Upload Surat Peminjaman</th>
@@ -39,38 +41,22 @@
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $proses['id_ruang']; ?></td>
+                                        <td><?= $proses['nama_ruang']; ?></td>
+                                        <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
-                                        <td><?= $proses['tanggal_pinjam']; ?></td>
+                                        <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <td>
-                                            <?php if($proses['file'] == NULL ){?>
-                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
-                                            <div class="input-group">
-                                                <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                 <!-- <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button> -->
-                                                <button class="btn btn-primary" type="submit" name="submit" id="inputGroupFileAddon04">
-                                                    <i class="fa fa-upload fa-sm text-white-50" aria-hidden="true"></i>
-                                                    <span class="text-white">Upload</span>
-                                                </button>
-  
-                                                <!-- <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04"s><i class="class="fa fa-upload fa-sm text-white-50"></i> Upload</button> -->
-                                            </div>
-                                            </form>
-                                        <?php }else{ ?>
-                                            <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>">Sudah upload Surat Pengajuan Peminjaman</a>
-                                        <?php } ?>
+                                            <?php if ($proses['file'] == NULL) { ?>
+                                                <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
+                                                    <div class="input-group">
+                                                        <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                        <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                                    </div>
+                                                </form>
+                                            <?php } else { ?>
+                                                <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
+                                            <?php } ?>
                                         </td>
-                                        
-                                        
-                                        <!-- <td>
-                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
-                                                <div class="input-group">
-                                                    <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
-                                                </div>
-                                            </form>
-                                        </td> -->
-
                                         <td><?= $proses['status']; ?></td>
                                         </form>
                                     </tr>

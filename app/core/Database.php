@@ -6,7 +6,6 @@ class Database
     private $username = "root";
     private $password;
     private $db = "peminjaman_ruangan_fixbgt";
-
     public $conn;
 
     public function __construct()

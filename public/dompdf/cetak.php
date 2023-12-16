@@ -1,13 +1,12 @@
 <?php
 require "vendor/autoload.php"; // Tambahkan titik koma di sini
 
-session_start();
 // Referensi namespace Dompdf
 use Dompdf\Dompdf;
 
 // Instantiasi dan menggunakan kelas dompdf
 $dompdf = new Dompdf();
-$html = "<p style='text-align: center;line-height:0.1; '>KEMENTRIAN PENDIDIKAN, KEBUDAYAAN</p>";
+$html = "<p style='text-align: center;line-height:0.1; '> PENDIDIKAN, KEBUDAYAAN</p>";
 $html .= "<img src='C:/xampp/htdocs/dasarWeb/dompdf/vendor/dompdf/dompdf/src/Image/logo2.png' style='position: absolute; top: 20px; left: 20px; width: 100px; height: auto;' />";
 $html .= "<img src='C:/xampp/htdocs/dasarWeb/dompdf/vendor/dompdf/dompdf/src/Image/logowri.png' style='position: absolute; top: 20px; left: 570px; width: 100px; height: auto;' />";
 $html .=       "<p style='text-align: center;line-height:0.1;font-size: 11; '>RISET, DAN TEKNOLOGI</p>";

@@ -2,24 +2,20 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai <?= $data['lantai']; ?></h1>
-    <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
-    <div class="clock"></div>
+    <h1 class="h3 mb-2 text-gray-800">Jadwal</h1>
+    <p class="mb-4">Jadwal Ruang Jurusan Teknik Informatika <b>POLINEMA</b></p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahRuang">
-                <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
-                    <span style="margin-left: 5px;">Tambah Data Ruangan
+            <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Jadwal</h6>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahJadwalModal">
+                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Jadwal
             </button>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formModal">
-                <div id="clock"></div>
-            </button>
-            <form action="<?= BASEURL; ?>/admin/cariRuang/5" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <!-- <a href="#" data-toggle="modal" data-target="#formTambahDosenModal" class="btn-sm btn-primary text-decoration-none">Tambah Data Mahasiswa</a> -->
+            <form action="<?= BASEURL; ?>/admin/cariJadwal" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Ruang" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                    <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -33,9 +29,7 @@
                     <?php Flasher::flash() ?>
                 </div>
             </div>
-
         </div>
-        <img src="<?= BASEURL; ?>/img/5new.png" alt="" width="70%" class="mx-auto">
 
         <div class="card-body">
             <div class="table-responsive">
@@ -43,11 +37,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>ID Ruang</th>
+                            <th>Id Ruang</th>
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
-                            <th>Jenis Ruangan</th>
-                            <th>Kapasitas</th>
+                            <th>Jenis Kegiatan</th>
+                            <th>Keterangan</th>
+                            <th>Hari</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -64,20 +59,22 @@
                     </tfoot> -->
                     <tbody>
                         <?php $i = 1;
-                        if (!empty($data['ruang']) && is_array($data['ruang'])) {
-                            foreach ($data['ruang'] as $ruang) : ?>
+                        if (!empty($data['jd']) && is_array($data['jd'])) {
+                            foreach ($data['jd'] as $jadwal) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $ruang['id_ruang']; ?></td>
-                                    <td><?= $ruang['nama_ruang']; ?></td>
-                                    <td><?= $ruang['lantai']; ?></td>
-                                    <td><?= $ruang['jenis_ruang']; ?></td>
-                                    <td><?= $ruang['kapasitas']; ?></td>
+                                    <td><?= $jadwal['id_ruang']; ?></td>
+                                    <td><?= $jadwal['nama_ruang']; ?></td>
+                                    <td><?= $jadwal['lantai']; ?></td>
+                                    <td><?= $jadwal['jenis_kegiatan']; ?></td>
+                                    <td><?= $jadwal['keterangan']; ?></td>
+                                    <td><?= $jadwal['hari']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/admin/ubahRuang/<?= $mhs['id_ruang']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahRuang" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditRuang" data-id="<?= $ruang['id_ruang']; ?>">
+                                        <a href="<?= BASEURL; ?>/admin/ubahJadwal/<?= $jadwal['id_jadwal']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalJadwal" data-id="<?= $jadwal['id_jadwal']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="<?= BASEURL; ?>/admin/hapusRuang/<?= $ruang['id_ruang']; ?>/<?= $ruang['lantai']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
+
+                                        <a href="<?= BASEURL; ?>/admin/hapusJadwal/<?= $jadwal['id_jadwal']; ?>" class="btn btn-danger btn-split btn-sm" onclick="return confirm('yakin')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
@@ -85,7 +82,8 @@
                         <?php endforeach;
                         } else {
                             echo "No data available.";
-                        } ?>
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
