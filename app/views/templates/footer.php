@@ -586,11 +586,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Klik Acc jika anda yakin untuk menyetujui permintaan peminjaman.
+                Klik Setuju jika anda yakin untuk menyetujui permintaan peminjaman.
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a id="accPeminjaman" class="btn btn-success" href="">Acc</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="accPeminjaman" class="btn btn-success" href="">Setuju</a>
             </div>
         </div>
     </div>
@@ -615,7 +615,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                 <button class="btn btn-danger" name="submit" type="submit">Tolak</button>
                 </form>
             </div>
@@ -628,14 +628,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tolak Permintaan Peminjaman</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Alasan</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="pesan" class="form-label">Alasan Penolakan</label>
                     <h5 id="alasan"></h5>
                 </div>
             </div>

@@ -25,6 +25,8 @@
                         <tr>
                             <th>#</th>
                             <th>Nama ruang</th>
+                            <th>Lantai</th>
+                            <!-- <th>Tujuan</th> -->
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Upload Surat Peminjaman</th>
@@ -39,32 +41,22 @@
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $proses['id_ruang']; ?></td>
+                                        <td><?= $proses['nama_ruang']; ?></td>
+                                        <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
                                         <td>
-                                            <?php if($proses['file'] == NULL ){?>
-                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
-                                            <div class="input-group">
-                                                <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
-                                            </div>
-                                            </form>
-                                        <?php }else{ ?>
-                                            <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>">Sudah upload Surat Pengajuan Peminjaman</a>
-                                        <?php } ?>
+                                            <?php if ($proses['file'] == NULL) { ?>
+                                                <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
+                                                    <div class="input-group">
+                                                        <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                        <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                                    </div>
+                                                </form>
+                                            <?php } else { ?>
+                                                <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
+                                            <?php } ?>
                                         </td>
-                                        
-                                        
-                                        <!-- <td>
-                                            <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
-                                                <div class="input-group">
-                                                    <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
-                                                </div>
-                                            </form>
-                                        </td> -->
-
                                         <td><?= $proses['status']; ?></td>
                                         </form>
                                     </tr>

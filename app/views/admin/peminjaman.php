@@ -46,15 +46,21 @@
                         if (!empty($data['proses']) && is_array($data['proses'])) {
                             foreach ($data['proses'] as $proses) :
                                 if ($proses['status'] != 'diproses') {
+                                    $class = ($proses['status'] == 'disetujui') ? 'text-success' : 'text-danger'; // Sesuaikan dengan class yang diinginkan
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $proses['id_ruang']; ?></td>
+                                        <td><?= $proses['nama_ruang']; ?></td>
                                         <td><?= $proses['username']; ?></td>
                                         <td><?= $proses['tanggal_pinjam']; ?></td>
-                                        <td><a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
+                                        <td><?php if ($proses['file'] == NULL) { ?>
+                                                <a href="#" class="text-danger text-decoration-none">Surat belum diunggah</a>
+                                            <?php } else { ?>
+                                                <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
+                                            <?php } ?>
+                                        </td>
                                         <td>
-                                            <a href="#" class="alasanPenolakan" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status']; ?>">
+                                            <a href="#" class="alasanPenolakan <?= $class; ?> text-decoration-none" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status']; ?>">
                                                 <?= $proses['status']; ?>
                                             </a>
                                         </td>
