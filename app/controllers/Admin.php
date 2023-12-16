@@ -12,6 +12,20 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/index', $data);
             $this->view('templates/footer');
+            if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
+?>
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "<?= $_SESSION['username']; ?> Berhasil Login",
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                    });
+                </script>
+<?php
+                $_SESSION['first_login'] = false;
+            }
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -167,7 +181,7 @@ class Admin extends Controller
         $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
         if ($result != null) {
             $mahasiswaModel = $this->model('Mahasiswa_model');
-            
+
             // Lakukan penambahan mahasiswa
             if ($mahasiswaModel->insert($result)) {
 

@@ -581,10 +581,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="pesan" class="form-label">Alasan Penolakan</label>
-                        <h5 id="alasan"></h5>
-                    </div>
+                <div class="mb-3">
+                    <label for="pesan" class="form-label">Alasan Penolakan</label>
+                    <h5 id="alasan"></h5>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -615,8 +615,8 @@
 
 <script src="<?= BASEURL; ?>/js/warna.js"></script>
 
-    <!-- Pop Up -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Pop Up -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 </body>

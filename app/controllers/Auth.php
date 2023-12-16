@@ -22,9 +22,9 @@ class auth extends Controller
                 $data = $this->model('User_model')->fetch_single($usn);
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['tipe'] = $data['tipe'];
+                $_SESSION['first_login'] = true;
 
                 header('Location: ' . BASEURL . '/' . $_SESSION['tipe']);
-                
             } else {
                 //'gagal', 'diubah', 'danger', 'ruangan'
                 Flasher::setFlash('Login Gagal', 'Periksa kembali username dan password Anda!', 'danger', ' ');

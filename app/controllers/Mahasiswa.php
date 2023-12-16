@@ -12,6 +12,21 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/index', $data);
             $this->view('templates/footer');
+            if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
+?>
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "<?= $_SESSION['username']; ?> Berhasil Login",
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                    });
+                </script>
+            <?php
+                // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
+                $_SESSION['first_login'] = false;
+            }
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -84,7 +99,7 @@ class Mahasiswa extends Controller
     {
         if ($this->model('User_model')->validasi($_SESSION['username'], $_POST['password'])) {
             if ($this->model('User_model')->ubah($_POST['password_edit'])) {
-                echo "<script>alert('Berhasil Ubah Password')</script>";
+                $_SESSION['popuppw'] = true;
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
             } else {
                 echo "GAGAL UBAH";
@@ -101,6 +116,21 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/profile', $data);
         $this->view('templates/footer');
+        if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
+            ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Password berhasil diubah",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+<?php
+            // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
+            $_SESSION['popuppw'] = false;
+        }
     }
 
     public function formPinjam()
@@ -131,9 +161,10 @@ class Mahasiswa extends Controller
         }
     }
 
-    public function uploadFile($id_proses){
+    public function uploadFile($id_proses)
+    {
         // var_dump($_FILES); die;
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $nama_file = $_FILES['suratPinjam']['name'];
             $ukuran = $_FILES['suratPinjam']['size'];
             $error = $_FILES['suratPinjam']['error'];
@@ -142,27 +173,26 @@ class Mahasiswa extends Controller
 
             $maxFileSize = 10 * 1024 * 1024; //10mb
 
-            if($error === 0){
+            if ($error === 0) {
                 $ekstensi = ['pdf'];
-                $ekstensiFile = explode( '.' , $nama_file );
+                $ekstensiFile = explode('.', $nama_file);
                 $ekstensiFile = strtolower(end($ekstensiFile));
-                if(in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize){
+                if (in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize) {
                     $nama = $id_proses . '-' . $_SESSION['username'] . '.' . $ekstensiFile;
-                    if(move_uploaded_file($tmp, '../public/uploadFile/' . $nama)){
-                        if($this->model('Proses_model')->upFile($id_proses, $nama)){
+                    if (move_uploaded_file($tmp, '../public/uploadFile/' . $nama)) {
+                        if ($this->model('Proses_model')->upFile($id_proses, $nama)) {
                             echo "<script> alert('berhasil nambah ke db'); </script>";
                             header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                         }
-                    }else{
+                    } else {
                         echo "<script> alert('gagal upload'); </script>";
                         header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                     }
-                }else{
+                } else {
                     echo "<script> alert('file tidak sesuai, periksa ekstensi dan ukuran file'); </script>";
                     header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                 }
-            }
-            else if($error === 4){
+            } else if ($error === 4) {
                 echo "<script> alert('belum pilih file'); </script>";
                 header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
             }
