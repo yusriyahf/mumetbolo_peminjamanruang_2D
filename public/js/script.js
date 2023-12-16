@@ -118,7 +118,9 @@ $(document).ready(function () {
     //Alasan Penolakan
     $('.alasanPenolakan').on('click', function () {
         const pesan = $(this).data('pesan');
-        $('#pesanPenolakanModal #alasan').text(pesan);
+        const defaultPesan = 'Hahahah'; // Nilai default disetel sebagai 'Hahahah'
+        const finalPesan = pesan || defaultPesan;
+        $('#pesanPenolakanModal #alasan').text(finalPesan);
     });
     
 
@@ -135,6 +137,26 @@ $(document).ready(function () {
     $('.tolakPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
         $("#tolak_id_proses").val(id_proses);
+    });
+
+    //user tampil status ruangan
+
+    $('.statusRg').each(function () {
+        const idRuang = $(this).data('id_ruang');
+        const tgl = $(this).data('tgl');
+
+        $.ajax({
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/mahasiswa/getStatusRg/' + idRuang + '/' + tgl,
+            method: 'get',
+            dataType: 'text',
+            success: function (data) {
+                console.log(data);
+                $('.statusRg').text('Status: ' + data);
+            },
+            error: function (xhr, status, error) {
+                console.log('Error fetching status ruangan:', error);
+            }
+        });
     });
 });
 
@@ -161,3 +183,5 @@ setInterval(updateClock, 1000);
 
             // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
             updateClock();
+
+       

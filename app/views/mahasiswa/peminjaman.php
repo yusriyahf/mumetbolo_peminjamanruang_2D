@@ -33,6 +33,11 @@
 
 
         <div class="card-body">
+            <div class="btn-group mb-3">
+                <a href="<?= BASEURL; ?>/mahasiswa/peminjaman" class="btn btn-primary">Semua</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiacc" class="btn btn-primary">Disetujui</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiTolak" class="btn btn-primary">Ditolak</a>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -46,36 +51,31 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>prodi</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['proses']) && is_array($data['proses'])) {
                             foreach ($data['proses'] as $proses) :
                                 if ($proses['status'] != 'diproses' && $proses['username'] == $_SESSION['username']) {
+                                    $class = ($proses['status'] == 'disetujui') ? 'text-success' : 'text-danger';
                         ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $proses['id_ruang']; ?></td>
-                         
+                                        <td><?= $proses['nama_ruang']; ?></td>
+                                        <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
-                                        <td><?= $proses['tanggal_pinjam']; ?></td>
-                                        <td><a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td>
+                                        <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
+                                        <td><?php if ($proses['file'] == NULL) { ?>
+                                                <a href="#" class="text-danger text-decoration-none">File belum diunggah</a>
+                                            <?php } else { ?>
+                                                <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
+                                            <?php } ?>
+                                        </td>
                                         <td>
-                                            <a href="#" class="alasanPenolakan" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status'];?>">
+                                            <a href="#" class="alasanPenolakan <?= $class; ?> text-decoration-none" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status']; ?>">
                                                 <?= $proses['status']; ?>
                                             </a>
                                         </td>
-                                        
+
                                     </tr>
                         <?php
                                 }
