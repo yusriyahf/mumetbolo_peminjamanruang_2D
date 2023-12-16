@@ -80,6 +80,44 @@ class Admin extends Controller
             }
         }
     }
+    public function peminjamanDiAcc()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['status'] = $this->model('Proses_model')->getStatus();
+            $data['proses'] = $this->model('Proses_model')->fetchAcc();
+            $data['judul'] = 'Peminjaman';
+            $this->view('templates/header', $data);
+            $this->view('admin/peminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+    public function peminjamanDitolak()
+    {
+        if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            // $data['status'] = $this->model('Proses_model')->getStatus();
+            $data['proses'] = $this->model('Proses_model')->fetchTolak();
+            $data['judul'] = 'Peminjaman';
+            $this->view('templates/header', $data);
+            $this->view('admin/peminjaman', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            if (isset($_SESSION['tipe'])) {
+                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
+            } else {
+                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
+                header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
     public function permintaanPeminjaman()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {

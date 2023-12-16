@@ -55,6 +55,31 @@ class Proses_model
         return $data;
     }
 
+    public function fetchAcc()
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE status = 'disetujui' ORDER BY id_proses DESC";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+    public function fetchTolak()
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE status = 'ditolak' ORDER BY id_proses DESC ";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
     public function getStatus()
     {
         $data = null;

@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Peminjaman</h6>
-            <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <!-- <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                     <div class="input-group-append">
@@ -18,7 +18,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <div class="row mt-3">
                 <div class="col-lg-4">
@@ -29,6 +29,11 @@
 
 
         <div class="card-body">
+            <div class="btn-group mb-3">
+                <a href="<?= BASEURL; ?>/admin/peminjaman" class="btn btn-primary">Semua</a>
+                <a href="<?= BASEURL; ?>/admin/peminjamanDiacc" class="btn btn-primary">Disetujui</a>
+                <a href="<?= BASEURL; ?>/admin/peminjamanDiTolak" class="btn btn-primary">Ditolak</a>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -52,7 +57,7 @@
                                         <td><?= $i++; ?></td>
                                         <td><?= $proses['nama_ruang']; ?></td>
                                         <td><?= $proses['username']; ?></td>
-                                        <td><?= $proses['tanggal_pinjam']; ?></td>
+                                        <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <td><?php if ($proses['file'] == NULL) { ?>
                                                 <a href="#" class="text-danger text-decoration-none">Surat belum diunggah</a>
                                             <?php } else { ?>

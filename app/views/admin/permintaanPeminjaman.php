@@ -53,7 +53,7 @@
                                         <td><?= $proses['nama_ruang']; ?></td>
                                         <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
-                                        <td><?= $proses['tanggal_pinjam']; ?></td>
+                                        <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <!-- <td><a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Surat Peminjaman</a></td> -->
 
                                         <td>

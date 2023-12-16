@@ -28,6 +28,7 @@
     <link rel="icon" href="<?= BASEURL; ?>/img/JTI.png" type="image/png">
 
 
+
 </head>
 
 <body id="page-top">
@@ -49,10 +50,10 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= ($_SESSION['activePage'] = 'index') ? 'active' : ''; ?>">
                 <a class="nav-link" href="<?= BASEURL . '/' . $_SESSION['tipe']; ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Dashboard</span></a>
+                    <span>Beranda</span></a>
             </li>
 
             <!-- Divider -->
@@ -264,10 +265,12 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/profile">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
+                                <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
+                                    <a class="dropdown-item" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/profile">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                <?php endif; ?>
                                 <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
@@ -276,11 +279,16 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a> -->
-                                <div class="dropdown-divider"></div>
+                                <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
+
+                                    <div class="dropdown-divider"></div>
+                                <?php endif; ?>
+
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
+
                             </div>
                         </li>
 

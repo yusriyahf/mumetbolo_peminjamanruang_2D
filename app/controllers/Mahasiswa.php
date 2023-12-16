@@ -31,6 +31,24 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
     }
+
+    public function peminjamanDiAcc()
+    {
+        $data['judul'] = 'Peminjaman';
+        $data['proses'] = $this->model('Proses_model')->fetchAcc();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/peminjaman', $data);
+        $this->view('templates/footer');
+    }
+
+    public function peminjamanDiTolak()
+    {
+        $data['judul'] = 'Peminjaman';
+        $data['proses'] = $this->model('Proses_model')->fetchTolak();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/peminjaman', $data);
+        $this->view('templates/footer');
+    }
     public function prosesPinjam()
     {
         $data['judul'] = 'Peminjaman';
@@ -69,8 +87,6 @@ class Mahasiswa extends Controller
         }
     }
 
-
-
     public function tanggalPeminjaman()
     {
         $data['judul'] = 'Tanggal Peminjaman';
@@ -78,8 +94,6 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/tanggalPeminjaman');
         $this->view('templates/footer');
     }
-
-
 
     public function ubahPassword()
     {
@@ -106,7 +120,8 @@ class Mahasiswa extends Controller
 
     public function formPinjam()
     {
-        // $_SESSION['tujuan'] = $_POST['tujuan'];
+
+        $_SESSION['tujuan'] = $_POST['tujuan'];
         if ($this->model('Proses2_model')->insert()) {
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
