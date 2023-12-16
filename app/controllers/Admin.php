@@ -25,7 +25,7 @@ class Admin extends Controller
                         showCloseButton: true,
                     });
                 </script>
-<?php
+            <?php
                 $_SESSION['first_login'] = false;
             }
         } else {
@@ -53,6 +53,7 @@ class Admin extends Controller
         $pesan = $_POST['pesan'];
 
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+            $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
@@ -61,15 +62,16 @@ class Admin extends Controller
         }
     }
 
-    public function accPeminjaman($id_proses)
+    public function accPeminjaman()
     {
+        $id_proses = $_POST['id_proses'];
         $status = 'disetujui';
-        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, NULL)) {
-            echo "<script>alert('ACC BERHASIL')</script>";
+        $pesan = $_POST['pesan'];
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+            $_SESSION['popupacc'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
-            echo "<script>alert('ACC GAGAL')</script>";
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         }
@@ -84,6 +86,20 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
+            if (isset($_SESSION['popuptolak']) && $_SESSION['popuptolak'] === true) {
+            ?>
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Permintaan Peminjaman Ditolak",
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                    });
+                </script>
+<?php
+                $_SESSION['popuptolak'] = false;
+            }
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";

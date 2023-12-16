@@ -71,32 +71,40 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/prosesPinjam', $data);
         $this->view('templates/footer');
+        if (isset($_SESSION['popuppinjam']) && $_SESSION['popuppinjam'] === true) {
+            ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Berhasil Pinjam Ruangan",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            // Atur ulang variabel sesi popuppinjam agar pesan tidak ditampilkan lagi pada login berikutnya
+            $_SESSION['popuppinjam'] = false;
+        }
     }
 
     public function pinjamRuang($id, $tanggal)
     {
-        // Pastikan user telah login dan sesi username sudah ada
         if (isset($_SESSION['username'])) {
-            // Ambil informasi dari query string
             $idRuang = $id;
             $tanggalPeminjam = $tanggal;
-            // var_dump($tanggalPeminjam);
 
-            // Jika id_ruang dan tanggalPeminjam ada, panggil model untuk menyimpan data peminjaman
             if ($idRuang && $tanggalPeminjam) {
                 $username = $_SESSION['username'];
                 $this->model('Proses_model')->insert($idRuang, $username, $tanggalPeminjam);
 
-                // Redirect atau lakukan tindakan lainnya
                 header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
                 exit();
             } else {
-                // Jika id_ruang atau tanggalPeminjam tidak ada, arahkan ke halaman sebelumnya
                 header('Location: gagalcok.php');
                 exit();
             }
         } else {
-            // Jika user tidak login, arahkan ke halaman login atau tindakan lainnya
             header('Location: halaman_login.php');
             exit();
         }
@@ -132,7 +140,7 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/profile', $data);
         $this->view('templates/footer');
         if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
-            ?>
+        ?>
             <script>
                 Swal.fire({
                     position: "center",
@@ -153,14 +161,13 @@ class Mahasiswa extends Controller
 
         $_SESSION['tujuan'] = $_POST['tujuan'];
         if ($this->model('Proses2_model')->insert()) {
+            $_SESSION['popuppinjam'] = true;
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
         } else {
             echo "SEK GAGAL";
         }
     }
-
-
 
     public function uploadFile($id_proses)
     {
