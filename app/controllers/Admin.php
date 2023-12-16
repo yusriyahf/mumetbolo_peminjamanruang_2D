@@ -466,7 +466,7 @@ class Admin extends Controller
 
     public function tambahJadwal()
     {
-        $result = $this->model('Jadwal_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
+        $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
         if ($result != null) {
             $mahasiswaModel = $this->model('Mahasiswa_model');
 
