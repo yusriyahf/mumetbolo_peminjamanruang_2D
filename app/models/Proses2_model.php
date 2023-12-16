@@ -1,8 +1,8 @@
 <?php
 
-class Proses_model
+class Proses2_model
 {
-    private $table = 'proses_ruang';
+    private $table = 'proses';
 
     private $db;
 

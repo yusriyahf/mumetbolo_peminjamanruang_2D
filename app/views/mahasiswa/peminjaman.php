@@ -30,7 +30,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nama ruang</th>
-                            <!-- <th>Lantai</th> -->
+                            <th>Lantai</th>
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Surat</th>

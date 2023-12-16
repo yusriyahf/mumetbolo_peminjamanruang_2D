@@ -83,8 +83,60 @@ class Mahasiswa extends Controller
                 });
             </script>
         <?php
-            // Atur ulang variabel sesi popuppinjam agar pesan tidak ditampilkan lagi pada login berikutnya
             $_SESSION['popuppinjam'] = false;
+        } else if (isset($_SESSION['popupberhasil']) && $_SESSION['popupberhasil'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Berhasil Upload File",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            // Atur ulang variabel sesi popupberhasil agar pesan tidak ditampilkan lagi pada login berikutnya
+            $_SESSION['popupberhasil'] = false;
+        } else if (isset($_SESSION['popupgagal']) && $_SESSION['popupgagal'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Gagal Upload File",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            $_SESSION['popupbelumpillihfile'] = false;
+        } else if (isset($_SESSION['popupbelumpilihfile']) && $_SESSION['popupbelumpilihfile'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Belum Pilih File",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            $_SESSION['filetidaksesuai'] = false;
+        } else if (isset($_SESSION['filetidaksesuai']) && $_SESSION['filetidaksesuai'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "File Tidak Sesuai Format pdf",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            $_SESSION['filetidaksesuai'] = false;
         }
     }
 
@@ -158,7 +210,6 @@ class Mahasiswa extends Controller
 
     public function formPinjam()
     {
-
         $_SESSION['tujuan'] = $_POST['tujuan'];
         if ($this->model('Proses2_model')->insert()) {
             $_SESSION['popuppinjam'] = true;
@@ -189,19 +240,19 @@ class Mahasiswa extends Controller
                     $nama = $id_proses . '-' . $_SESSION['username'] . '.' . $ekstensiFile;
                     if (move_uploaded_file($tmp, '../public/uploadFile/' . $nama)) {
                         if ($this->model('Proses_model')->upFile($id_proses, $nama)) {
-                            echo "<script> alert('berhasil nambah ke db'); </script>";
+                            $_SESSION['popupberhasil'] = true;
                             header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                         }
                     } else {
-                        echo "<script> alert('gagal upload'); </script>";
+                        $_SESSION['popupgagal'] = true;
                         header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                     }
                 } else {
-                    echo "<script> alert('file tidak sesuai, periksa ekstensi dan ukuran file'); </script>";
+                    $_SESSION['filetidaksesuai'] = true;
                     header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                 }
             } else if ($error === 4) {
-                echo "<script> alert('belum pilih file'); </script>";
+                $_SESSION['popupbelumpilihfile'] = true;
                 header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
             }
         }
