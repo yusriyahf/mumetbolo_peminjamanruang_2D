@@ -181,3 +181,5 @@ setInterval(updateClock, 1000);
 
             // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
             updateClock();
+
+       

@@ -37,8 +37,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nama Ruang</th>
-                            <th>Lantai</th>
+                            <th>Id Ruang</th>
+                            <!-- <th>Lantai</th> -->
                             <th>Jenis Kegiatan</th>
                             <th>Keterangan</th>
                             <th>Tanggal Mulai</th>
@@ -65,8 +65,7 @@
                             foreach ($data['jd'] as $jadwal) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $jadwal['nama_ruang']; ?></td>
-                                    <td><?= $jadwal['lantai']; ?></td>
+                                    <td><?= $jadwal['id_ruang']; ?></td>
                                     <td><?= $jadwal['jenis_kegiatan']; ?></td>
                                     <td><?= $jadwal['keterangan']; ?></td>
                                     <td><?= $jadwal['tgl_mulai']; ?></td>

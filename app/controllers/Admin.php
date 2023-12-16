@@ -5,6 +5,7 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalDosen'] = $this->model('Dosen_model')->countDosen();
             $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa();
             $data['totalRuang'] = $this->model('Ruang_model')->countRuang();
@@ -167,7 +168,7 @@ class Admin extends Controller
         $result = $this->model('User_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
         if ($result != null) {
             $mahasiswaModel = $this->model('Mahasiswa_model');
-            
+
             // Lakukan penambahan mahasiswa
             if ($mahasiswaModel->insert($result)) {
 
@@ -407,7 +408,7 @@ class Admin extends Controller
     public function jadwal()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['jd'] = $this->model('JadwalRuang_model')->fetchAll();
+            $data['jd'] = $this->model('Jadwal_model')->fetch();
             $data['judul'] = 'Jadwal';
             $this->view('templates/header', $data);
             $this->view('admin/jadwal', $data);
@@ -420,6 +421,26 @@ class Admin extends Controller
             } else {
                 echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
                 header('Refresh: 0; url=' . BASEURL);
+            }
+        }
+    }
+
+    public function tambahJadwal()
+    {
+        $result = $this->model('Jadwal_model')->add($_POST['nama'], $_POST['nim'], 'mahasiswa');
+        if ($result != null) {
+            $mahasiswaModel = $this->model('Mahasiswa_model');
+
+            // Lakukan penambahan mahasiswa
+            if ($mahasiswaModel->insert($result)) {
+
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data mahasiswa');
+                header('Location: ' . BASEURL . '/admin/mahasiswa');
+                exit();
             }
         }
     }

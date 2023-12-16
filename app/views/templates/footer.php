@@ -33,7 +33,7 @@
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
                     <!-- <input type="hidden" name="id_proses" id="id_proses"> -->
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
-                    <input type="hidden" name="tgl_pinjam" id="tgl_pinjam" value="">
+                    <!-- <input type="hidden" name="tgl_pinjam" id="tgl_pinjam" value=""> -->
                     <input type="hidden" name="tgl" id="tgl" value="">
 
                     <div class="mb-3">
@@ -43,13 +43,19 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="nama" class="form-label">Tanggal Pinjam</label>
+                        <div id="username-display"><?= $_SESSION['hari']; ?>, <?= $_SESSION['tanggal'] ?></div>
+                        <input type="hidden" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $_SESSION['tanggal']; ?>" autocomplete="off" required>
+                    </div>
+
+                    <!-- <div class="mb-3">
                         <label for="waktu" class="form-label">Waktu Mulai</label>
                         <input type="time" class="form-control" id="mulai" name="mulai" value="<?= $_SESSION['waktuMulai']; ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="waktu" class="form-label">Waktu Selesai</label>
                         <input type="time" class="form-control" id="selesai" name="selesai" value="<?= $_SESSION['waktuSelesai']; ?>" required>
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Tujuan Peminjaman</label>
                         <input type="text" class="form-control" id="tujuan" name="tujuan" autocomplete="off" required>
@@ -75,63 +81,31 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/tambahMahasiswa" method="post">
-                    <input type="hidden" name="id_mahasiswa" id="id_mahasiswa">
+                <form action="<?= BASEURL; ?>/admin/tambahJadwal" method="post">
+                    <input type="hidden" name="id_jadwal" id="id_jadwal">
                     <div class="mb-3">
-                        <label for="nim" class="form-label">Nim</label>
-                        <input type="text" class="form-control" id="nim" name="nim" autocomplete="off" required>
+                        <label for="nim" class="form-label">Id Ruang</label>
+                        <input type="text" class="form-control" id="idRuang" name="idRuang" autocomplete="off" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
+                        <label for="nama" class="form-label">Jenis Kegiatan</label>
                         <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
                     </div>
 
                     <div class="mb-3 form-group">
-                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin:</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
-                            <option value="L">Laki-laki</option>
-                            <option value="P">Perempuan</option>
+                        <label for="hari" class="form-label">Hari:</label>
+                        <select name="hari" id="hari" class="form-control">
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
                         </select>
                     </div>
-
                     <div class="mb-3">
-                        <label for="no_tlp" class="form-label">No Telpon</label>
-                        <input type="text" class="form-control" id="no_tlp" name="no_tlp" autocomplete="off" required>
-                    </div>
-                    <!-- <div class="mb-3">
-                            <label for="prodi" class="form-label">prodi</label>
-                            <input type="text" class="form-control" id="prodi" name="prodi" autocomplete="off" required>
-                        </div> -->
-                    <div class="mb-3 form-group">
-                        <label for="kelas" class="form-label">Kelas:</label>
-                        <select name="kelas" id="kelas" class="form-control">
-                            <option value="1A">1A</option>
-                            <option value="1B">1B</option>
-                            <option value="1C">1C</option>
-                            <option value="1D">1D</option>
-                            <option value="1E">1E</option>
-                            <option value="1F">1F</option>
-                            <option value="1G">1G</option>
-                            <option value="1H">1H</option>
-                            <option value="1I">1I</option>
-                            <option value="2A">2A</option>
-                            <option value="2B">2B</option>
-                            <option value="2C">2C</option>
-                            <option value="2D">2D</option>
-                            <option value="2E">2E</option>
-                            <option value="2F">2F</option>
-                            <option value="2G">2G</option>
-                            <option value="2H">2H</option>
-                            <option value="2I">2I</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="prodi" class="form-label">Prodi:</label>
-                        <select name="prodi" id="prodi" class="form-control">
-                            <option value="D-IV TI">D-IV TI</option>
-                            <option value="DI-IV SIB">D-IV SIB</option>
-                        </select>
+                        <label for="nama" class="form-label">Jenis Kegiatan</label>
+                        <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">
