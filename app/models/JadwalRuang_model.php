@@ -10,19 +10,7 @@ class JadwalRuang_model
         $this->db = new Database;
     }
 
-    public function fetchAll()
-    {
-        $data = null;
-
-        $query = "SELECT * FROM " . $this->table ;
-        if ($sql = $this->db->conn->query($query)) {
-            while ($row = mysqli_fetch_assoc($sql)) {
-                $data[] = $row;
-            }
-        }
-        return $data;
-    }
-    public function fetch($lantai)
+    public function fetch($lantai, $hari)
     {
         $data = null;
 

@@ -5,7 +5,8 @@ class Mahasiswa extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjamanMHS($_SESSION['username']);
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
             $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
             $data['judul'] = 'Mahasiswa';
@@ -158,18 +159,12 @@ class Mahasiswa extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tanggal = $_POST['tanggal'];
-            $waktuMulai = $_POST['waktuMulai'];
-            $waktuSelesai = $_POST['waktuSelesai'];
 
             $_SESSION['tanggal'] = $tanggal;
-            $_SESSION['waktuMulai'] = $waktuMulai;
-            $_SESSION['waktuSelesai'] = $waktuSelesai;
 
             $hari = $this->getIndonesianDayName($tanggal);
 
-            // Simpan nama hari ke dalam session
             $_SESSION['hari'] = $hari;
-            // var_dump($_SESSION['hari']);
 
             header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
             unset($_SESSION['ruang']);
@@ -204,7 +199,8 @@ class Mahasiswa extends Controller
         if (isset($_SESSION['tanggal'])) {
             // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
             // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
+            // var_dump($_SESSION['hari']);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['hari']);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);

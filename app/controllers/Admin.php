@@ -5,6 +5,7 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
             $data['totalDosen'] = $this->model('Dosen_model')->countDosen();
             $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa();
