@@ -160,7 +160,7 @@ class Mahasiswa extends Controller
     {
 
         $_SESSION['tujuan'] = $_POST['tujuan'];
-        if ($this->model('Proses2_model')->insert()) {
+        if ($this->model('Proses_model')->insert()) {
             $_SESSION['popuppinjam'] = true;
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
