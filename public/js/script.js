@@ -78,10 +78,12 @@ $(document).ready(function () {
     //User formPinjam
     $('.tampilFormPinjam').on('click', function () {
         const id_ruang = $(this).data('id_ruang');
+        const id_jadwal = $(this).data('id_jadwal');
         const tgl = $(this).data('tgl');
         const status = $(this).data('status');
 
         $('#id_ruang').val(id_ruang);
+        $('#id_jadwal').val(id_jadwal);
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -125,18 +127,22 @@ $(document).ready(function () {
     
 
     //admin acc peminjaman
-    $('.accPeminjaman').on('click', function () {
-        const id_proses = $(this).data('id_proses');
-        var acc = document.getElementById('accPeminjaman');
+    // $('.accPeminjaman').on('click', function () {
+    //     const id_proses = $(this).data('id_proses');
+    //     var acc = document.getElementById('accPeminjaman');
 
-        // Mengubah atribut href
-        acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
-    });
+    //     // Mengubah atribut href
+    //     acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
+    // });
 
     //admin tolak peminjaman
     $('.tolakPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
         $("#tolak_id_proses").val(id_proses);
+    });
+    $('.accPeminjaman').on('click', function () {
+        const id_proses = $(this).data('id_proses');
+        $("#acc_id_proses").val(id_proses);
     });
 
     //user tampil status ruangan

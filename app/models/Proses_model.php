@@ -128,6 +128,18 @@ class Proses_model
             return 0;
         }
     }
+    public function countPermintaanPeminjamanAdmin()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses' ";
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
 
     public function countDiacc($username)
     {

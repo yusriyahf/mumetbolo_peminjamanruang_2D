@@ -5,11 +5,11 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
-            $data['totalDosen'] = $this->model('Dosen_model')->countDosen();
-            $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa();
-            $data['totalRuang'] = $this->model('Ruang_model')->countRuang();
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPermintaanPeminjamanAdmin();
+            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman($_SESSION['username']);
+            $data['totalDosen'] = $this->model('Dosen_model')->countDosen($_SESSION['username']);
+            $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa($_SESSION['username']);
+            $data['totalRuang'] = $this->model('Ruang_model')->countRuang($_SESSION['username']);
             $data['judul'] = 'Admin';
             $this->view('templates/header', $data);
             $this->view('admin/index', $data);
@@ -65,10 +65,11 @@ class Admin extends Controller
     public function accPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        $status = 'disetujui';
+        $status = 'diacc';
         $pesan = $_POST['pesan'];
+
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
-            $_SESSION['popupacc'] = true;
+            $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
@@ -76,6 +77,21 @@ class Admin extends Controller
             exit();
         }
     }
+
+    // public function accPeminjaman()
+    // {
+    //     $id_proses = $_POST['id_proses'];
+    //     $status = 'disetujui';
+    //     $pesan = $_POST['pesan'];
+    //     if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+    //         $_SESSION['popupacc'] = true;
+    //         header('Location: ' . BASEURL . '/admin/peminjaman');
+    //         exit();
+    //     } else {
+    //         header('Location: ' . BASEURL . '/admin/peminjaman');
+    //         exit();
+    //     }
+    // }
 
     public function peminjaman()
     {

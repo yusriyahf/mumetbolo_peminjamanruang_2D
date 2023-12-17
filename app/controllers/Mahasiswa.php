@@ -210,6 +210,7 @@ class Mahasiswa extends Controller
     public function formPinjam()
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
+        // var_dump($_POST['id_jadwal']);
 
         $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
 

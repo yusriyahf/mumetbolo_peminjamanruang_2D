@@ -100,7 +100,7 @@
         {
             $data = null;
 
-            $query = "UPDATE " . $this->table . " SET status = 'dibooking' where id_jadwal = '$id'";
+            $query = "UPDATE " . $this->table . " SET status = 'dibooking' where id_jadwal = $id";
             if ($sql = $this->db->conn->query($query)) {
                 return true;
             } else {
