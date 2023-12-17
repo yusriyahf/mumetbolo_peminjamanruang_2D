@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link rel="icon" href="<?= BASEURL; ?>/img/JTI.png" type="image/png">
 
 </head>
 
@@ -55,14 +56,21 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="emailHelp" placeholder="Masukkan Username" autocomplete="off" required>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                                        <div class="form-group">   
+                                            <div class="input-group" id="show_hide_password">
+                                                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password" autocomplete="off" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text" id="togglePassword">
+                                                            <i id="password" class="fa fa-eye toggle-icon" onclick="togglePasswordVisibility()" ></i>
+                                                        </span>
+                                                    </div>
+                                            </div>
                                         </div>
                                         <div class="text">
                                          <?php Flasher::flash() ?>
                                         </div>
                                         
-                                        <button type="submit" name="submit" class="btn btn-primary float-right" style="margin-bottom: 30px;">Login</button>
+                                        <button type="submit" name="submit" class="btn btn-primary float-right" style="margin-bottom: 30px; margin-right: 145px; margin-top: 10px;">Login</button>
 
                                     </form>
                                     
@@ -87,7 +95,22 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePassword').querySelector('.toggle-icon');
 
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fas', 'fa-eye');
+                toggleIcon.classList.add('fas', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fas', 'fa-eye-slash');
+                toggleIcon.classList.add('fas', 'fa-eye');
+            }
+        }
+    </script>
 </body>
 
 </html>
