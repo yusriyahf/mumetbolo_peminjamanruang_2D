@@ -507,6 +507,11 @@ class Admin extends Controller
         }
     }
 
+    public function getRuangAll()
+    {
+        echo json_encode($this->model('Ruang_model')->fetchAll());
+    }
+
     public function hapusJadwal($id)
     {
         if ($this->model('Jadwal_model')->delete($id)) {

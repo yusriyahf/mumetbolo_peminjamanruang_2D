@@ -46,11 +46,7 @@
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
                             <th>Jenis Ruangan</th>
-                            <th>Kapasitas</th>
-                            <<<<<<< HEAD <!-- <th>Fasilitas</th> -->
-                                =======
-                                >>>>>>> coba-fiturJadwalPinjam
-                                <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
