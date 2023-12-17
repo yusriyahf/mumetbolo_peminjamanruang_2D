@@ -78,16 +78,14 @@ $(document).ready(function () {
     //User formPinjam
     $('.tampilFormPinjam').on('click', function () {
         const id_ruang = $(this).data('id_ruang');
-        const tgl = $(this).data('tgl');
-        const status = $(this).data('status');
-
+        const id_jadwal = $(this).data('id_jadwal');
         $('#id_ruang').val(id_ruang);
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+' '+time;
-        $('#tgl_pinjam').val(dateTime);
-        $('#tgl').val(tgl);
+        $('#tglSekarang').val(dateTime);
+        $('#id_jadwal').val(id_jadwal);
     });
 
     //user tampil detail ruangan
