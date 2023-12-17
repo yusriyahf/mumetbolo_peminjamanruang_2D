@@ -30,11 +30,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- <form action="<?= BASEURL; ?>/mahasiswa/generatePDF" method="post"> -->
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
-                    <!-- <input type="hidden" name="id_proses" id="id_proses"> -->
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
-                    <!-- <input type="hidden" name="tgl_pinjam" id="tgl_pinjam" value=""> -->
+                    <input type="hidden" name="jadwal" id="jadwal" value="">
                     <input type="hidden" name="tgl" id="tgl" value="">
 
                     <div class="mb-3">

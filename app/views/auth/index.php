@@ -28,7 +28,7 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-        <div class="col-md-5 col-lg-5 col-md-9">
+            <div class="col-md-5 col-lg-5 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
@@ -36,44 +36,44 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="p-5">
-                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <img src="../public/img/jti.png" style="width: auto; height: 100px;">
-                                            </td>
-                                            <td>
-                                                <h1 class="h4 text-gray-900 mb-2">Peminjaman</h1>
-                                                <h1 class="h4 text-gray-900 mb-2">Ruangan</h1>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="../public/img/jti.png" style="width: auto; height: 100px;">
+                                                </td>
+                                                <td>
+                                                    <h1 class="h4 text-gray-900 mb-2">Peminjaman</h1>
+                                                    <h1 class="h4 text-gray-900 mb-2">Ruangan</h1>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
 
-                                    
+
                                     <form class="user" action="<?= BASEURL; ?>/auth/prosesLogin" method="post">
 
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="emailHelp" placeholder="Masukkan Username" autocomplete="off" required>
                                         </div>
-                                        <div class="form-group">   
+                                        <div class="form-group">
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password" autocomplete="off" required>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text" id="togglePassword">
-                                                            <i id="password" class="fa fa-eye toggle-icon" onclick="togglePasswordVisibility()" ></i>
-                                                        </span>
-                                                    </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="togglePassword">
+                                                        <i id="password" class="fa fa-eye toggle-icon" onclick="togglePasswordVisibility()"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="text">
-                                         <?php Flasher::flash() ?>
+                                            <?php Flasher::flash() ?>
                                         </div>
-                                        
+
                                         <button type="submit" name="submit" class="btn btn-primary float-right" style="margin-bottom: 30px; margin-right: 145px; margin-top: 10px;">Login</button>
 
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
