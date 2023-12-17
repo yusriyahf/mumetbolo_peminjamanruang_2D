@@ -18,9 +18,6 @@
             <table >
                 <tr>
 
-                    <td style="border: 0px;">
-                        <img src="../img/foto.png">
-
                     <td style="border: 0px; ">
                         <img src="<?= BASEURL; ?>/img/profile.png" width=175 style = "margin-left : 15px" >
                     </td>
