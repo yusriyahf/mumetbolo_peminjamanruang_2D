@@ -18,7 +18,7 @@
             <table >
                 <tr>
                     <td style="border: 0px;">
-                        <img src="../img/foto.png" width=100>
+                        <img src="../img/foto.png">
                     </td>
                     <td style="border: 0px;">
                         <h6 class="m-0 font-weight-bold text-primary mb-3">Nama </h6>

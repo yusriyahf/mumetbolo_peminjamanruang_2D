@@ -1,16 +1,3 @@
-
-<!-- Muncul Popup -->
-<!-- <script>
-        Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Selamat <?= $_SESSION['username']; ?> Berhasil Login",
-                showConfirmButton: false,
-                timer: 3500
-            });
-        </script> -->
-
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -19,7 +6,7 @@
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-        <img src="../public/img/ruangan.png" class="d-block w-100" alt="...">
+        <img src="../public/img/ruang.jpg" class="d-block w-100" alt="...">
         </div>
         
         <div class="carousel-item" data-bs-interval="2000">
@@ -48,22 +35,44 @@
     </button>
     </div>
 
-    <!-- Content Row -->
-    <div class="row">
 
+    <!-- Content Row -->
+    <div class="row mt-5">
+
+        <!-- Total Permintaan Peminjaman Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="<?= BASEURL; ?>/mahasiswa/peminjaman" class="text-decoration-none">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Permintaan Peminjaman</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalPeminjaman']; ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <span class="text-gray-300">
+                                    <i class="fa fa-list-ul fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         <!-- Total Ruangan Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?= BASEURL; ?>/admin/ruang6" class="text-decoration-none">
+            <a href="<?= BASEURL; ?>/mahasiswa/peminjaman" class="text-decoration-none">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Total Peminjaman</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalPeminjaman']; ?></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <span class="text-gray-300">
+                                    <i class="fa fa-list-ul fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -73,17 +82,18 @@
 
         <!-- Total Dosen Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?= BASEURL; ?>/admin/dosen" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Peminjaman diacc</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalDiacc']; ?></div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                <span class="text-gray-300">
+                                    <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -93,28 +103,29 @@
 
         <!-- Permintaan Peminjaman Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Peminjaman ditolak</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data['totalDitolak']; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <span class="text-gray-300">
+                                <i class="fa fa-window-close fa-2x" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <!-- alur jalan -->
 
-    <!-- alur peminjamana -->
 
+    <center>
     <div class="alur">
 
-        <div class="judul-alur">
+        <div class="mt-5 mb-4">
             <h5>Alur Peminjaman</h5>
         </div>
 
@@ -210,6 +221,15 @@
         </table>
 
     </div>
+</div>
+</center>
+
+
+    <!-- Content Row -->
+
+
+
+    <!-- Content Row -->
 
 
 </div>
