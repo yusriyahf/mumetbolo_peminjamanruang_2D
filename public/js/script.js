@@ -158,6 +158,25 @@ $(document).ready(function () {
             }
         });
     });
+
+    //admin tambah jadwal
+    $('.tambahJadwal').on('click', function(){
+        $.ajax({
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getRuangAll',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var dropdown = $('#id_ruang');
+                dropdown.empty();
+                $.each(data, function (index, value) {
+                    dropdown.append($('<option>').text(value.id_ruang).attr('value', value.id_ruang));
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    })
 });
 
 function updateClock() {

@@ -23,7 +23,7 @@ class JadwalRuang_model
         return $data;
     }
 
-    public function fetch($lantai, $hari)
+    public function fetch($lantai)
     {
         $data = null;
 
@@ -35,6 +35,7 @@ class JadwalRuang_model
         }
         return $data;
     }
+
 
     public function status($id)
     {

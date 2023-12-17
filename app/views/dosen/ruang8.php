@@ -2,9 +2,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 7</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 8</h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
-    <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
+    <a href="<?= BASEURL; ?>/dosen/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
     <div class="clock"></div>
 
     <!-- DataTales Example -->
@@ -16,7 +16,7 @@
             </button>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/7new.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/8new.png" alt="" width="70%" class="mx-auto">
         <div class="card-body">
             <div class="row">
                 <?php $i = 1;

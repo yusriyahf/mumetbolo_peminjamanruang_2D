@@ -107,6 +107,20 @@ class Ruang_model
         return $data;
     }
 
+    public function fetch2($lantai, $hari)
+    {
+        $data = null;
+
+        $query = "SELECT *, CASE WHEN hari = '$hari' THEN 'kbm' ELSE 'tersedia' END AS status FROM " . $this->table . " WHERE lantai = '$lantai'";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+
     public function fetch_single($id)
     {
 
@@ -133,5 +147,18 @@ class Ruang_model
         } else {
             return 0;
         }
+    }
+
+    public function fetchAll()
+    {
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table;
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
     }
 }

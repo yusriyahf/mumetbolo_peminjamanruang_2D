@@ -117,13 +117,13 @@ class Mahasiswa extends Controller
                 Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "Belum Pilih File",
+                    title: "Belum pilih file",
                     showConfirmButton: false,
                     showCloseButton: true,
                 });
             </script>
         <?php
-            $_SESSION['filetidaksesuai'] = false;
+            $_SESSION['popupbelumpilihfile'] = false;
         } else if (isset($_SESSION['filetidaksesuai']) && $_SESSION['filetidaksesuai'] === true) {
         ?>
             <script>
@@ -203,7 +203,6 @@ class Mahasiswa extends Controller
                 });
             </script>
 <?php
-            // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
             $_SESSION['popuppw'] = false;
         }
     }
@@ -211,7 +210,9 @@ class Mahasiswa extends Controller
     public function formPinjam()
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
-        if ($this->model('Proses_model')->insert()) {
+        $this->model('Jadwal_model')->setStatusPinjam($_POST['jadwal']);
+        // var_dump($data['asu']);
+        if ($this->model('Proses2_model')->insert()) {
             $_SESSION['popuppinjam'] = true;
             header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
             exit();
@@ -295,16 +296,14 @@ class Mahasiswa extends Controller
     {
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
-            // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
-            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
-            // var_dump($_SESSION['hari']);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['hari']);
+
+            $this->model('Jadwal_model')->setStatus($_SESSION['hari']);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang5', $data);
             $this->view('templates/footer');
-            // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
