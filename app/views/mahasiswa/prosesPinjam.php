@@ -17,7 +17,6 @@
             </div>
         </div>
 
-
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -26,7 +25,6 @@
                             <th>#</th>
                             <th>Nama ruang</th>
                             <th>Lantai</th>
-                            <!-- <th>Tujuan</th> -->
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Upload Surat Peminjaman</th>
