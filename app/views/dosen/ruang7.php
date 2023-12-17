@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai 7</h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
-    <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
+    <a href="<?= BASEURL; ?>/dosen/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
     <div class="clock"></div>
 
     <!-- DataTales Example -->
