@@ -91,9 +91,9 @@ class Proses_model
         }
     }
 
-    public function countPeminjaman()
+    public function countPeminjaman($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses'";
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -116,9 +116,9 @@ class Proses_model
             return 0;
         }
     }
-    public function countPermintaanPeminjaman()
+    public function countPermintaanPeminjaman($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses'";
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -129,9 +129,9 @@ class Proses_model
         }
     }
 
-    public function countDiacc()
+    public function countDiacc($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'disetujui'";;
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'disetujui' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -142,9 +142,9 @@ class Proses_model
         }
     }
 
-    public function countDitolak()
+    public function countDitolak($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'ditolak'";;
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'ditolak' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {

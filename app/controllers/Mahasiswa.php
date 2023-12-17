@@ -6,9 +6,9 @@ class Mahasiswa extends Controller
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
             $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjamanMHS($_SESSION['username']);
-            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
-            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
-            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
+            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPermintaanPeminjaman($_SESSION['username']);
+            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc($_SESSION['username']);
+            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak($_SESSION['username']);
             $data['judul'] = 'Mahasiswa';
             $this->view('templates/header', $data);
             $this->view('mahasiswa/index', $data);
@@ -211,9 +211,7 @@ class Mahasiswa extends Controller
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
 
-
-        $this->model('Jadwal_model')->setStatusPinjam($_POST['jadwal']);
-        // var_dump($data['asu']);
+        $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
 
         if ($this->model('Proses2_model')->insert()) {
             $_SESSION['popuppinjam'] = true;

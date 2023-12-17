@@ -32,7 +32,7 @@
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
-                    <input type="hidden" name="jadwal" id="jadwal" value="">
+                    <input type="hidden" name="id_jadwal" id="id_jadwal" value="">
                     <input type="hidden" name="tgl" id="tgl" value="">
 
                     <div class="mb-3">
