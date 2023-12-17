@@ -88,7 +88,7 @@
         {
             $data = null;
 
-            $query = "UPDATE " . $this->table . " SET status = CASE WHEN hari = '$hari' THEN 'kbm' ELSE 'tersedia' END";
+            $query = "UPDATE " . $this->table . " SET status = CASE WHEN hari = '$hari' THEN 'kbm' ELSE 'tersedia' END where status != 'dibooking'";
             if ($sql = $this->db->conn->query($query)) {
                 return true;
             } else {
