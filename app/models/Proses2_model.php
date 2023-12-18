@@ -180,4 +180,23 @@ class Proses2_model
             return false;
         }
     }
+
+    public function cekPinjam($username)
+    {
+        $query = "SELECT COUNT(*) AS jumlah_peminjaman_diproses
+                  FROM proses
+                  WHERE username = '$username' AND status = 'diproses'";
+
+        if ($result = $this->db->conn->query($query)) {
+            $row = $result->fetch_assoc();
+            $jumlah_peminjaman_diproses = $row['jumlah_peminjaman_diproses'];
+            // var_dump($jumlah_peminjaman_diproses);
+
+            // Mengembalikan nilai true jika jumlah peminjaman dengan status 'diproses' lebih dari 0
+            return $jumlah_peminjaman_diproses < 1;
+        } else {
+            // Mengembalikan nilai false jika terdapat error dalam menjalankan query
+            return false;
+        }
+    }
 }

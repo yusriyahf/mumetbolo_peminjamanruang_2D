@@ -13,6 +13,7 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/index', $data);
             $this->view('templates/footer');
+            $this->view('modalMahasiswa/modal', $data);
             if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
 ?>
                 <script>
@@ -45,6 +46,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
+        $this->view('modalMahasiswa/modal', $data);
     }
 
     public function peminjamanDiAcc()
@@ -54,6 +56,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
+        $this->view('modalMahasiswa/modal', $data);
     }
 
     public function peminjamanDiTolak()
@@ -63,6 +66,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
+        $this->view('modalMahasiswa/modal', $data);
     }
     public function prosesPinjam()
     {
@@ -71,19 +75,33 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/prosesPinjam', $data);
         $this->view('templates/footer');
-        if (isset($_SESSION['popuppinjam']) && $_SESSION['popuppinjam'] === true) {
+        $this->view('modalMahasiswa/modal', $data);
+        if (isset($_SESSION['gabole']) && $_SESSION['gabole'] === true) {
             ?>
             <script>
                 Swal.fire({
                     position: "center",
-                    icon: "success",
-                    title: "Berhasil Pinjam Ruangan",
+                    icon: "error",
+                    title: "Anda Masih Memiliki Peminjaman Yang Menunggu Diproses",
                     showConfirmButton: false,
                     showCloseButton: true,
                 });
             </script>
         <?php
-            $_SESSION['popuppinjam'] = false;
+            $_SESSION['gabole'] = false;
+        } else if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Password berhasil diubah",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            $_SESSION['popuppw'] = false;
         } else if (isset($_SESSION['popupberhasil']) && $_SESSION['popupberhasil'] === true) {
         ?>
             <script>
@@ -168,6 +186,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/tanggalPeminjaman');
         $this->view('templates/footer');
+        $this->view('modalMahasiswa/modal', $data);
     }
 
     public function ubahPassword()
@@ -191,6 +210,8 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/profile', $data);
         $this->view('templates/footer');
+        $this->view('modalMahasiswa/modal', $data);
+
         if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
         ?>
             <script>
@@ -210,22 +231,25 @@ class Mahasiswa extends Controller
     public function formPinjam()
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
-        // var_dump($_POST['id_jadwal']);
 
-        $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
-
-        if ($this->model('Proses2_model')->insert()) {
-            $_SESSION['popuppinjam'] = true;
-            header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
-            exit();
+        if ($this->model('Proses2_model')->cekPinjam($_SESSION['username'])) {
+            $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
+            if ($this->model('Proses2_model')->insert()) {
+                $_SESSION['popuppinjam'] = true;
+                header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
+                exit();
+            } else {
+                echo "SEK GAGAL";
+            }
         } else {
-            echo "SEK GAGAL";
+            $_SESSION['gabole'] = true;
+            header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
         }
     }
 
     public function uploadFile($id_proses)
     {
-        // var_dump($_FILES); die;
+
         if (isset($_POST['submit'])) {
             $nama_file = $_FILES['suratPinjam']['name'];
             $ukuran = $_FILES['suratPinjam']['size'];
@@ -306,6 +330,7 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang5', $data);
             $this->view('templates/footer');
+            $this->view('modalMahasiswa/modal', $data);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();
@@ -323,6 +348,8 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang6', $data);
             $this->view('templates/footer');
+            $this->view('modalMahasiswa/modal', $data);
+
             // unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
@@ -340,6 +367,8 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang7', $data);
             $this->view('templates/footer');
+            $this->view('modalMahasiswa/modal', $data);
+
             unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
@@ -357,6 +386,8 @@ class Mahasiswa extends Controller
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang8', $data);
             $this->view('templates/footer');
+            $this->view('modalMahasiswa/modal', $data);
+
             unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');

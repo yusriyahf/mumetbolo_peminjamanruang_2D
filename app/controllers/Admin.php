@@ -14,6 +14,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/index', $data);
             $this->view('templates/footer');
+            $this->view('modalAdmin/modal', $data);
             if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
 ?>
                 <script>
@@ -104,6 +105,9 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
+            $this->view('modalAdmin/modal', $data);
+
+            $this->view('modalAdmin/modal', $data);
             if (isset($_SESSION['popuptolak']) && $_SESSION['popuptolak'] === true) {
             ?>
                 <script>
@@ -137,6 +141,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
+            $this->view('modalAdmin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -156,6 +161,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
+            $this->view('modalAdmin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -175,6 +181,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/permintaanPeminjaman', $data);
             $this->view('templates/footer', $data);
+            $this->view('modalAdmin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -193,6 +200,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/mahasiswa', $data);
         $this->view('templates/footer');
+        $this->view('modalAdmin/modal', $data);
     }
     public function cariDosen()
     {
@@ -201,6 +209,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/dosen', $data);
         $this->view('templates/footer');
+        $this->view('modalAdmin/modal', $data);
     }
 
     public function cariRuang($lantai)
@@ -209,6 +218,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/ruang/' . $lantai, $data);
         $this->view('templates/footer');
+        $this->view('modalAdmin/modal', $data);
     }
 
     public function mahasiswa()
@@ -219,6 +229,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/mahasiswa', $data);
             $this->view('templates/footer');
+            $this->view('modalAdmin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -309,6 +320,9 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/dosen', $data);
             $this->view('templates/footer');
+            $this->view('modalAdmin/modal', $data);
+
+
             # code...
         } else {
             if (isset($_SESSION['tipe'])) {
