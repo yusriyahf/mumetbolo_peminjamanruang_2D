@@ -406,7 +406,6 @@ class Admin extends Controller
     public function ruang($lantai)
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
             $data['ruang'] = $this->model('Ruang_model')->fetch($lantai);
             $data['judul'] = 'Lantai ' . $lantai;
             $data['lantai'] = $lantai;

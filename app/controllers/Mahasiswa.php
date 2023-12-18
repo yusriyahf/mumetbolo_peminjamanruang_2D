@@ -318,77 +318,20 @@ class Mahasiswa extends Controller
         return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
     }
 
-    public function ruang5()
+    public function ruang($lantai)
     {
-        $_SESSION['ruang'] = 5;
+        $_SESSION['ruang'] = $lantai;
         if (isset($_SESSION['tanggal'])) {
 
             $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['tanggal']);
-            $data['judul'] = 'Lantai 5';
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch($lantai, $_SESSION['tanggal']);
+            $data['judul'] = 'Lantai ' . $lantai;
+            $data['lantai'] = $lantai;
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
-            $this->view('mahasiswa/ruang5', $data);
+            $this->view('mahasiswa/ruang', $data);
             $this->view('templates/footer');
             $this->view('modalMahasiswa/modal', $data);
-        } else {
-            header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang6()
-    {
-        $_SESSION['ruang'] = 6;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(6);
-            $data['judul'] = 'Lantai 6';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            // var_dump($data['tanggal']);
-            $this->view('templates/header', $data);
-            $this->view('mahasiswa/ruang6', $data);
-            $this->view('templates/footer');
-            $this->view('modalMahasiswa/modal', $data);
-
-            // unset($_SESSION['tanggal']);
-        } else {
-            header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang7()
-    {
-        $_SESSION['ruang'] = 7;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(7);
-            $data['judul'] = 'Lantai 7';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            $this->view('templates/header', $data);
-            $this->view('mahasiswa/ruang7', $data);
-            $this->view('templates/footer');
-            $this->view('modalMahasiswa/modal', $data);
-
-            unset($_SESSION['tanggal']);
-        } else {
-            header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang8()
-    {
-        $_SESSION['ruang'] = 8;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(8);
-            $data['judul'] = 'Lantai 8';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            $this->view('templates/header', $data);
-            $this->view('mahasiswa/ruang8', $data);
-            $this->view('templates/footer');
-            $this->view('modalMahasiswa/modal', $data);
-
-            unset($_SESSION['tanggal']);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();

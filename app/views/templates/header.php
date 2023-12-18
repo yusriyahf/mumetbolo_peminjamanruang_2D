@@ -120,10 +120,10 @@
                     <div id="ruangPinjam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Ruangan JTI</h6>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang5">Lantai 5</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang6">Lantai 6</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang7">Lantai 7</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang8">Lantai 8</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/5">Lantai 5</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/6">Lantai 6</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/7">Lantai 7</a>
+                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/8">Lantai 8</a>
                         </div>
                     </div>
                 </li>
