@@ -5,15 +5,15 @@ class Mahasiswa extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'mahasiswa') {
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjamanMHS($_SESSION['username']);
-            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPermintaanPeminjaman($_SESSION['username']);
-            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc($_SESSION['username']);
-            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak($_SESSION['username']);
+            $data['totalPeminjaman'] = $this->model('ViewProses_model')->countPeminjamanMHS($_SESSION['username']);
+            $data['permintaanPeminjaman'] = $this->model('ViewProses_model')->countPermintaanPeminjaman($_SESSION['username']);
+            $data['totalDiacc'] = $this->model('ViewProses_model')->countDiacc($_SESSION['username']);
+            $data['totalDitolak'] = $this->model('ViewProses_model')->countDitolak($_SESSION['username']);
             $data['judul'] = 'Mahasiswa';
             $this->view('templates/header', $data);
             $this->view('mahasiswa/index', $data);
             $this->view('templates/footer');
-            $this->view('modalMahasiswa/modal', $data);
+            $this->view('mahasiswa/modal', $data);
             if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
 ?>
                 <script>
@@ -42,40 +42,40 @@ class Mahasiswa extends Controller
     public function peminjaman()
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetch();
+        $data['proses'] = $this->model('ViewProses_model')->fetch();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
     }
 
     public function peminjamanDiAcc()
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetchAcc();
+        $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
     }
 
     public function peminjamanDiTolak()
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetchTolak();
+        $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
     }
     public function prosesPinjam()
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetch();
+        $data['proses'] = $this->model('ViewProses_model')->fetch();
         $this->view('templates/header', $data);
         $this->view('mahasiswa/prosesPinjam', $data);
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
         if (isset($_SESSION['gabole']) && $_SESSION['gabole'] === true) {
             ?>
             <script>
@@ -166,7 +166,7 @@ class Mahasiswa extends Controller
 
             if ($idRuang && $tanggalPeminjam) {
                 $username = $_SESSION['username'];
-                $this->model('Proses_model')->insert($idRuang, $username, $tanggalPeminjam);
+                $this->model('ViewProses_model')->insert($idRuang, $username, $tanggalPeminjam);
 
                 header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
                 exit();
@@ -186,7 +186,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/tanggalPeminjaman');
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
     }
 
     public function ubahPassword()
@@ -210,7 +210,7 @@ class Mahasiswa extends Controller
         $this->view('templates/header', $data);
         $this->view('mahasiswa/profile', $data);
         $this->view('templates/footer');
-        $this->view('modalMahasiswa/modal', $data);
+        $this->view('mahasiswa/modal', $data);
 
         if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
         ?>
@@ -266,7 +266,7 @@ class Mahasiswa extends Controller
                 if (in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize) {
                     $nama = $id_proses . '-' . $_SESSION['username'] . '.' . $ekstensiFile;
                     if (move_uploaded_file($tmp, '../public/uploadFile/' . $nama)) {
-                        if ($this->model('Proses_model')->upFile($id_proses, $nama)) {
+                        if ($this->model('ViewProses_model')->upFile($id_proses, $nama)) {
                             $_SESSION['popupberhasil'] = true;
                             header('Refresh: 0; url=' . BASEURL . '/mahasiswa/prosesPinjam');
                         }
@@ -324,14 +324,14 @@ class Mahasiswa extends Controller
         if (isset($_SESSION['tanggal'])) {
 
             $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch($lantai, $_SESSION['tanggal']);
+            $data['ruang'] = $this->model('ViewJadwal_model')->fetch($lantai, $_SESSION['tanggal']);
             $data['judul'] = 'Lantai ' . $lantai;
             $data['lantai'] = $lantai;
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
             $this->view('mahasiswa/ruang', $data);
             $this->view('templates/footer');
-            $this->view('modalMahasiswa/modal', $data);
+            $this->view('mahasiswa/modal', $data);
         } else {
             header('Location: ' . BASEURL . '/mahasiswa/tanggalPeminjaman');
             exit();

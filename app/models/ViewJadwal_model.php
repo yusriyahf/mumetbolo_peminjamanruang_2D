@@ -1,5 +1,5 @@
 <?php
-class JadwalRuang_model
+class ViewJadwal_model
 {
     private $table = 'jadwal_ruang';
 

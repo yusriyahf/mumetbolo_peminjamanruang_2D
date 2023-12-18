@@ -1,8 +1,8 @@
 <?php
 
-class Proses2_model
+class ViewProses_model
 {
-    private $table = 'proses';
+    private $table = 'proses_ruang';
 
     private $db;
 
@@ -15,12 +15,10 @@ class Proses2_model
     {
         $id_ruang = $_POST['id_ruang'];
         $username = $_POST['nama'];
-        $tgl_pinjam = $_POST['tglSekarang'];
-        $mulai = $_POST['tgl_pinjam'];
-        $selesai = $_POST['tgl_pinjam'];
+        $tgl_pinjam = $_POST['tgl_pinjam'];
         $tujuan = $_POST['tujuan'];
         $status = 'diproses';
-        $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, mulai, selesai, tujuan, status) VALUES ('$id_ruang','$username','$tgl_pinjam', '$mulai', '$selesai', '$tujuan','$status')";
+        $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, tujuan, status) VALUES ('$id_ruang','$username','$tgl_pinjam', '$tujuan','$status')";
 
         if ($sql = $this->db->conn->query($query)) {
             return true;
@@ -93,9 +91,9 @@ class Proses2_model
         }
     }
 
-    public function countPeminjaman()
+    public function countPeminjaman($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses'";
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -118,9 +116,21 @@ class Proses2_model
             return 0;
         }
     }
-    public function countPermintaanPeminjaman()
+    public function countPermintaanPeminjaman($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses'";
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses' AND username = '$username'";
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
+    public function countPermintaanPeminjamanAdmin()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'diproses' ";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -131,9 +141,9 @@ class Proses2_model
         }
     }
 
-    public function countDiacc()
+    public function countDiacc($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'disetujui'";;
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'disetujui' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -144,9 +154,9 @@ class Proses2_model
         }
     }
 
-    public function countDitolak()
+    public function countDitolak($username)
     {
-        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'ditolak'";;
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status = 'ditolak' AND username = '$username'";
         $result = $this->db->conn->query($query);
 
         if ($result) {
@@ -177,25 +187,6 @@ class Proses2_model
         if ($sql = $this->db->conn->query($query)) {
             return true;
         } else {
-            return false;
-        }
-    }
-
-    public function cekPinjam($username)
-    {
-        $query = "SELECT COUNT(*) AS jumlah_peminjaman_diproses
-                  FROM proses
-                  WHERE username = '$username' AND status = 'diproses'";
-
-        if ($result = $this->db->conn->query($query)) {
-            $row = $result->fetch_assoc();
-            $jumlah_peminjaman_diproses = $row['jumlah_peminjaman_diproses'];
-            // var_dump($jumlah_peminjaman_diproses);
-
-            // Mengembalikan nilai true jika jumlah peminjaman dengan status 'diproses' lebih dari 0
-            return $jumlah_peminjaman_diproses < 1;
-        } else {
-            // Mengembalikan nilai false jika terdapat error dalam menjalankan query
             return false;
         }
     }

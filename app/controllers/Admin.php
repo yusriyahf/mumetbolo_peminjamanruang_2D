@@ -5,8 +5,8 @@ class Admin extends Controller
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPermintaanPeminjamanAdmin();
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjaman($_SESSION['username']);
+            $data['permintaanPeminjaman'] = $this->model('ViewProses_model')->countPermintaanPeminjamanAdmin();
+            $data['totalPeminjaman'] = $this->model('ViewProses_model')->countPeminjaman($_SESSION['username']);
             $data['totalDosen'] = $this->model('Dosen_model')->countDosen($_SESSION['username']);
             $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa($_SESSION['username']);
             $data['totalRuang'] = $this->model('Ruang_model')->countRuang($_SESSION['username']);
@@ -14,7 +14,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/index', $data);
             $this->view('templates/footer');
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
             if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
 ?>
                 <script>
@@ -42,7 +42,7 @@ class Admin extends Controller
 
     public function alasanPenolakan($id_ruang)
     {
-        $result = $this->model('Proses_model')->fetch_single($id_ruang);
+        $result = $this->model('ViewProses_model')->fetch_single($id_ruang);
         echo json_encode($result);
     }
 
@@ -54,7 +54,7 @@ class Admin extends Controller
         $pesan = $_POST['pesan'];
 
         $this->model('Jadwal_model')->setStatusTolak($_POST['id_jadwal']);
-        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+        if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
@@ -71,7 +71,7 @@ class Admin extends Controller
         $pesan = $_POST['pesan'];
 
         $this->model('Jadwal_model')->setStatusAcc($_POST['id_jadwal']);
-        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+        if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
@@ -86,7 +86,7 @@ class Admin extends Controller
     //     $id_proses = $_POST['id_proses'];
     //     $status = 'disetujui';
     //     $pesan = $_POST['pesan'];
-    //     if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+    //     if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
     //         $_SESSION['popupacc'] = true;
     //         header('Location: ' . BASEURL . '/admin/peminjaman');
     //         exit();
@@ -99,13 +99,13 @@ class Admin extends Controller
     public function peminjaman()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('Proses_model')->getStatus();
-            $data['proses'] = $this->model('Proses_model')->fetch();
+            // $data['status'] = $this->model('ViewProses_model')->getStatus();
+            $data['proses'] = $this->model('ViewProses_model')->fetch();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
 
             if (isset($_SESSION['popuptolak']) && $_SESSION['popuptolak'] === true) {
             ?>
@@ -134,13 +134,13 @@ class Admin extends Controller
     public function peminjamanDiAcc()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('Proses_model')->getStatus();
-            $data['proses'] = $this->model('Proses_model')->fetchAcc();
+            // $data['status'] = $this->model('ViewProses_model')->getStatus();
+            $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -154,13 +154,13 @@ class Admin extends Controller
     public function peminjamanDitolak()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('Proses_model')->getStatus();
-            $data['proses'] = $this->model('Proses_model')->fetchTolak();
+            // $data['status'] = $this->model('ViewProses_model')->getStatus();
+            $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/peminjaman', $data);
             $this->view('templates/footer', $data);
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -174,13 +174,13 @@ class Admin extends Controller
     public function permintaanPeminjaman()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['proses'] = $this->model('Proses_model')->fetch();
-            // $data['proses'] = $this->model('Proses_model')->fetch(null);
+            $data['proses'] = $this->model('ViewProses_model')->fetch();
+            // $data['proses'] = $this->model('ViewProses_model')->fetch(null);
             $data['judul'] = 'Permintaan Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/permintaanPeminjaman', $data);
             $this->view('templates/footer', $data);
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -199,7 +199,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/mahasiswa', $data);
         $this->view('templates/footer');
-        $this->view('modalAdmin/modal', $data);
+        $this->view('admin/modal', $data);
     }
     public function cariDosen()
     {
@@ -208,7 +208,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/dosen', $data);
         $this->view('templates/footer');
-        $this->view('modalAdmin/modal', $data);
+        $this->view('admin/modal', $data);
     }
 
     public function cariRuang($lantai)
@@ -217,7 +217,7 @@ class Admin extends Controller
         $this->view('templates/header', $data);
         $this->view('admin/ruang/' . $lantai, $data);
         $this->view('templates/footer');
-        $this->view('modalAdmin/modal', $data);
+        $this->view('admin/modal', $data);
     }
 
     public function mahasiswa()
@@ -228,7 +228,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/mahasiswa', $data);
             $this->view('templates/footer');
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -319,7 +319,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/dosen', $data);
             $this->view('templates/footer');
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
 
 
             # code...
@@ -411,7 +411,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/ruang', $data);
             $this->view('templates/footer', $data);
-            $this->view('modalAdmin/modal', $data);
+            $this->view('admin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -422,36 +422,6 @@ class Admin extends Controller
             }
         }
     }
-
-    // public function ruang6()
-    // {
-    //     $data['ruang'] = $this->model('Ruang_model')->fetch(6);
-    //     $data['judul'] = 'Lantai 6';
-    //     $data['lantai'] = '6';
-    //     $this->view('templates/header', $data);
-    //     $this->view('admin/ruang6', $data);
-    //     $this->view('templates/footer', $data);
-    // }
-
-    // public function ruang7()
-    // {
-    //     $data['ruang'] = $this->model('Ruang_model')->fetch(7);
-    //     $data['judul'] = 'Lantai 7';
-    //     $data['lantai'] = '7';
-    //     $this->view('templates/header', $data);
-    //     $this->view('admin/ruang7', $data);
-    //     $this->view('templates/footer', $data);
-    // }
-
-    // public function ruang8()
-    // {
-    //     $data['ruang'] = $this->model('Ruang_model')->fetch(8);
-    //     $data['judul'] = 'Lantai 8';
-    //     $data['lantai'] = '8';
-    //     $this->view('templates/header', $data);
-    //     $this->view('admin/ruang8', $data);
-    //     $this->view('templates/footer', $data);
-    // }
 
     public function tambahRuang($lantai)
     {
@@ -508,7 +478,7 @@ class Admin extends Controller
     public function jadwal()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            $data['jd'] = $this->model('JadwalRuang_model')->fetchAdmin();
+            $data['jd'] = $this->model('ViewJadwal_model')->fetchAdmin();
             $data['judul'] = 'Jadwal';
             $this->view('templates/header', $data);
             $this->view('admin/jadwal', $data);
@@ -571,7 +541,7 @@ class Admin extends Controller
 
     public function cariJadwal()
     {
-        $data['jd'] = $this->model('JadwalRuang_model')->cariDataJadwal();
+        $data['jd'] = $this->model('ViewJadwal_model')->cariDataJadwal();
         $data['judul'] = 'Jadwal';
         $this->view('templates/header', $data);
         $this->view('admin/jadwal', $data);
