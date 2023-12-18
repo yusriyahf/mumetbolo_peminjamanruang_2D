@@ -107,7 +107,6 @@ class Admin extends Controller
             $this->view('templates/footer', $data);
             $this->view('modalAdmin/modal', $data);
 
-            $this->view('modalAdmin/modal', $data);
             if (isset($_SESSION['popuptolak']) && $_SESSION['popuptolak'] === true) {
             ?>
                 <script>
@@ -412,6 +411,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/ruang', $data);
             $this->view('templates/footer', $data);
+            $this->view('modalAdmin/modal', $data);
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";

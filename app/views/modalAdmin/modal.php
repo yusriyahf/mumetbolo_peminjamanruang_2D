@@ -169,11 +169,6 @@
                         <label for="kapasitas" class="form-label">Kapasitas</label>
                         <input type="number" class="form-control" id="kapasitas" name="kapasitas" min="1" max="100" autocomplete="off" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="fasilitas" class="form-label">Fasilitas</label>
-                        <input type="text" class="form-control" id="fasilitas" name="fasilitas" autocomplete="off" required>
-                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

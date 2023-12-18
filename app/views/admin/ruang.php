@@ -49,17 +49,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>Alamat</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['ruang']) && is_array($data['ruang'])) {
