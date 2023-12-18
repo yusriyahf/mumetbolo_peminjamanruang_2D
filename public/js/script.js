@@ -79,8 +79,10 @@ $(document).ready(function () {
     $('.tampilFormPinjam').on('click', function () {
         const id_ruang = $(this).data('id_ruang');
         const id_jadwal = $(this).data('id_jadwal');
+
         const tgl = $(this).data('tgl');
         const status = $(this).data('status');
+
 
         $('#id_ruang').val(id_ruang);
         $('#id_jadwal').val(id_jadwal);
@@ -88,8 +90,8 @@ $(document).ready(function () {
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+' '+time;
-        $('#tgl_pinjam').val(dateTime);
-        $('#tgl').val(tgl);
+        $('#tglSekarang').val(dateTime);
+        $('#id_jadwal').val(id_jadwal);
     });
 
     //user tampil detail ruangan

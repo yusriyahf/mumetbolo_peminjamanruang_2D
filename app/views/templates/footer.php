@@ -33,7 +33,7 @@
                 <form action="<?= BASEURL; ?>/mahasiswa/formPinjam" method="post">
                     <input type="hidden" name="id_ruang" id="id_ruang" value="">
                     <input type="hidden" name="id_jadwal" id="id_jadwal" value="">
-                    <input type="hidden" name="tgl" id="tgl" value="">
+                    <input type="hidden" name="tglSekarang" id="tglSekarang" value="">
 
                     <div class="mb-3">
                         <label for="nama" class="form-label">Peminjam</label>

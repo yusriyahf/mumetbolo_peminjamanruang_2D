@@ -39,8 +39,7 @@
                                     <div class="text-white-50 small mb-3" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Status <?= $ruang['status']; ?></div>
 
                                     <!-- <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>">Detail</a> -->
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-id_jadwal="<?= $ruang['id_jadwal']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-nama_ruang="<?= $ruang['nama_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Pinjam</a>
-
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-id_jadwal="<?= $ruang['id_jadwal']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-nama_ruang="<?= $ruang['nama_ruang']; ?>">Pinjam</a>
                                 </div>
                             </div>
                         </div>

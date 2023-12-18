@@ -15,10 +15,12 @@ class Proses2_model
     {
         $id_ruang = $_POST['id_ruang'];
         $username = $_POST['nama'];
-        $tgl_pinjam = $_POST['tgl_pinjam'];
+        $tgl_pinjam = $_POST['tglSekarang'];
+        $mulai = $_POST['tgl_pinjam'];
+        $selesai = $_POST['tgl_pinjam'];
         $tujuan = $_POST['tujuan'];
         $status = 'diproses';
-        $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, tujuan, status) VALUES ('$id_ruang','$username','$tgl_pinjam', '$tujuan','$status')";
+        $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, mulai, selesai, tujuan, status) VALUES ('$id_ruang','$username','$tgl_pinjam', '$mulai', '$selesai', '$tujuan','$status')";
 
         if ($sql = $this->db->conn->query($query)) {
             return true;
