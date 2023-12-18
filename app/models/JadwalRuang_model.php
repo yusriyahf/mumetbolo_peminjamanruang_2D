@@ -23,11 +23,13 @@ class JadwalRuang_model
         return $data;
     }
 
-    public function fetch($lantai)
+    public function fetch($lantai, $tanggal)
     {
         $data = null;
 
-        $query = "SELECT * FROM " . $this->table . " WHERE lantai = '$lantai'";
+        $query = "SELECT * FROM " . $this->table . " WHERE lantai = '$lantai'
+        AND '$tanggal' BETWEEN tgl_mulai AND tgl_selesai";
+
         if ($sql = $this->db->conn->query($query)) {
             while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;

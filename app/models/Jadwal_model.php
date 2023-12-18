@@ -84,11 +84,15 @@
             }
         }
 
-        public function setStatus($hari)
+        public function setStatus($hari, $tanggal)
         {
             $data = null;
 
-            $query = "UPDATE " . $this->table . " SET status = CASE WHEN hari = '$hari' THEN 'kbm' ELSE 'tersedia' END where status != 'dibooking'";
+            $query = "UPDATE " . $this->table . " SET status = CASE WHEN hari = '$hari' AND '$tanggal' BETWEEN tgl_mulai AND tgl_selesai THEN 'kbm' 
+            ELSE 'tersedia' 
+        END 
+    WHERE status != 'dibooking' and status != 'diproses'";
+
             if ($sql = $this->db->conn->query($query)) {
                 return true;
             } else {
@@ -97,6 +101,29 @@
         }
 
         public function setStatusPinjam($id)
+        {
+            $data = null;
+
+            $query = "UPDATE " . $this->table . " SET status = 'diproses' where id_jadwal = $id";
+            if ($sql = $this->db->conn->query($query)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function setStatusTolak($id)
+        {
+            $data = null;
+
+            $query = "UPDATE " . $this->table . " SET status = 'tersedia' where id_jadwal = $id";
+            if ($sql = $this->db->conn->query($query)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public function setStatusAcc($id)
         {
             $data = null;
 

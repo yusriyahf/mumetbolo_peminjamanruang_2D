@@ -52,6 +52,7 @@ class Admin extends Controller
         $status = 'ditolak';
         $pesan = $_POST['pesan'];
 
+        $this->model('Jadwal_model')->setStatusTolak($_POST['id_jadwal']);
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
@@ -68,6 +69,7 @@ class Admin extends Controller
         $status = 'diacc';
         $pesan = $_POST['pesan'];
 
+        $this->model('Jadwal_model')->setStatusAcc($_POST['id_jadwal']);
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');

@@ -16,7 +16,7 @@
             </button>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/5new.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/5fix.png" alt="" width="70%" class="mx-auto">
         <div class="card-body">
             <div class="row">
                 <?php $i = 1;
@@ -29,8 +29,8 @@
                             $bgClass = 'bg-danger';
                         } elseif ($ruang['status'] == 'dibooking') {
                             $bgClass = 'bg-dark';
-                        } elseif ($ruang['status'] == 'lainnya') {
-                            $bgClass = 'bg-primary';
+                        } elseif ($ruang['status'] == 'diproses') {
+                            $bgClass = 'bg-secondary';
                         } ?>
                         <div class="col-lg-3 mb-4">
                             <div class="card text-white shadow <?= $bgClass; ?>">
@@ -39,7 +39,7 @@
                                     <div class="text-white-50 small mb-3" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Status <?= $ruang['status']; ?></div>
 
                                     <!-- <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>">Detail</a> -->
-                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-id_jadwal="<?= $ruang['id_jadwal']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-nama_ruang="<?= $ruang['nama_ruang']; ?>">Pinjam</a>
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam <?php echo ($ruang['status'] !== 'tersedia') ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-id_jadwal="<?= $ruang['id_jadwal']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-nama_ruang="<?= $ruang['nama_ruang']; ?>">Pinjam</a>
                                 </div>
                             </div>
                         </div>

@@ -299,8 +299,8 @@ class Mahasiswa extends Controller
         $_SESSION['ruang'] = 5;
         if (isset($_SESSION['tanggal'])) {
 
-            $this->model('Jadwal_model')->setStatus($_SESSION['hari']);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5);
+            $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
+            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['tanggal']);
             $data['judul'] = 'Lantai 5';
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
