@@ -54,7 +54,7 @@ class Admin extends Controller
         $pesan = $_POST['pesan'];
 
         $this->model('Jadwal_model')->setStatusTolak($_POST['id_jadwal']);
-        if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
@@ -67,12 +67,12 @@ class Admin extends Controller
     public function accPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        $status = 'diacc';
-        $pesan = $_POST['pesan'];
+        $status = 'disetujui';
+        $pesan = '';
 
         $this->model('Jadwal_model')->setStatusAcc($_POST['id_jadwal']);
-        if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
-            $_SESSION['popuptolak'] = true;
+        if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
+            // $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
@@ -80,21 +80,6 @@ class Admin extends Controller
             exit();
         }
     }
-
-    // public function accPeminjaman()
-    // {
-    //     $id_proses = $_POST['id_proses'];
-    //     $status = 'disetujui';
-    //     $pesan = $_POST['pesan'];
-    //     if ($this->model('ViewProses_model')->ubahStatus($id_proses, $status, $pesan)) {
-    //         $_SESSION['popupacc'] = true;
-    //         header('Location: ' . BASEURL . '/admin/peminjaman');
-    //         exit();
-    //     } else {
-    //         header('Location: ' . BASEURL . '/admin/peminjaman');
-    //         exit();
-    //     }
-    // }
 
     public function peminjaman()
     {

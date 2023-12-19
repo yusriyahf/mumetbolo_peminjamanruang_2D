@@ -232,9 +232,9 @@ class Mahasiswa extends Controller
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
 
-        if ($this->model('Proses2_model')->cekPinjam($_SESSION['username'])) {
+        if ($this->model('Proses_model')->cekPinjam($_SESSION['username'])) {
             $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
-            if ($this->model('Proses2_model')->insert()) {
+            if ($this->model('Proses_model')->insert()) {
                 $_SESSION['popuppinjam'] = true;
                 header('Location: ' . BASEURL . '/mahasiswa/prosesPinjam');
                 exit();
@@ -296,7 +296,7 @@ class Mahasiswa extends Controller
 
             $_SESSION['hari'] = $hari;
 
-            header('Location: ' . BASEURL . '/mahasiswa/ruang' . $_SESSION['ruang']);
+            header('Location: ' . BASEURL . '/mahasiswa/ruang/' . $_SESSION['ruang']);
             unset($_SESSION['ruang']);
         }
     }

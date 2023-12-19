@@ -114,8 +114,6 @@
 
         public function setStatusTolak($id)
         {
-            $data = null;
-
             $query = "UPDATE " . $this->table . " SET status = 'tersedia' where id_jadwal = $id";
             if ($sql = $this->db->conn->query($query)) {
                 return true;

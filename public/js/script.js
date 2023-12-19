@@ -126,16 +126,6 @@ $(document).ready(function () {
         const finalPesan = pesan || defaultPesan;
         $('#pesanPenolakanModal #alasan').text(finalPesan);
     });
-    
-
-    //admin acc peminjaman
-    // $('.accPeminjaman').on('click', function () {
-    //     const id_proses = $(this).data('id_proses');
-    //     var acc = document.getElementById('accPeminjaman');
-
-    //     // Mengubah atribut href
-    //     acc.href = "http://localhost/mumetbolo_peminjamanruang_2d/public/admin/accPeminjaman/" + id_proses; // Ganti href
-    // });
 
     //admin tolak peminjaman
     $('.tolakPeminjaman').on('click', function () {
@@ -144,11 +134,13 @@ $(document).ready(function () {
         const id_jadwal = $(this).data('id_jadwal');
         $("#tolak_id_jadwal").val(id_jadwal);
     });
+
+    //admin acc peminjaman
     $('.accPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
         $("#acc_id_proses").val(id_proses);
         const id_jadwal = $(this).data('id_jadwal');
-        $("#tolak_id_jadwal").val(id_jadwal);
+        $("#acc_id_jadwal").val(id_jadwal);
     });
 
     //user tampil status ruangan

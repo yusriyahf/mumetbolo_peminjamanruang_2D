@@ -46,6 +46,7 @@
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
                             <th>Jenis Ruangan</th>
+                            <th>Kapasitas</th>
                             <th>Action</th>
                         </tr>
                     </thead>

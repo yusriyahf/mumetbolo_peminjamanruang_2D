@@ -63,11 +63,8 @@
                                         </td>
 
                                         <td>
-                                            <!-- <a href="#" class="btn btn-success btn-split btn-sm accPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#accPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>">
-                                                <i class="fas fa-check"></i>
-                                            </a> -->
                                             <a href="#" class="btn btn-success btn-split btn-sm accPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#accPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                <i class="fa fa-check" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
                                                 <i class="fa fa-times" aria-hidden="true"></i>

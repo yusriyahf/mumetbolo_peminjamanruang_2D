@@ -426,11 +426,11 @@
 </div>
 
 <!-- Acc Permintaan Peminjaman Modal-->
-<!-- <div class="modal fade" id="accPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="accPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">acc Permintaan Peminjaman</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Setujui Permintaan Peminjaman</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -438,18 +438,20 @@
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/admin/accPeminjaman" method="post">
                     <input type="hidden" name="id_proses" id="acc_id_proses" value="">
+                    <input type="hidden" name="id_jadwal" id="acc_id_jadwal" value="">
+
                     <div class="mb-3">
-                        <input type="hidden" class="form-control" id="pesan" name="pesan" autocomplete="off" required value="disetujui">
+                        <label for="pesan" class="form-label">Setujui Permintaan?</label>
                     </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <button class="btn btn-danger" name="submit" type="submit">acc</button>
+                <button class="btn btn-success" name="submit" type="submit">Setuju</button>
                 </form>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- Tolak Permintaan Peminjaman Modal-->
 <div class="modal fade" id="tolakPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

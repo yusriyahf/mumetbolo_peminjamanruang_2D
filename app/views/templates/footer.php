@@ -100,35 +100,6 @@
 </div>
 
 
-
-<div class="modal fade" id="accPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Acc Permintaan Peminjaman</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/accPeminjaman" method="post">
-                    <input type="hidden" name="id_proses" id="acc_id_proses" value="">
-                    <input type="hidden" name="id_jadwal" id="tolak_id_jadwal" value="">
-
-                    <div class="mb-3">
-                        <label for="pesan" class="form-label">Alasan Setuju</label>
-                        <input type="text" class="form-control" id="pesan" name="pesan" autocomplete="off" required>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <button class="btn btn-success" name="submit" type="submit">Setuju</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Pesan Penolakan Modal-->
 <div class="modal fade" id="pesanPenolakanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
