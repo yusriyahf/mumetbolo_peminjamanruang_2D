@@ -10,7 +10,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Dosen</h6>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahDosenModal">
-                <i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Dosen
+                <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i> <span style="margin-left: 5px;"></i> Tambah Data Dosen
             </button>
             <!-- <a href="#" data-toggle="modal" data-target="#formTambahDosenModal" class="btn-sm btn-primary text-decoration-none">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariDosen" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -33,7 +33,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTabledosen" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>

@@ -13,10 +13,6 @@
                 <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
                 <span style="margin-left: 5px;"></i> Tambah Data Mahasiswa
             </button>
-                <!-- Cetak Data ke Excel Link dengan warna hijau -->
-            <a href="laporanexcel.php" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah" target="_blank" style="margin-left: 5px;">
-                <span >Cetak Data ke Excel</span>
-            </a>
 
             <!-- <a href="#" data-toggle="modal" class="btn btn-sm btn-primary" data-target="#formTambahModal">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -40,7 +36,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTablemhs" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>

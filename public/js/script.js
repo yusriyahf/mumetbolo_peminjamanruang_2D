@@ -181,6 +181,115 @@ $(document).ready(function () {
             }
         });
     })
+
+//EXPORT KE EXCEL :
+    $('#dataTablemhs').DataTable({
+        dom: 'B',
+        buttons: [{
+            extend: 'excel',
+            text: 'Ekspor ke Excel',
+            filename: function () {
+                return 'Data_Mahasiswa'; // Nama file Excel disetel di sini
+            },
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6], // Kolom yang ingin diexport ke Excel
+                orthogonal: 'export' // Mencegah kolom "Action" ikut terkonversi
+            },
+            customize: function (xlsx) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+    
+                // Loop through all rows and columns
+                $('row c', sheet).each(function () {
+                    $(this).attr('s', '25'); // Set border style to thin
+                });
+            }
+        }]
+    });
+    
+    var excelButton = $('.buttons-excel');
+    excelButton.addClass('d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah');
+    excelButton.css('margin-bottom', '15px');
+    
+    $('#dataTabledosen').DataTable({
+        dom: 'B',
+        buttons: [{
+            extend: 'excel',
+            text: 'Ekspor ke Excel',
+            filename: function () {
+                return 'Data_Dosen'; // Nama file Excel disetel di sini
+            },
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6], // Kolom yang ingin diexport ke Excel
+                orthogonal: 'export' // Mencegah kolom "Action" ikut terkonversi
+            },
+            customize: function (xlsx) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+    
+                // Loop through all rows and columns
+                $('row c', sheet).each(function () {
+                    $(this).attr('s', '25'); // Set border style to thin
+                });
+            }
+        }]
+    });
+    
+    var excelButton = $('.buttons-excel');
+    excelButton.addClass('d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah');
+    excelButton.css('margin-bottom', '15px');
+
+    $('#dataTablejadwal').DataTable({
+        dom: 'B',
+        buttons: [{
+            extend: 'excel',
+            text: 'Ekspor ke Excel',
+            filename: function () {
+                return 'Tabel_Jadwal'; // Nama file Excel disetel di sini
+            },
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6], // Kolom yang ingin diexport ke Excel
+                orthogonal: 'export' // Mencegah kolom "Action" ikut terkonversi
+            },
+            customize: function (xlsx) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+    
+                // Loop through all rows and columns
+                $('row c', sheet).each(function () {
+                    $(this).attr('s', '25'); // Set border style to thin
+                });
+            }
+        }]
+    });
+    
+    var excelButton = $('.buttons-excel');
+    excelButton.addClass('d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah');
+    excelButton.css('margin-bottom', '15px');
+
+    $('#dataTablehistori').DataTable({
+        dom: 'B',
+        buttons: [{
+            extend: 'excel',
+            text: 'Ekspor ke Excel',
+            filename: function () {
+                return 'Data_Histori_Peminjaman'; // Nama file Excel disetel di sini
+            },
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6], // Kolom yang ingin diexport ke Excel
+                orthogonal: 'export' // Mencegah kolom "Action" ikut terkonversi
+            },
+            customize: function (xlsx) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+    
+                // Loop through all rows and columns
+                $('row c', sheet).each(function () {
+                    $(this).attr('s', '25'); // Set border style to thin
+                });
+            }
+        }]
+    });
+    
+    var excelButton = $('.buttons-excel');
+    excelButton.addClass('d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah');
+    excelButton.css('margin-bottom', '15px');
 });
 
 function updateClock() {

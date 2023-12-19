@@ -48,7 +48,7 @@
                                                 <form action="<?= BASEURL; ?>/mahasiswa/uploadFile/<?= $proses['id_proses']; ?>" method="post" enctype="multipart/form-data">
                                                     <div class="input-group">
                                                         <input type="file" name="suratPinjam" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                                        <button class="btn btn-primary" type="submit" name="submit" id="inputGroupFileAddon04">Upload</button>
+                                                        <button class="btn btn-primary" type="submit" name="submit" id="inputGroupFileAddon04"><i class="fa fa-upload text-white-50 fa-xs" style="margin-right :5px" aria-hidden="true"></i>Upload</button>
                                                     </div>
                                                 </form>
                                             <?php } else { ?>
