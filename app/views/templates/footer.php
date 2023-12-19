@@ -63,10 +63,11 @@
                 <h4 class="modal-title" id="ruangModalLabel">Detail Ruang</h5>
             </div>
             <div class="modal-body">
+                <img src="<?= BASEURL; ?>/img/layout5.jpg" alt="" width="75%" class="mx-auto">
+
                 <h5 id="nama_ruang"></h5>
                 <h5 id="lantai_ruang"></h5>
                 <h5 id="jenis_ruang"></h5>
-                <h5 id="fasilitas"></h5>
                 <h5 id="kapasitas"></h5>
                 <h5 id="status_ruang"></h5>
             </div>
@@ -144,6 +145,7 @@
 <script src="<?= BASEURL; ?>/js/script.js"></script>
 
 <script src="<?= BASEURL; ?>/js/warna.js"></script>
+<script src="<?= BASEURL; ?>/js/isotope.pkgd.min.js"></script>
 
 <!-- Pop Up -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

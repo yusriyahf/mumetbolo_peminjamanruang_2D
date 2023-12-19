@@ -72,7 +72,7 @@ class Admin extends Controller
 
         $this->model('Jadwal_model')->setStatusAcc($_POST['id_jadwal']);
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
-            // $_SESSION['popuptolak'] = true;
+            $_SESSION['popupacc'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
             exit();
         } else {
@@ -84,7 +84,6 @@ class Admin extends Controller
     public function peminjaman()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('ViewProses_model')->getStatus();
             $data['proses'] = $this->model('ViewProses_model')->fetch();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
@@ -103,16 +102,21 @@ class Admin extends Controller
                         showCloseButton: true,
                     });
                 </script>
-<?php
+            <?php
                 $_SESSION['popuptolak'] = false;
-            }
-        } else {
-            if (isset($_SESSION['tipe'])) {
-                echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
-                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe']);
-            } else {
-                echo "<script>alert('Lakukan Login Terlebih Dahulu')</script>";
-                header('Refresh: 0; url=' . BASEURL);
+            } else if (isset($_SESSION['popupacc']) && $_SESSION['popupacc'] === true) {
+            ?>
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Permintaan Peminjaman Disetujui",
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                    });
+                </script>
+<?php
+                $_SESSION['popupacc'] = false;
             }
         }
     }
@@ -468,6 +472,7 @@ class Admin extends Controller
             $this->view('templates/header', $data);
             $this->view('admin/jadwal', $data);
             $this->view('templates/footer');
+            $this->view('admin/modal', $data);
             # code...
         } else {
             if (isset($_SESSION['tipe'])) {

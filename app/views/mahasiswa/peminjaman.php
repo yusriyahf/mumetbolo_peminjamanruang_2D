@@ -21,8 +21,8 @@
         <div class="card-body">
             <div class="btn-group mb-3">
                 <a href="<?= BASEURL; ?>/mahasiswa/peminjaman" class="btn btn-primary">Semua</a>
-                <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiacc" class="btn btn-primary">Disetujui</a>
-                <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiTolak" class="btn btn-primary">Ditolak</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/peminjaman/diacc" class="btn btn-primary">Disetujui</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/peminjaman/ditolak" class="btn btn-primary">Ditolak</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

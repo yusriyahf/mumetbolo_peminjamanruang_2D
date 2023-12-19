@@ -111,7 +111,7 @@ $(document).ready(function () {
                 $('#ruangModal #lantai_ruang').text('Lantai: ' + data.lantai);
                 $('#ruangModal #jenis_ruang').text('Jenis: ' + data.jenis_ruang);
                 $('#ruangModal #fasilitas').text('Fasilitas: ' + data.fasilitas);
-                $('#ruangModal #kapasitas').text('kapasitas: ' + data.kapasitas);
+                $('#ruangModal #status').text('Status: ' + data.status);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -206,5 +206,12 @@ setInterval(updateClock, 1000);
 
             // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
             updateClock();
+
+
+            $('.grid').isotope({
+                // options
+                itemSelector: '.grid-item',
+                layoutMode: 'fitRows'
+              });
 
        

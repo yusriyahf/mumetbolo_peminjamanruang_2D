@@ -16,9 +16,9 @@
             </button>
 
         </div>
-        <img src="<?= BASEURL; ?>/img/<?= $data['lantai']; ?>new.png" alt="" width="70%" class="mx-auto">
+        <img src="<?= BASEURL; ?>/img/<?= $data['lantai']; ?>.jpg" alt="" width="70%" class="mx-auto">
         <div class="card-body">
-            <div class="row">
+            <div class="row grid">
                 <?php $i = 1;
                 if (!empty($data['ruang']) && is_array($data['ruang'])) {
                     foreach ($data['ruang'] as $ruang) :
@@ -32,13 +32,13 @@
                         } elseif ($ruang['status'] == 'diproses') {
                             $bgClass = 'bg-secondary';
                         } ?>
-                        <div class="col-lg-3 mb-4">
+                        <div class="col-lg-3 mb-4 grid-item">
                             <div class="card text-white shadow <?= $bgClass; ?>">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
                                     <div class="text-white-50 small mb-3" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Status <?= $ruang['status']; ?></div>
 
-                                    <!-- <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>">Detail</a> -->
+                                    <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Detail</a>
                                     <a href="#" class="btn btn-outline-light btn-sm tampilFormPinjam <?php echo ($ruang['status'] !== 'tersedia') ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#formPinjamModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-id_jadwal="<?= $ruang['id_jadwal']; ?>" data-tgl="<?= $data['tanggal']; ?>" data-nama_ruang="<?= $ruang['nama_ruang']; ?>">Pinjam</a>
                                 </div>
                             </div>

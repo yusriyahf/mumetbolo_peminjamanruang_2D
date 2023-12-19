@@ -26,7 +26,6 @@ class Mahasiswa extends Controller
                     });
                 </script>
             <?php
-                // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
                 $_SESSION['first_login'] = false;
             }
         } else {
@@ -39,35 +38,22 @@ class Mahasiswa extends Controller
             }
         }
     }
-    public function peminjaman()
+    public function peminjaman($filter = null)
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('ViewProses_model')->fetch();
+        if ($filter == null) {
+            $data['proses'] = $this->model('ViewProses_model')->fetch();
+        } else if ($filter == 'diacc') {
+            $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
+        } else if ($filter == 'ditolak') {
+            $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
+        }
         $this->view('templates/header', $data);
         $this->view('mahasiswa/peminjaman', $data);
         $this->view('templates/footer');
         $this->view('mahasiswa/modal', $data);
     }
 
-    public function peminjamanDiAcc()
-    {
-        $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/peminjaman', $data);
-        $this->view('templates/footer');
-        $this->view('mahasiswa/modal', $data);
-    }
-
-    public function peminjamanDiTolak()
-    {
-        $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/peminjaman', $data);
-        $this->view('templates/footer');
-        $this->view('mahasiswa/modal', $data);
-    }
     public function prosesPinjam()
     {
         $data['judul'] = 'Peminjaman';
@@ -114,7 +100,6 @@ class Mahasiswa extends Controller
                 });
             </script>
         <?php
-            // Atur ulang variabel sesi popupberhasil agar pesan tidak ditampilkan lagi pada login berikutnya
             $_SESSION['popupberhasil'] = false;
         } else if (isset($_SESSION['popupgagal']) && $_SESSION['popupgagal'] === true) {
         ?>
@@ -322,7 +307,6 @@ class Mahasiswa extends Controller
     {
         $_SESSION['ruang'] = $lantai;
         if (isset($_SESSION['tanggal'])) {
-
             $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
             $data['ruang'] = $this->model('ViewJadwal_model')->fetch($lantai, $_SESSION['tanggal']);
             $data['judul'] = 'Lantai ' . $lantai;
