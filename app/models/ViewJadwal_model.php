@@ -27,9 +27,7 @@ class ViewJadwal_model
     {
         $data = null;
 
-        $query = "SELECT * FROM " . $this->table . " WHERE lantai = '$lantai'
-        AND '$tanggal' BETWEEN tgl_mulai AND tgl_selesai";
-
+        $query = "SELECT * FROM " . $this->table . " WHERE lantai = '$lantai' AND '$tanggal' BETWEEN tgl_mulai AND tgl_selesai";
         if ($sql = $this->db->conn->query($query)) {
             while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;
@@ -37,6 +35,25 @@ class ViewJadwal_model
         }
         return $data;
     }
+
+    public function cekJadwal($lantai, $tanggal){
+        $data = null;
+        $query = "SELECT $this->table.id_ruang, $this->table.nama_ruang, $this->table.lantai, $this->table.jenis_ruang, $this->table.kapasitas, $this->table.id_jadwal, $this->table.keterangan, $this->table.tgl_mulai, $this->table.tgl_selesai, $this->table.hari, 
+            CASE 
+                WHEN COUNT(id_ruang) > 1 THEN 'dibooking'
+                ELSE $this->table.status
+            END AS status 
+            FROM jadwal_ruang
+            WHERE lantai = '$lantai' AND '$tanggal' BETWEEN tgl_mulai AND tgl_selesai
+            GROUP BY id_ruang";
+
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    } 
 
 
     public function status($id)

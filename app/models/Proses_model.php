@@ -17,11 +17,10 @@ class Proses_model
         $id_ruang = $_POST['id_ruang'];
         $username = $_POST['nama'];
         $tgl_pinjam = $_POST['tglSekarang'];
-        $mulai = $_POST['tgl_pinjam'];
-        $selesai = $_POST['tgl_pinjam'];
+        $tgl_dipakai = $_POST['tgl_pinjam'];
         $tujuan = $_POST['tujuan'];
         $status = 'diproses';
-        $query = "INSERT INTO " . $this->table . " (id_ruang, id_jadwal, username, tanggal_pinjam, mulai, selesai, tujuan, status) VALUES ('$id_ruang', '$id_jadwal','$username','$tgl_pinjam', '$mulai', '$selesai', '$tujuan','$status')";
+        $query = "INSERT INTO " . $this->table . " (id_ruang, id_jadwal, username, tanggal_pinjam, tgl_dipakai, tujuan, status) VALUES ('$id_ruang', '$id_jadwal','$username','$tgl_pinjam', '$tgl_dipakai', '$tujuan','$status')";
 
         if ($sql = $this->db->conn->query($query)) {
             return true;
