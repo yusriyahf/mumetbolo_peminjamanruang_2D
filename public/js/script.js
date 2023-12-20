@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    //update data mahasiswa
     $('.tampilModalUbah').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
@@ -144,7 +145,6 @@ $(document).ready(function () {
     });
 
     //user tampil status ruangan
-
     $('.statusRg').each(function () {
         const idRuang = $(this).data('id_ruang');
         const tgl = $(this).data('tgl');
@@ -163,24 +163,33 @@ $(document).ready(function () {
         });
     });
 
-    //admin tambah jadwal
-    $('.tambahJadwal').on('click', function(){
+    //update data Jadwal
+    $('.tampilModalUbahJadwal').on('click', function () {
+        const id = $(this).data('id');
         $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getRuangAll',
-            type: 'GET',
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahMahasiswa/' + id,
+
+            method: 'post',
+            data : {id : id},
             dataType: 'json',
             success: function (data) {
-                var dropdown = $('#id_ruang');
-                dropdown.empty();
-                $.each(data, function (index, value) {
-                    dropdown.append($('<option>').text(value.id_ruang).attr('value', value.id_ruang));
-                });
+                console.log(data);
+                $("#id_mahasiswa_edit").val(data.id_mahasiswa);
+                $("#nim_edit").val(data.nim);
+                $("#nama_edit").val(data.nama);
+                $("#jenis_kelamin_edit").val(data.jenis_kelamin);
+                $("#no_tlp_edit").val(data.no_tlp);
+                $("#kelas_edit").val(data.kelas);
+                $("#prodi_edit").val(data.prodi);
+                $("#usernameMhs").val(data.username);
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
+                console.log('Error: ' + error);
             }
         });
-    })
+    });
+
+
 
 //EXPORT KE EXCEL :
     $('#dataTablemhs').DataTable({

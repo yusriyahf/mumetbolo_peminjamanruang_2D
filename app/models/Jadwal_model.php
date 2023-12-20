@@ -22,20 +22,22 @@
                 }
             }
             return $data;
-        }
+        }''
 
         public function insert()
         {
             if (isset($_POST['submit'])) {
-                if (isset($_POST['id_ruang']) && isset($_POST['jenis_kegiatan']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
-                    if (!empty($_POST['id_ruang']) && !empty($_POST['jenis_kegiatan']) && !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
+                if (isset($_POST['id_ruang']) && isset($_POST['mulai']) && isset($_POST['selesai']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
+                    if (!empty($_POST['id_ruang']) && !empty($_POST['mulai']) && !empty($_POST['selesai']) && !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
 
                         $id_ruang = $_POST['id_ruang'];
-                        $jenis_kegiatan = $_POST['jenis_kegiatan'];
+                        $jenis_kegiatan = 'KBM';
+                        $mulai = $_POST['mulai'];
+                        $selesai = $_POST['selesai'];
                         $hari = $_POST['hari'];
                         $keterangan = $_POST['keterangan'];
 
-                        $query = "INSERT INTO " . $this->table . " (id_ruang, jenis_kegiatan, hari, keterangan) VALUES ('$id_ruang','$jenis_kegiatan','$hari','$keterangan')";
+                        $query = "INSERT INTO " . $this->table . " (id_ruang, jenis_kegiatan, tgl_mulai, tgl_selesai, hari, keterangan) VALUES ('$id_ruang','$jenis_kegiatan', '$mulai', '$selesai','$hari','$keterangan')";
                         if ($sql = $this->db->conn->query($query)) {
                             return true;
                         } else {

@@ -468,12 +468,12 @@ class Admin extends Controller
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
             $data['jd'] = $this->model('ViewJadwal_model')->fetchAdmin();
+            $data['ruang'] = $this->model('Ruang_model')->fetchAll();
             $data['judul'] = 'Jadwal';
             $this->view('templates/header', $data);
             $this->view('admin/jadwal', $data);
             $this->view('templates/footer');
             $this->view('admin/modal', $data);
-            # code...
         } else {
             if (isset($_SESSION['tipe'])) {
                 echo "<script>alert('ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI')</script>";
@@ -498,11 +498,6 @@ class Admin extends Controller
         }
     }
 
-    public function getRuangAll()
-    {
-        echo json_encode($this->model('Ruang_model')->fetchAll());
-    }
-
     public function hapusJadwal($id)
     {
         if ($this->model('Jadwal_model')->delete($id)) {
@@ -514,6 +509,10 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/admin/jadwal/');
             exit();
         }
+    }
+
+    public function getUbahJadwal(){
+        echo json_encode($this->model('Ruang_model')->fetch_single($id));
     }
 
     public function ubahJadwal()

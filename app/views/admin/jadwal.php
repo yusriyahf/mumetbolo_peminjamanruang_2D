@@ -59,7 +59,7 @@
                                     <td><?= $jadwal['keterangan']; ?></td>
                                     <td><?= $jadwal['hari']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/admin/ubahJadwal/<?= $jadwal['id_jadwal']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahDosen" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalJadwal" data-id="<?= $jadwal['id_jadwal']; ?>">
+                                        <a href="#" class="btn btn-warning btn-split btn-sm tampilModalUbahJadwal" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditModalJadwal" data-id="<?= $jadwal['id_jadwal']; ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
 

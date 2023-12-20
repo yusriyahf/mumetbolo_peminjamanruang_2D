@@ -373,58 +373,6 @@
     </div>
 </div>
 
-<!-- Ubah Data Jadwal Modal-->
-<div class="modal fade" id="formEditModalJadwal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModalLabel">Ubah Data Jadwal</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/ubahJadwal" method="post">
-                    <input type="hidden" name="id_jadwal" id="id_jadwal" value="">
-                    <div class="mb-3">
-                        <label for="id_ruang" class="form-label">Id Ruang</label>
-                        <input type="text" class="form-control" id="id_ruang" name="id_ruang" autocomplete="off" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
-                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" autocomplete="off" required value="KBM">
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="hari" class="form-label">Hari:</label>
-                        <select name="hari" id="hari" class="form-control">
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="keterangan" class="form-label">Keterangan:</label>
-                        <select name="keterangan" id="keterangan" class="form-control">
-                            <option value="Manajemen Proyek">Manajemen Proyek</option>
-                            <option value="Desain Pemrograman Web">Desain Pemrograman Web</option>
-                            <option value="Aritificial Intelligence">Aritificial Intelligence</option>
-                            <option value="Pemrograman Berbasis Objek">Pemrograman Berbasis Objek</option>
-                            <option value="Matematika">Matematika</option>
-                        </select>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Acc Permintaan Peminjaman Modal-->
 <div class="modal fade" id="accPeminjamanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -494,6 +442,63 @@
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/admin/tambahJadwal" method="post">
                     <div class="mb-3">
+                        <label for="id_ruang" class="form-label">Ruang:</label>
+                        <select name="id_ruang" id="id_ruang" class="form-control">
+                            <?php foreach ($data['ruang'] as $ruang): ?>
+                                <option value="<?= $ruang['id_ruang']; ?>"><?= $ruang['nama_ruang']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="tanggal" class="form-label">Tanggal Mulai:</label>
+                        <input type="date" class="form-control" id="mulai" name="mulai" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="tanggal" class="form-label">Tanggal Selesai:</label>
+                        <input type="date" class="form-control" id="selesai" name="selesai" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="hari" class="form-label">Hari:</label>
+                        <select name="hari" id="hari" class="form-control">
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="keterangan" class="form-label">Matakuliah:</label>
+                        <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ubah Data Jadwal Modal-->
+<div class="modal fade" id="formEditModalJadwal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Ubah Data Jadwal</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/admin/ubahJadwal" method="post">
+                    <input type="hidden" name="id_jadwal" id="id_jadwal" value="">
+                    <div class="mb-3">
                         <label for="id_ruang" class="form-label">Id Ruang</label>
                         <input type="text" class="form-control" id="id_ruang" name="id_ruang" autocomplete="off" required>
                     </div>
@@ -525,7 +530,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                <button type="submit" name="submit" class="btn btn-primary">Ubah Data</button>
                 </form>
             </div>
         </div>
