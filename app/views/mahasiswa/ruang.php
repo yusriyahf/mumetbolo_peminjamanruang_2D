@@ -4,15 +4,16 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai <?= $data['lantai']; ?></h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
-    <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
     <div class="clock"></div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-
-            <div class="btn-group mb-3">
-                <a href="<?= BASEURL; ?>/mahasiswa/ruang/5" class="btn btn-primary">Lantai 5</a>
+        <div class="card-header py-3" >
+        <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn btn-success"  >Pilih Tanggal</a>
+         <!-- <br>
+         <br> -->
+            <div class="btn-group mb-3 mt-3 ml-1">    
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/5" class="btn btn-primary" >Lantai 5</a>
                 <a href="<?= BASEURL; ?>/mahasiswa/ruang/6" class="btn btn-primary">Lantai 6</a>
                 <a href="<?= BASEURL; ?>/mahasiswa/ruang/7" class="btn btn-primary">Lantai 7</a>
                 <a href="<?= BASEURL; ?>/mahasiswa/ruang/8" class="btn btn-primary">Lantai 8</a>

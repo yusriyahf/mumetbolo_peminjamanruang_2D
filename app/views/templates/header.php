@@ -103,9 +103,9 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="<?= BASEURL; ?>/admin/jadwal">
-                        <i class="fas fa-comments"></i>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
                         <span>Jadwal</span></a>
                 </li>
             <?php endif; ?>
