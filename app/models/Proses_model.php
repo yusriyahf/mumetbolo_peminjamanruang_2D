@@ -199,4 +199,18 @@ class Proses_model
             return false;
         }
     }
+    
+    public function fetch_IdProses($id_proses)
+    {
+
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE id_proses= $id_proses";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
 }

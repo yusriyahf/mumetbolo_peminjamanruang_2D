@@ -28,6 +28,7 @@
                             <th>Peminjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Upload Surat Peminjaman</th>
+                            <th>Surat Peminjaman</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -54,6 +55,9 @@
                                             <?php } else { ?>
                                                 <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
                                             <?php } ?>
+                                        </td>
+                                        <td>
+                                        <a class="btn btn-primary cetakSurat" href="<?= BASEURL; ?>/mahasiswa/surat/<?= $proses['id_proses']; ?>/<?= $proses['username']; ?>"><i class="bi bi-binoculars-fill"></i>lihat</a>
                                         </td>
                                         <td><?= $proses['status']; ?></td>
                                         </form>
