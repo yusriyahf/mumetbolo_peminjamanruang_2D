@@ -10,11 +10,19 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+
+            <div class="btn-group mb-3">
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/5" class="btn btn-primary">Lantai 5</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/6" class="btn btn-primary">Lantai 6</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/7" class="btn btn-primary">Lantai 7</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/8" class="btn btn-primary">Lantai 8</a>
+            </div>
+
             <h6 class="m-0 font-weight-bold text-primary mb-3">Anda booking untuk <b><?= $_SESSION['hari']; ?> <?= $data['tanggal']; ?></b></h6>
+
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
-
         </div>
         <img src="<?= BASEURL; ?>/img/<?= $data['lantai']; ?>.jpg" alt="" width="70%" class="mx-auto">
         <div class="card-body">

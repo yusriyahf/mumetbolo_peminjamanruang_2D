@@ -111,7 +111,7 @@
             <?php endif; ?>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
+            <!-- <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
                         <i class="fa fa-building" aria-hidden="true"></i>
@@ -126,6 +126,14 @@
                             <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/8">Lantai 8</a>
                         </div>
                     </div>
+                </li>
+            <?php endif; ?> -->
+
+            <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/ruang/5">
+                        <i class="fas fa-building"></i>
+                        <span>Ruang</span></a>
                 </li>
             <?php endif; ?>
 

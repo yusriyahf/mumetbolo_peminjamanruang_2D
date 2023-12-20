@@ -273,7 +273,10 @@ class Mahasiswa extends Controller
     public function processForm()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tanggal = $_POST['tanggal'];
+            $tanggal = isset($_POST['tanggal']) ? $_POST['tanggal'] : date('Y-m-d');
+
+            // Set the timezone to your desired timezone
+            date_default_timezone_set('Asia/Jakarta'); // Replace 'Asia/Jakarta' with your timezone
 
             $_SESSION['tanggal'] = $tanggal;
 

@@ -1,6 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <link href="<?= BASEURL; ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Mahasiswa</h1>
     <p class="mb-4">Data Mahasiswa Jurusan Teknik Informatika <b>POLINEMA</b></p>
@@ -13,12 +14,11 @@
                 <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
                 <span style="margin-left: 5px;"></i> Tambah Data Mahasiswa
             </button>
-                <!-- Cetak Data ke Excel Link dengan warna hijau -->
+            <!-- Cetak Data ke Excel Link dengan warna hijau -->
             <a href="laporanexcel.php" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm tambah" target="_blank" style="margin-left: 5px;">
-                <span >Cetak Data ke Excel</span>
+                <span>Cetak Data ke Excel</span>
             </a>
 
-            <!-- <a href="#" data-toggle="modal" class="btn btn-sm btn-primary" data-target="#formTambahModal">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Ruang" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
@@ -53,17 +53,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>prodi</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
+
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['mhs']) && is_array($data['mhs'])) {

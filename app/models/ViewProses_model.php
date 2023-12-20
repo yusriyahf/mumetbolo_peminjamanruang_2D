@@ -11,22 +11,6 @@ class ViewProses_model
         $this->db = new Database;
     }
 
-    public function insert()
-    {
-        $id_ruang = $_POST['id_ruang'];
-        $username = $_POST['nama'];
-        $tgl_pinjam = $_POST['tgl_pinjam'];
-        $tujuan = $_POST['tujuan'];
-        $status = 'diproses';
-        $query = "INSERT INTO " . $this->table . " (id_ruang, username, tanggal_pinjam, tujuan, status) VALUES ('$id_ruang','$username','$tgl_pinjam', '$tujuan','$status')";
-
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     // fetch semuanya
     public function fetch()
     {
@@ -79,17 +63,7 @@ class ViewProses_model
         return $data;
     }
 
-    public function ubahStatus($id, $status, $pesan)
-    {
-        // Lakukan query untuk mengubah status berdasarkan ID
-        $query = "UPDATE " . $this->table . " SET status = '$status', pesan = '$pesan' WHERE id_proses = $id";
 
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function countPeminjaman($username)
     {
@@ -179,15 +153,5 @@ class ViewProses_model
             }
         }
         return $data;
-    }
-
-    public function upFile($id_proses, $namaFile)
-    {
-        $query = "UPDATE " . $this->table . " SET file = '$namaFile' WHERE id_proses = $id_proses";
-        if ($sql = $this->db->conn->query($query)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

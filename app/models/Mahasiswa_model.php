@@ -11,7 +11,6 @@ class Mahasiswa_model
         $this->db = new Database;
     }
 
-
     public function cariDataMahasiswa()
     {
         $data = null;
