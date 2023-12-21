@@ -34,7 +34,7 @@ class Ruang_model
     public function insert()
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['lantai'])  && isset($_POST['arah']) ) {
+            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['lantai'])  && isset($_POST['arah'])) {
                 if (!empty($_POST['id_ruang']) && !empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['lantai']) && !empty($_POST['arah'])) {
 
                     $id_ruang = $_POST['id_ruang'];
@@ -61,8 +61,8 @@ class Ruang_model
     {
         if (isset($_POST['submit'])) {
 
-            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['arah']) && isset($_POST['lantai']) && isset($_POST['id_ruang_edit']) ) {
-                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['arah']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang_edit'])) {
+            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['arah']) && isset($_POST['lantai']) && isset($_POST['id_ruang'])) {
+                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['arah']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang'])) {
 
                     $id_ruang = $_POST['id_ruang'];
                     $nama_rg = $_POST['nama_rg'];
@@ -72,7 +72,7 @@ class Ruang_model
                     $arah = $_POST['arah'];
                     $lantai = $_POST['lantai'];
 
-                    $query = "UPDATE " . $this->table . " SET nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , arah='$arah' WHERE id_ruang='$id'";
+                    $query = "UPDATE " . $this->table . " SET id_ruang = '$id_ruang' , nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , lantai='$lantai', arah='$arah' WHERE id_ruang='$id'";
 
                     if ($sql = $this->db->conn->query($query)) {
                         return true;

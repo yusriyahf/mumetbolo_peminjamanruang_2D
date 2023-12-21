@@ -11,6 +11,20 @@ class ViewProses_model
         $this->db = new Database;
     }
 
+    public function fetch_IdProses($id_proses)
+    {
+
+        $data = null;
+
+        $query = "SELECT * FROM " . $this->table . " WHERE id_proses= $id_proses";
+        if ($sql = $this->db->conn->query($query)) {
+            while ($row = $sql->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+        return $data;
+    }
+
     public function insert()
     {
         $id_ruang = $_POST['id_ruang'];

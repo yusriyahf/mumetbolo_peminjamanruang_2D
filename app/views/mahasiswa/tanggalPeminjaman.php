@@ -7,10 +7,6 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary mb-3">Tata Tertib peminjaman ruangan</h6>
-            <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-primary btn-sm" target="_blank">Download File</a>
-        </div>
         <div class="card-body">
             <form method="post" action="<?= BASEURL; ?>/mahasiswa/processForm">
                 <div class="form-group row">

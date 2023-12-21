@@ -4,13 +4,23 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Ruangan Lantai <?= $data['lantai']; ?></h1>
     <p class="mb-4">Data Ruangan Jurusan Teknik Informatika <b>POLINEMA</b></p>
-    <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn-primary btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
+
     <div class="clock"></div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            <a href="<?= BASEURL; ?>/mahasiswa/tanggalPeminjaman" class="btn-success btn-sm mb-5 text-decoration-none">Pilih Tanggal</a>
+
+            <div class="btn-group mb-3">
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/5" class="btn btn-primary">Lantai 5</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/6" class="btn btn-primary">Lantai 6</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/7" class="btn btn-primary">Lantai 7</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ruang/8" class="btn btn-primary">Lantai 8</a>
+                <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-primary btn-sm" target="_blank">Download File</a>
+            </div>
             <h6 class="m-0 font-weight-bold text-primary mb-3">Anda booking untuk <b><?= $_SESSION['hari']; ?> <?= $data['tanggal']; ?></b></h6>
+            <br>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>

@@ -330,7 +330,8 @@ class Mahasiswa extends Controller
 
     public function surat($id_proses, $username)
     {
-        $data['proses'] = $this->model('Proses_model')->fetch_IdProses($id_proses);
+        $data['judul'] = 'Cetak Surat';
+        $data['proses'] = $this->model('ViewProses_model')->fetch_IdProses($id_proses);
         $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($username);
         // echo $data['profil']['nim']; die;
         $this->view('templates/header', $data);

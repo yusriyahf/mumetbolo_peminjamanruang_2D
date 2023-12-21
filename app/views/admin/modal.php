@@ -415,7 +415,7 @@
                     <div class="mb-3">
                         <label for="id_ruang" class="form-label">Ruang:</label>
                         <select name="id_ruang" id="id_ruang" class="form-control">
-                            <?php foreach ($data['ruang'] as $ruang): ?>
+                            <?php foreach ($data['ruang'] as $ruang) : ?>
                                 <option value="<?= $ruang['id_ruang']; ?>"><?= $ruang['nama_ruang']; ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -458,7 +458,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>
 </div>
 
 <!-- Ubah Data Jadwal Modal-->
@@ -481,7 +481,7 @@
                     <div class="mb-3">
                         <label for="id_ruang" class="form-label">Ruang:</label>
                         <select name="id_ruang" id="id_ruang_edit_input" class="form-control">
-                            <?php foreach ($data['ruang'] as $ruang): ?>
+                            <?php foreach ($data['ruang'] as $ruang) : ?>
                                 <option value="<?= $ruang['id_ruang']; ?>"><?= $ruang['nama_ruang']; ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -578,4 +578,3 @@
         </div>
     </div>
 </div>
-

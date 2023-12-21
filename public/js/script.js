@@ -136,7 +136,6 @@ $(document).ready(function () {
                 $('#ruangModal #nama_ruang').text('Nama ruang: ' + data.nama_ruang);
                 $('#ruangModal #lantai_ruang').text('Lantai: ' + data.lantai);
                 $('#ruangModal #jenis_ruang').text('Jenis: ' + data.jenis_ruang);
-                $('#ruangModal #fasilitas').text('Fasilitas: ' + data.fasilitas);
                 $('#ruangModal #status').text('Status: ' + data.status);
                 $('#ruangModal #gambar_ruang').attr('src', 'http://localhost/mumetbolo_peminjamanruang_2d/public/imgRuang/' + data.gambar);
             },

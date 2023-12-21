@@ -26,6 +26,13 @@
                     </div>
                 </div>
             </form>
+            <div class="btn-group mb-3">
+                <a href="<?= BASEURL; ?>/admin/ruang/5" class="btn btn-primary">Lantai 5</a>
+                <a href="<?= BASEURL; ?>/admin/ruang/6" class="btn btn-primary">Lantai 6</a>
+                <a href="<?= BASEURL; ?>/admin/ruang/7" class="btn btn-primary">Lantai 7</a>
+                <a href="<?= BASEURL; ?>/admin/ruang/8" class="btn btn-primary">Lantai 8</a>
+                <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-primary btn-sm" target="_blank">Download File</a>
+            </div>
 
             <div class="row mt-3">
                 <div class="col-lg-4">

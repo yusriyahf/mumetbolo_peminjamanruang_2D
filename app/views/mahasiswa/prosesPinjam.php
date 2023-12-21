@@ -9,7 +9,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Data Proses Peminjaman</h6>
-            <a href="localhost/mumetbolo_peminjamanruang_2d/dompdf/cetak.php" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Surat Pinjam</a>
+
             <div class="row mt-3">
                 <div class="col-lg-4">
                     <?php Flasher::flash() ?>
@@ -59,7 +59,7 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                        <a class="btn btn-primary cetakSurat" href="<?= BASEURL; ?>/mahasiswa/surat/<?= $proses['id_proses']; ?>/<?= $proses['username']; ?>"><i class="bi bi-binoculars-fill"></i>lihat</a>
+                                            <a class="btn btn-primary cetakSurat" href="<?= BASEURL; ?>/mahasiswa/surat/<?= $proses['id_proses']; ?>/<?= $proses['username']; ?>"><i class="bi bi-binoculars-fill"></i>lihat</a>
                                         </td>
                                         <td><?= $proses['status']; ?></td>
                                         </form>
