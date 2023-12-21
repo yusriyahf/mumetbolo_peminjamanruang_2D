@@ -327,4 +327,13 @@ class Mahasiswa extends Controller
     {
         echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
+
+    public function surat($id_proses, $username){
+        $data['proses'] = $this->model('Proses_model')->fetch_IdProses($id_proses);
+        $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($username);
+        // echo $data['profil']['nim']; die;
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/pdf', $data);    
+        $this->view('templates/footer');
+    }
 }

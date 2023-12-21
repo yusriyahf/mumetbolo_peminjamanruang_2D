@@ -13,6 +13,10 @@
     <meta name="author" content="">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/print.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/print-js"></script>
+
 
     <title><?= $data['judul']; ?></title>
 
