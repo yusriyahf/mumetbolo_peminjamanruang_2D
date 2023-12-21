@@ -9,16 +9,16 @@
                 <img src="../public/img/ruang.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="../public/img/L5.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/5.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/L6.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/6.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/L7.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/7.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/L8.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/8.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -57,7 +57,7 @@
 
         <!-- Total Dosen Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiAcc" class="text-decoration-none">
+            <a href="<?= BASEURL; ?>/mahasiswa/peminjaman/diacc" class="text-decoration-none">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -78,7 +78,7 @@
 
         <!-- Peminjaman Ditolak Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?= BASEURL; ?>/mahasiswa/peminjamanDiTolak" class="text-decoration-none">
+            <a href="<?= BASEURL; ?>/mahasiswa/peminjaman/ditolak" class="text-decoration-none">
 
                 <div class="card border-left-danger shadow h-100 py-2">
                     <div class="card-body">

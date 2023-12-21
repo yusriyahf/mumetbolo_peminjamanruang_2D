@@ -17,7 +17,7 @@ class Mahasiswa_model
         $data = null;
 
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM " . $this->table . " WHERE nama LIKE '%$keyword%' or nim LIKE '$keyword%'";
+        $query = "SELECT * FROM " . $this->table . " WHERE nama LIKE '%$keyword%' or nim LIKE '$keyword%' or kelas LIKE '$keyword%'";
 
         $result = $this->db->conn->query($query);
 

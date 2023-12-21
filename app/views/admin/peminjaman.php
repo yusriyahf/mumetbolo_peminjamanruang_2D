@@ -30,6 +30,7 @@
                                 <th>#</th>
                                 <th>Nama ruang</th>
                                 <th>Peminjam</th>
+                                <th>Instansi</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Surat</th>
                                 <th>Status</th>
@@ -46,6 +47,7 @@
                                             <td><?= $i++; ?></td>
                                             <td><?= $proses['nama_ruang']; ?></td>
                                             <td><?= $proses['username']; ?></td>
+                                            <td><?= $proses['instansi']; ?></td>
                                             <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                             <td><?php if ($proses['file'] == NULL) { ?>
                                                     <a href="#" class="text-danger text-decoration-none">File belum diunggah</a>
@@ -53,11 +55,20 @@
                                                     <a href="<?= BASEURL; ?>/uploadFile/<?= $proses['file']; ?>"><?= $proses['file']; ?></a>
                                                 <?php } ?>
                                             </td>
-                                            <td>
-                                                <a href="#" class="alasanPenolakan <?= $class; ?> text-decoration-none" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status']; ?>">
+
+                                            <?php if ($proses['status'] == 'ditolak') : ?>
+                                                <td>
+                                                    <a href="#" class="alasanPenolakan <?= $class; ?> text-decoration-none" data-toggle="modal" data-target="#pesanPenolakanModal" data-id_ruang="<?= $proses['id_ruang']; ?>" data-pesan="<?= $proses['pesan']; ?>" data-status="<?= $proses['status']; ?>">
+                                                        <?= $proses['status']; ?>
+                                                    </a>
+                                                </td>
+                                            <?php else : ?>
+                                                <td class="text-success">
                                                     <?= $proses['status']; ?>
-                                                </a>
-                                            </td>
+                                                </td>
+                                            <?php endif; ?>
+
+
                                         </tr>
                             <?php
                                     }

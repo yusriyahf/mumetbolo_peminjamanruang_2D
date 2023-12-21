@@ -6,7 +6,7 @@ class Admin extends Controller
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
             $data['permintaanPeminjaman'] = $this->model('ViewProses_model')->countPermintaanPeminjamanAdmin();
-            $data['totalPeminjaman'] = $this->model('ViewProses_model')->countPeminjaman($_SESSION['username']);
+            $data['totalPeminjaman'] = $this->model('ViewProses_model')->countTotalPeminjaman();
             $data['totalDosen'] = $this->model('Dosen_model')->countDosen($_SESSION['username']);
             $data['totalMhs'] = $this->model('Mahasiswa_model')->countMahasiswa($_SESSION['username']);
             $data['totalRuang'] = $this->model('Ruang_model')->countRuang($_SESSION['username']);
@@ -203,14 +203,7 @@ class Admin extends Controller
         $this->view('admin/modal', $data);
     }
 
-    public function cariRuang($lantai)
-    {
-        $data['ruang'] = $this->model('Ruang_model')->cariDataRuang($lantai);
-        $this->view('templates/header', $data);
-        $this->view('admin/ruang/' . $lantai, $data);
-        $this->view('templates/footer');
-        $this->view('admin/modal', $data);
-    }
+    
 
     public function mahasiswa()
     {
@@ -394,6 +387,17 @@ class Admin extends Controller
 
     // ADMIN MANAGE RUANGAN 6
 
+    public function cariRuang($lantai)
+    {
+        $data['judul'] = "Cari Ruang";
+        $data['ruang'] = $this->model('Ruang_model')->cariDataRuang($lantai);
+        $data['lantai'] = $lantai;
+        $this->view('templates/header', $data);
+        $this->view('admin/ruang' , $data);
+        $this->view('templates/footer', $data);
+        $this->view('admin/modal', $data);
+    }
+
     public function ruang($lantai)
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
@@ -446,6 +450,12 @@ class Admin extends Controller
         echo json_encode($this->model('Ruang_model')->fetch_single($id));
     }
 
+    public function getUbahJadwal($id)
+    {
+        echo json_encode($this->model('Jadwal_model')->fetch_single($id));
+    }
+
+
 
     public function countRuang()
     {
@@ -470,6 +480,7 @@ class Admin extends Controller
     public function jadwal()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
+            $data['ruang'] = $this->model('Ruang_model')->fetchAll();
             $data['jd'] = $this->model('ViewJadwal_model')->fetchAdmin();
             $data['judul'] = 'Jadwal';
             $this->view('templates/header', $data);
@@ -490,6 +501,7 @@ class Admin extends Controller
 
     public function tambahJadwal()
     {
+
         if ($this->model('Jadwal_model')->insert()) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data jadwal');
             header('Location: ' . BASEURL . '/admin/jadwal/');

@@ -26,6 +26,7 @@
                             <th>Nama ruang</th>
                             <th>Lantai</th>
                             <th>Peminjam</th>
+                            <th>Instansi</th>
                             <th>Tanggal Pinjam</th>
                             <th>Upload Surat Peminjaman</th>
                             <th>Surat Peminjaman</th>
@@ -43,6 +44,7 @@
                                         <td><?= $proses['nama_ruang']; ?></td>
                                         <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
+                                        <td><?= $proses['instansi']; ?></td>
                                         <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <td>
                                             <?php if ($proses['file'] == NULL) { ?>
