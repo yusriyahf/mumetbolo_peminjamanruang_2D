@@ -27,6 +27,7 @@
                             <th>Nama ruang</th>
                             <th>Lantai</th>
                             <th>Peminjam</th>
+                            <th>Instansi</th>
                             <th>Tanggal Pinjam</th>
                             <th>Surat</th>
                             <th>Action</th>
@@ -53,6 +54,7 @@
                                         <td><?= $proses['nama_ruang']; ?></td>
                                         <td><?= $proses['lantai']; ?></td>
                                         <td><?= $proses['username']; ?></td>
+                                        <td><?= $proses['instansi']; ?></td>
                                         <td><?= date('d-m-Y', strtotime($proses['tanggal_pinjam'])); ?></td>
                                         <td>
                                             <?php if ($proses['file'] == NULL) { ?>
@@ -66,9 +68,12 @@
                                             <a href="#" class="btn btn-success btn-split btn-sm accPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#accPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
                                                 <i class="fa fa-check" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
+                                            <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                             </a>
+                                            <!-- <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </a> -->
                                         </td>
                                     </tr>
                         <?php

@@ -308,7 +308,7 @@ class Mahasiswa extends Controller
         $_SESSION['ruang'] = $lantai;
         if (isset($_SESSION['tanggal'])) {
             $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
-            $data['ruang'] = $this->model('ViewJadwal_model')->cekJadwal($lantai, $_SESSION['tanggal']);
+            $data['ruang'] = $this->model('ViewJadwal_model')->cekJadwal($lantai, $_SESSION['tanggal'], $_SESSION['hari']);
             $data['judul'] = 'Lantai ' . $lantai;
             $data['lantai'] = $lantai;
             $data['tanggal'] = $_SESSION['tanggal'];
@@ -328,12 +328,13 @@ class Mahasiswa extends Controller
         echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
 
-    public function surat($id_proses, $username){
+    public function surat($id_proses, $username)
+    {
         $data['proses'] = $this->model('Proses_model')->fetch_IdProses($id_proses);
         $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($username);
         // echo $data['profil']['nim']; die;
         $this->view('templates/header', $data);
-        $this->view('mahasiswa/pdf', $data);    
+        $this->view('mahasiswa/pdf', $data);
         $this->view('templates/footer');
     }
 }

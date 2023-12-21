@@ -36,6 +36,7 @@
                             <div class="card text-white shadow <?= $bgClass; ?>">
                                 <div class="card-body">
                                     <?= $ruang['nama_ruang']; ?>
+                                    <div class="text-white-50 small"><?= $ruang['arah'] ?></div>
                                     <div class="text-white-50 small mb-3" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-tgl="<?= $data['tanggal']; ?>">Status <?= $ruang['status']; ?></div>
 
                                     <a href="#" class="btn btn-outline-light btn-sm tampilDetailRuang" data-toggle="modal" data-target="#ruangModal" data-id_ruang="<?= $ruang['id_ruang']; ?>" data-status="<?= $ruang['status']; ?>">Detail</a>

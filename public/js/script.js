@@ -51,7 +51,32 @@ $(document).ready(function () {
         });
     });
 
-    //update data ruangan
+    //update data jadwal
+    $('.tampilModalUbahJadwal').on('click', function () {
+        const id = $(this).data('id');
+        $.ajax({
+            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getUbahJadwal/' + id,
+
+            method: 'post',
+            data : {id : id},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $("#id_jadwal").val(data.id_jadwal);
+                $("#id_ruang_edit_input").val(data.id_ruang);
+                $("#jenis_kegiatan_edit").val(data.jenis_kegiatan);
+                $("#tgl_mulai_edit").val(data.tgl_mulai);
+                $("#tgl_selesai_edit").val(data.tgl_selesai);
+                $("#hari_edit").val(data.hari);
+                $("#keterangan_edit").val(data.keterangan)
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error);
+            }
+        });
+    });
+
+    //update data ruang
     $('.tampilModalUbahRuang').on('click', function () {
         const id = $(this).data('id');
         $.ajax({
@@ -66,6 +91,7 @@ $(document).ready(function () {
                 $("#id_ruang_edit").val(data.id_ruang);
                 $("#nama_rg_edit").val(data.nama_ruang);
                 $("#jenis_rg_edit").val(data.jenis_ruang);
+                $("#arah_edit").val(data.arah);
                 $("#kapasitas_edit").val(data.kapasitas);
                 $("#gambarLama").attr('src', 'http://localhost/mumetbolo_peminjamanruang_2d/public/imgRuang/' + data.gambar);
             },
@@ -131,9 +157,7 @@ $(document).ready(function () {
     //admin tolak peminjaman
     $('.tolakPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
-        $("#tolak_id_proses").val(id_proses);
-        const id_jadwal = $(this).data('id_jadwal');
-        $("#tolak_id_jadwal").val(id_jadwal);
+        $("#id_proses_tolak").val(id_proses);
     });
 
     //admin acc peminjaman
@@ -164,24 +188,6 @@ $(document).ready(function () {
         });
     });
 
-    //admin tambah jadwal
-    $('.tambahJadwal').on('click', function(){
-        $.ajax({
-            url: 'http://localhost/mumetbolo_peminjamanruang_2d/public/admin/getRuangAll',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var dropdown = $('#id_ruang');
-                dropdown.empty();
-                $.each(data, function (index, value) {
-                    dropdown.append($('<option>').text(value.id_ruang).attr('value', value.id_ruang));
-                });
-            },
-            error: function (xhr, status, error) {
-                console.error('Error:', error);
-            }
-        });
-    })
 
 //EXPORT KE EXCEL :
     $('#dataTablemhs').DataTable({

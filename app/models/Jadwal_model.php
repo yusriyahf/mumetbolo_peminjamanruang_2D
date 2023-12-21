@@ -23,19 +23,34 @@
             }
             return $data;
         }
-
+        public function fetch_single($id)
+        {
+    
+            $data = null;
+    
+            $query = "SELECT * FROM " . $this->table . " WHERE id_jadwal = '$id'";
+            if ($sql = $this->db->conn->query($query)) {
+                while ($row = $sql->fetch_assoc()) {
+                    $data = $row;
+                }
+            }
+            return $data;
+        }
+    
         public function insert()
         {
             if (isset($_POST['submit'])) {
-                if (isset($_POST['id_ruang']) && isset($_POST['jenis_kegiatan']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
-                    if (!empty($_POST['id_ruang']) && !empty($_POST['jenis_kegiatan']) && !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
+                if (isset($_POST['id_ruang']) && isset($_POST['jenis_kegiatan'])&& isset($_POST['tgl_mulai'])&& isset($_POST['tgl_selesai']) && isset($_POST['hari']) && isset($_POST['keterangan'])) {
+                    if (!empty($_POST['id_ruang']) && !empty($_POST['jenis_kegiatan']) && isset($_POST['tgl_mulai'])&& isset($_POST['tgl_selesai'])&& !empty($_POST['hari']) && !empty($_POST['keterangan'])) {
 
                         $id_ruang = $_POST['id_ruang'];
                         $jenis_kegiatan = $_POST['jenis_kegiatan'];
+                        $tgl_mulai = $_POST['tgl_mulai'];
+                        $tgl_selesai = $_POST['tgl_selesai'];
                         $hari = $_POST['hari'];
                         $keterangan = $_POST['keterangan'];
 
-                        $query = "INSERT INTO " . $this->table . " (id_ruang, jenis_kegiatan, hari, keterangan) VALUES ('$id_ruang','$jenis_kegiatan','$hari','$keterangan')";
+                        $query = "INSERT INTO " . $this->table . " (id_ruang, jenis_kegiatan, tgl_mulai, tgl_selesai, hari, keterangan) VALUES ('$id_ruang','$jenis_kegiatan' ,'$tgl_mulai','$tgl_selesai','$hari','$keterangan')";
                         if ($sql = $this->db->conn->query($query)) {
                             return true;
                         } else {
@@ -123,8 +138,6 @@
         }
         public function setStatusAcc($id)
         {
-            $data = null;
-
             $query = "UPDATE " . $this->table . " SET status = 'dibooking' where id_jadwal = $id";
             if ($sql = $this->db->conn->query($query)) {
                 return true;
