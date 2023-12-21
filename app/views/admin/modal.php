@@ -164,6 +164,13 @@
                             <option value="Praktikum">Praktikum</option>
                         </select>
                     </div>
+                    <div class="mb-3 form-group">
+                        <label for="arah" class="form-label">Arah:</label>
+                        <select name="arah" id="arah" class="form-control">
+                            <option value="Timur">Timur</option>
+                            <option value="Barat">Barat</option>
+                        </select>
+                    </div>
 
                     <div class="mb-3">
                         <label for="kapasitas" class="form-label">Kapasitas</label>
@@ -211,15 +218,19 @@
                         </select>
                     </div>
 
+                    <div class="mb-3 form-group">
+                        <label for="arah" class="form-label">Arah Ruangan:</label>
+                        <select name="arah" id="arah_edit" class="form-control">
+                            <option value="Timur">Timur</option>
+                            <option value="Barat">Barat</option>
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <label for="kapasitas" class="form-label">Kapasitas</label>
                         <input type="number" class="form-control" id="kapasitas_edit" name="kapasitas" min="1" max="100" autocomplete="off" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="fasilitas" class="form-label">Fasilitas</label>
-                        <input type="text" class="form-control" id="fasilitas_edit" name="fasilitas" autocomplete="off" required>
-                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -373,6 +384,67 @@
     </div>
 </div>
 
+<!-- Tambah Data Jadwal Modal-->
+<div class="modal fade" id="formTambahJadwalModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Tambah Data Jadwal</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL; ?>/admin/tambahJadwal" method="post">
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">Ruang:</label>
+                        <select name="id_ruang" id="id_ruang" class="form-control">
+                            <?php foreach ($data['ruang'] as $ruang): ?>
+                                <option value="<?= $ruang['id_ruang']; ?>"><?= $ruang['nama_ruang']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan:</label>
+                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="tgl_mulai" class="form-label">Tanggal Mulai:</label>
+                        <input type="date" class="form-control" id="tgl_mulai" name="tgl_mulai" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="tgl_selesai" class="form-label">Tanggal Selesai:</label>
+                        <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="hari" class="form-label">Hari:</label>
+                        <select name="hari" id="hari" class="form-control">
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="keterangan" class="form-label">Matakuliah:</label>
+                        <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Ubah Data Jadwal Modal-->
 <div class="modal fade" id="formEditModalJadwal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -386,34 +458,45 @@
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/admin/ubahJadwal" method="post">
                     <input type="hidden" name="id_jadwal" id="id_jadwal" value="">
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="id_ruang" class="form-label">Id Ruang</label>
-                        <input type="text" class="form-control" id="id_ruang" name="id_ruang" autocomplete="off" required>
+                        <input type="text" class="form-control" id="id_ruang_edit" name="id_ruang" autocomplete="off" required>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">Ruang:</label>
+                        <select name="id_ruang" id="id_ruang_edit_input" class="form-control">
+                            <?php foreach ($data['ruang'] as $ruang): ?>
+                                <option value="<?= $ruang['id_ruang']; ?>"><?= $ruang['nama_ruang']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
-                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" autocomplete="off" required value="KBM">
+                        <input type="text" class="form-control" id="jenis_kegiatan_edit" name="jenis_kegiatan" autocomplete="off" required value="KBM">
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="tgl_mulai" class="form-label">Tanggal Mulai:</label>
+                        <input type="date" class="form-control" id="tgl_mulai_edit" name="tgl_mulai" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="tgl_selesai" class="form-label">Tanggal Selesai:</label>
+                        <input type="date" class="form-control" id="tgl_selesai_edit" name="tgl_selesai" required>
                     </div>
                     <div class="mb-3 form-group">
                         <label for="hari" class="form-label">Hari:</label>
-                        <select name="hari" id="hari" class="form-control">
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
+                        <select name="hari" id="hari_edit" class="form-control">
+                            <option value="senin">senin</option>
+                            <option value="selasa">selasa</option>
+                            <option value="rabu">rabu</option>
+                            <option value="kamis">kamis</option>
+                            <option value="jumat">jumat</option>
                         </select>
                     </div>
-                    <div class="mb-3 form-group">
-                        <label for="keterangan" class="form-label">Keterangan:</label>
-                        <select name="keterangan" id="keterangan" class="form-control">
-                            <option value="Manajemen Proyek">Manajemen Proyek</option>
-                            <option value="Desain Pemrograman Web">Desain Pemrograman Web</option>
-                            <option value="Aritificial Intelligence">Aritificial Intelligence</option>
-                            <option value="Pemrograman Berbasis Objek">Pemrograman Berbasis Objek</option>
-                            <option value="Matematika">Matematika</option>
-                        </select>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="text" class="form-control" id="keterangan_edit" name="keterangan" autocomplete="off">
                     </div>
             </div>
             <div class="modal-footer">
@@ -481,53 +564,3 @@
     </div>
 </div>
 
-<!-- Tambah Data Jadwal Modal-->
-<div class="modal fade" id="formTambahJadwalModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModalLabel">Tambah Data Jadwal</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/tambahJadwal" method="post">
-                    <div class="mb-3">
-                        <label for="id_ruang" class="form-label">Id Ruang</label>
-                        <input type="text" class="form-control" id="id_ruang" name="id_ruang" autocomplete="off" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
-                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" autocomplete="off" required value="KBM">
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="hari" class="form-label">Hari:</label>
-                        <select name="hari" id="hari" class="form-control">
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="keterangan" class="form-label">Keterangan:</label>
-                        <select name="keterangan" id="keterangan" class="form-control">
-                            <option value="Manajemen Proyek">Manajemen Proyek</option>
-                            <option value="Desain Pemrograman Web">Desain Pemrograman Web</option>
-                            <option value="Aritificial Intelligence">Aritificial Intelligence</option>
-                            <option value="Pemrograman Berbasis Objek">Pemrograman Berbasis Objek</option>
-                            <option value="Matematika">Matematika</option>
-                        </select>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>

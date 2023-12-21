@@ -91,6 +91,18 @@ class ViewProses_model
         }
     }
 
+    public function countTotalPeminjaman()
+    {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses'";
+        $result = $this->db->conn->query($query);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        } else {
+            return 0;
+        }
+    }
     public function countPeminjaman($username)
     {
         $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE status != 'diproses' AND username = '$username'";

@@ -10,13 +10,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary mb-3">Tabel Ruangan</h6>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahRuang">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tambahJadwalModalTrigger" data-toggle="modal" data-target="#formTambahRuang">
                 <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i> <span style="margin-left: 5px;"></i> Tambah Data Ruangan
             </button>
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
-            <form action="<?= BASEURL; ?>/admin/cariRuang/<?= $data['lantai']; ?>" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form action="<?= BASEURL; ?>/admin/cariRuang/<?= $data['lantai'] ?>" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                     <div class="input-group-append">
@@ -46,6 +46,7 @@
                             <th>Nama Ruang</th>
                             <th>Lantai</th>
                             <th>Jenis Ruangan</th>
+                            <th>Arah Ruangan</th>
                             <th>Kapasitas</th>
                             <th>Action</th>
                         </tr>
@@ -60,6 +61,7 @@
                                     <td><?= $ruang['nama_ruang']; ?></td>
                                     <td><?= $ruang['lantai']; ?></td>
                                     <td><?= $ruang['jenis_ruang']; ?></td>
+                                    <td><?= $ruang['arah']; ?></td>
                                     <td><?= $ruang['kapasitas']; ?></td>
                                     <td>
                                         <a href="<?= BASEURL; ?>/admin/ubahRuang/<?= $mhs['id_ruang']; ?>" class="btn btn-warning btn-split btn-sm tampilModalUbahRuang" style="margin-right: 4px;" data-toggle="modal" data-target="#formEditRuang" data-id="<?= $ruang['id_ruang']; ?>">

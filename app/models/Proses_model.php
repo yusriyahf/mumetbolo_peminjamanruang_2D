@@ -19,8 +19,9 @@ class Proses_model
         $tgl_pinjam = $_POST['tglSekarang'];
         $tgl_dipakai = $_POST['tgl_pinjam'];
         $tujuan = $_POST['tujuan'];
+        $instansi = $_POST['instansi'];
         $status = 'diproses';
-        $query = "INSERT INTO " . $this->table . " (id_ruang, id_jadwal, username, tanggal_pinjam, tgl_dipakai, tujuan, status) VALUES ('$id_ruang', '$id_jadwal','$username','$tgl_pinjam', '$tgl_dipakai', '$tujuan','$status')";
+        $query = "INSERT INTO " . $this->table . " (id_ruang, id_jadwal, username, tanggal_pinjam, tgl_dipakai, tujuan, instansi, status) VALUES ('$id_ruang', '$id_jadwal','$username','$tgl_pinjam', '$tgl_dipakai', '$tujuan' , '$instansi','$status')";
 
         if ($sql = $this->db->conn->query($query)) {
             return true;

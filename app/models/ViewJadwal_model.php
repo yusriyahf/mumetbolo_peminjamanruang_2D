@@ -38,7 +38,7 @@ class ViewJadwal_model
 
     public function cekJadwal($lantai, $tanggal){
         $data = null;
-        $query = "SELECT $this->table.id_ruang, $this->table.nama_ruang, $this->table.lantai, $this->table.jenis_ruang, $this->table.kapasitas, $this->table.id_jadwal, $this->table.keterangan, $this->table.tgl_mulai, $this->table.tgl_selesai, $this->table.hari, 
+        $query = "SELECT $this->table.id_ruang, $this->table.nama_ruang, $this->table.lantai, $this->table.jenis_ruang, $this->table.kapasitas, $this->table.id_jadwal, $this->table.keterangan, $this->table.tgl_mulai, $this->table.tgl_selesai, $this->table.arah, $this->table.hari, 
             CASE 
                 WHEN COUNT(id_ruang) > 1 THEN 'dibooking'
                 ELSE $this->table.status
@@ -73,7 +73,7 @@ class ViewJadwal_model
     {
         $data = null;
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM " . $this->table . " WHERE id_ruang LIKE '%$keyword%' OR nama_ruang LIKE '%$keyword%'";
+        $query = "SELECT * FROM " . $this->table . " WHERE id_ruang LIKE '%$keyword%' OR nama_ruang LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' OR hari LIKE '%$keyword%' OR jenis_kegiatan LIKE '%$keyword%'";
 
         $result = $this->db->conn->query($query);
 

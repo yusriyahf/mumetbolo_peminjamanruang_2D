@@ -16,7 +16,7 @@ class Ruang_model
         $data = null;
 
         $keyword = $_POST['keyword'];
-        $query = "SELECT * FROM " . $this->table . " WHERE nama_ruang LIKE '%$keyword%' AND lantai = '$lantai'";
+        $query = "SELECT * FROM " . $this->table . " WHERE (nama_ruang LIKE '%$keyword%' or id_ruang LIKE '%$keyword%' or jenis_ruang LIKE '%$keyword%' or arah LIKE '%$keyword%')AND lantai = '$lantai' ";
 
         $result = $this->db->conn->query($query);
 
@@ -34,16 +34,17 @@ class Ruang_model
     public function insert()
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['lantai'])) {
-                if (!empty($_POST['id_ruang']) && !empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['lantai'])) {
+            if (isset($_POST['id_ruang']) && isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['lantai'])  && isset($_POST['arah']) ) {
+                if (!empty($_POST['id_ruang']) && !empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['lantai']) && !empty($_POST['arah'])) {
 
                     $id_ruang = $_POST['id_ruang'];
                     $nama_rg = $_POST['nama_rg'];
                     $jenis_rg = $_POST['jenis_rg'];
                     $kapasitas = $_POST['kapasitas'];
                     $lantai = $_POST['lantai'];
+                    $arah = $_POST['arah'];
 
-                    $query = "INSERT INTO " . $this->table . " (id_ruang, nama_ruang, lantai, jenis_ruang, kapasitas) VALUES ('$id_ruang','$nama_rg','$lantai','$jenis_rg','$kapasitas')";
+                    $query = "INSERT INTO " . $this->table . " (id_ruang, nama_ruang, lantai, jenis_ruang, kapasitas, arah) VALUES ('$id_ruang','$nama_rg','$lantai','$jenis_rg','$kapasitas' ,'$arah')";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -59,17 +60,17 @@ class Ruang_model
     public function update($id)
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['lantai']) && isset($_POST['id_ruang_edit'])) {
-                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang_edit'])) {
+            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['arah']) && isset($_POST['lantai']) && isset($_POST['id_ruang_edit']) ) {
+                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['arah']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang_edit'])) {
 
                     $id_ruang = $_POST['id_ruang_edit'];
                     $nama_rg = $_POST['nama_rg'];
                     $jenis_rg = $_POST['jenis_rg'];
                     $kapasitas = $_POST['kapasitas'];
-                    $fasilitas = $_POST['fasilitas'];
+                    $arah = $_POST['arah'];
                     $lantai = $_POST['lantai'];
 
-                    $query = "UPDATE " . $this->table . " SET id_ruang='$id_ruang', nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , fasilitas='$fasilitas' WHERE id_ruang='$id'";
+                    $query = "UPDATE " . $this->table . " SET nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , arah='$arah' WHERE id_ruang='$id'";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {

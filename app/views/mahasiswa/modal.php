@@ -21,13 +21,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Tanggal Pinjam</label>
+                        <label for="tgl_pinjam" class="form-label">Tanggal Pinjam</label>
                         <div id="username-display"><?= $_SESSION['hari']; ?>, <?= $_SESSION['tanggal'] ?></div>
                         <input type="hidden" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $_SESSION['tanggal']; ?>" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
-                        <label for="prodi" class="form-label">Tujuan Peminjaman</label>
+                        <label for="tujuan" class="form-label">Tujuan Peminjaman</label>
                         <input type="text" class="form-control" id="tujuan" name="tujuan" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instansi" class="form-label">Instansi</label>
+                        <input type="text" class="form-control" id="instansi" name="instansi" autocomplete="off" required>
                     </div>
             </div>
             <div class="modal-footer">
