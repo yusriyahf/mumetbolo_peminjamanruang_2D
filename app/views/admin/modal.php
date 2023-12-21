@@ -464,9 +464,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/tolakPeminjaman" method="post">
-                    <input type="hidden" name="id_proses" id="tolak_id_proses" value="">
-                    <input type="hidden" name="id_jadwal" id="tolak_id_jadwal" value="">
+                <form action="<?= BASEURL; ?>/admin/TolakPeminjaman" method="post">
+                    <input type="hidden" name="id_proses" id="id_proses_tolak" value="">
                     <div class="mb-3">
                         <label for="pesan" class="form-label">Alasan Penolakan</label>
                         <input type="text" class="form-control" id="pesan" name="pesan" autocomplete="off" required>

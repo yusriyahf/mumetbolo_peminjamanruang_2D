@@ -199,7 +199,7 @@ class Proses_model
             return false;
         }
     }
-    
+
     public function fetch_IdProses($id_proses)
     {
 

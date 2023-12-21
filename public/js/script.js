@@ -130,9 +130,7 @@ $(document).ready(function () {
     //admin tolak peminjaman
     $('.tolakPeminjaman').on('click', function () {
         const id_proses = $(this).data('id_proses');
-        $("#tolak_id_proses").val(id_proses);
-        const id_jadwal = $(this).data('id_jadwal');
-        $("#tolak_id_jadwal").val(id_jadwal);
+        $("#id_proses_tolak").val(id_proses);
     });
 
     //admin acc peminjaman
