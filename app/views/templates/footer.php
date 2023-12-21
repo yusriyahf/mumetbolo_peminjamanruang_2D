@@ -63,7 +63,7 @@
                 <h4 class="modal-title" id="ruangModalLabel">Detail Ruang</h5>
             </div>
             <div class="modal-body">
-                <img src="<?= BASEURL; ?>/img/layout5.jpg" alt="" width="75%" class="mx-auto">
+                <img id="gambar_ruang" src="" alt="" width="75%" class="mx-auto">
 
                 <h5 id="nama_ruang"></h5>
                 <h5 id="lantai_ruang"></h5>

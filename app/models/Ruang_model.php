@@ -59,17 +59,16 @@ class Ruang_model
     public function update($id)
     {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['fasilitas']) && isset($_POST['lantai']) && isset($_POST['id_ruang_edit'])) {
-                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['fasilitas']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang_edit'])) {
+            if (isset($_POST['nama_rg']) && isset($_POST['jenis_rg']) && isset($_POST['kapasitas']) && isset($_POST['lantai']) && isset($_POST['id_ruang'])) {
+                if (!empty($_POST['nama_rg']) && !empty($_POST['jenis_rg']) && !empty($_POST['kapasitas']) && !empty($_POST['lantai']) && !empty($_POST['id_ruang'])) {
 
-                    $id_ruang = $_POST['id_ruang_edit'];
+                    $id_ruang = $_POST['id_ruang'];
                     $nama_rg = $_POST['nama_rg'];
                     $jenis_rg = $_POST['jenis_rg'];
                     $kapasitas = $_POST['kapasitas'];
-                    $fasilitas = $_POST['fasilitas'];
                     $lantai = $_POST['lantai'];
 
-                    $query = "UPDATE " . $this->table . " SET id_ruang='$id_ruang', nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' , fasilitas='$fasilitas' WHERE id_ruang='$id'";
+                    $query = "UPDATE " . $this->table . " SET id_ruang='$id_ruang', nama_ruang='$nama_rg', jenis_ruang='$jenis_rg', kapasitas='$kapasitas' WHERE id_ruang='$id'";
                     if ($sql = $this->db->conn->query($query)) {
                         return true;
                     } else {
@@ -159,5 +158,15 @@ class Ruang_model
             }
         }
         return $data;
+    }
+
+    public function upGambar($id_ruang, $namaGambar)
+    {
+        $query = "UPDATE " . $this->table . " SET gambar = '$namaGambar' WHERE id_ruang = '$id_ruang'";
+        if ($sql = $this->db->conn->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

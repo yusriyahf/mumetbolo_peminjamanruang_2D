@@ -67,7 +67,7 @@ $(document).ready(function () {
                 $("#nama_rg_edit").val(data.nama_ruang);
                 $("#jenis_rg_edit").val(data.jenis_ruang);
                 $("#kapasitas_edit").val(data.kapasitas);
-                $("#fasilitas_edit").val(data.fasilitas);
+                $("#gambarLama").attr('src', 'http://localhost/mumetbolo_peminjamanruang_2d/public/imgRuang/' + data.gambar);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -112,6 +112,7 @@ $(document).ready(function () {
                 $('#ruangModal #jenis_ruang').text('Jenis: ' + data.jenis_ruang);
                 $('#ruangModal #fasilitas').text('Fasilitas: ' + data.fasilitas);
                 $('#ruangModal #status').text('Status: ' + data.status);
+                $('#ruangModal #gambar_ruang').attr('src', 'http://localhost/mumetbolo_peminjamanruang_2d/public/imgRuang/' + data.gambar);
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);

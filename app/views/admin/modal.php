@@ -145,7 +145,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/tambahRuang/<?= $data['lantai']; ?>" method="post">
+                <form action="<?= BASEURL; ?>/admin/tambahRuang/<?= $data['lantai']; ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
                     <div class="mb-3">
                         <label for="id_ruang" class="form-label">ID Ruangan</label>
@@ -169,6 +169,11 @@
                         <label for="kapasitas" class="form-label">Kapasitas</label>
                         <input type="number" class="form-control" id="kapasitas" name="kapasitas" min="1" max="100" autocomplete="off" required>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="gambar" class="form-label">Gambar Ruangan</label>
+                        <input type="file" class="form-control" id="gambar" name="gambar">
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -190,12 +195,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL; ?>/admin/ubahRuang/<?= $data['lantai']; ?>" method="post">
+                <form action="<?= BASEURL; ?>/admin/ubahRuang/<?= $data['lantai']; ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="lantai" id="lantai" value="<?= $data['lantai']; ?>">
                     <input type="hidden" name="id_ruang_lama" id="id_ruang_lama" value="">
+
+                    <div class="mb-3">
+                        <label for="gambar" class="form-label">Gambar Ruangan</label>
+                        <img src="" alt="Gambar Ruangan" id="gambarLama" class="img-fluid">
+                    </div>
+
                     <div class="mb-3">
                         <label for="id_ruang" class="form-label">ID Ruangan</label>
-                        <input type="text" class="form-control" id="id_ruang_edit" name="id_ruang_edit" autocomplete="off" required>
+                        <input type="text" class="form-control" id="id_ruang_edit" name="id_ruang" autocomplete="off" required>
                     </div>
 
                     <div class="mb-3">
@@ -217,9 +228,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="fasilitas" class="form-label">Fasilitas</label>
-                        <input type="text" class="form-control" id="fasilitas_edit" name="fasilitas" autocomplete="off" required>
+                        <label for="gambar" class="form-label">Gambar Ruangan</label>
+                        <input type="file" class="form-control" id="gambar_edit" name="gambar">
                     </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

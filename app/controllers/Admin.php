@@ -415,13 +415,53 @@ class Admin extends Controller
     public function tambahRuang($lantai)
     {
         if ($this->model('Ruang_model')->insert()) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data ruangan');
-            header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
-            exit();
+            if($this->uploadGambar($_POST['id_ruang'])){
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Data ruangan');
+                header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
+                exit();
+            }else{
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Gambar ruangan');
+                header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
+                exit();
+            }
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
             exit();
+        }
+    }
+
+    public function uploadGambar($id_ruang)
+    {
+
+        if (isset($_POST['submit'])) {
+            $nama_file = $_FILES['gambar']['name'];
+            $ukuran = $_FILES['gambar']['size'];
+            $error = $_FILES['gambar']['error'];
+            $tmp = $_FILES['gambar']['tmp_name'];
+            $size = $_FILES['gambar']['size'];
+
+            $maxFileSize = 50 * 1024 * 1024; //10mb
+
+            if ($error === 0) {
+                $ekstensi = ['jpg', 'png','jpeg'];
+                $ekstensiFile = explode('.', $nama_file);
+                $ekstensiFile = strtolower(end($ekstensiFile));
+                if (in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize) {
+                    $nama = $id_ruang . '.' . $ekstensiFile;
+                    if (move_uploaded_file($tmp, '../public/imgRuang/' . $nama)) {
+                        if ($this->model('Ruang_model')->upGambar($id_ruang, $nama)) {
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false; //gambar tidak sesuai ekstensi atau ukuran terlalu besar
+                }
+            } else if ($error === 4) {
+                return false; //belum pilih file
+            }
         }
     }
 
@@ -453,9 +493,21 @@ class Admin extends Controller
     public function ubahRuang($lantai)
     {
         if ($this->model('Ruang_model')->update($_POST['id_ruang_lama'])) {
-            Flasher::setFlash('berhasil', 'diubah', 'success', 'Data ruangan');
-            header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
-            exit();
+            if ($_FILES['gambar']['error'] == 4){
+                Flasher::setFlash('berhasil', 'diubah', 'success', 'Data ruangan');
+                header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
+                exit();                
+            }else{
+                if($this->uploadGambar($_POST['id_ruang'])){
+                    Flasher::setFlash('berhasil', 'diubah', 'success', 'Data dan gambar ruangan');
+                    header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
+                    exit();
+                }else{
+                    Flasher::setFlash('gagal', 'diubah', 'danger', 'Gambar ruangan');
+                    header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
+                    exit();
+                }
+            }
         } else {
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Data ruangan');
             header('Location: ' . BASEURL . '/admin/ruang/' . $lantai);
