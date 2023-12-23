@@ -74,7 +74,6 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <!-- <li class="nav-item active"> -->
                 <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fa fa-users" aria-hidden="true"></i>
@@ -90,22 +89,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fa fa-building" aria-hidden="true"></i>
-                    <span>Ruang</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Ruangan JTI</h6>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/5">Lantai 5</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/6">Lantai 6</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/7">Lantai 7</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/admin/ruang/8">Lantai 8</a>
-                    </div>
-                </div>
-            </li> -->
             <?php if ($_SESSION['tipe'] == 'admin') : ?>
 
                 <li class="nav-item active">
@@ -115,28 +98,9 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
-                <li class="nav-item active">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ruangPinjam" aria-expanded="true" aria-controls="ruangPinjam">
-                        <i class="fa fa-building" aria-hidden="true"></i>
-                        <span>Ruang</span>
-                    </a>
-                    <div id="ruangPinjam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Ruangan JTI</h6>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/5">Lantai 5</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/6">Lantai 6</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/7">Lantai 7</a>
-                            <a class="collapse-item" href="<?= BASEURL; ?>/mahasiswa/ruang/8">Lantai 8</a>
-                        </div>
-                    </div>
-                </li>
-            <?php endif; ?> -->
-
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/ruang/5">
+                    <a class="nav-link" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/ruang/5">
                         <i class="fas fa-building"></i>
                         <span>Ruang</span></a>
                 </li>
@@ -180,7 +144,7 @@
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/prosesPinjam">
+                    <a class="nav-link" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/prosesPinjam">
                         <i class="fas fa-comments"></i>
                         <span>Proses Peminjaman</span></a>
                 </li>
@@ -189,27 +153,11 @@
             <?php if ($_SESSION['tipe'] == 'mahasiswa' or $_SESSION['tipe'] == 'dosen') : ?>
                 <!-- Nav Item - Req Peminjaman Menu -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa/peminjaman">
+                    <a class="nav-link" href="<?= BASEURL; ?>/<?= $_SESSION['tipe']; ?>/peminjaman">
                         <i class="fa fa-history" aria-hidden="true"></i>
                         <span>Riwayat Peminjaman</span></a>
                 </li>
             <?php endif; ?>
-
-
-            <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Laporan</span></a>
-            </li> -->
-
-
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -218,13 +166,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-            <!-- Sidebar Message -->
-            <!-- <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> -->
 
         </ul>
         <!-- End of Sidebar -->

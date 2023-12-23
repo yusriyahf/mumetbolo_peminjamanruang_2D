@@ -1,18 +1,19 @@
 <?php
 
-class Dosen extends Controller
+class dosen extends Controller
 {
     public function index()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'dosen') {
-            $data['totalPeminjaman'] = $this->model('Proses_model')->countPeminjamanMHS($_SESSION['username']);
-            $data['permintaanPeminjaman'] = $this->model('Proses_model')->countPeminjaman();
-            $data['totalDiacc'] = $this->model('Proses_model')->countDiacc();
-            $data['totalDitolak'] = $this->model('Proses_model')->countDitolak();
-            $data['judul'] = 'Dosen';
+            $data['totalPeminjaman'] = $this->model('ViewProses_model')->countPeminjamanMHS($_SESSION['username']);
+            $data['permintaanPeminjaman'] = $this->model('ViewProses_model')->countPermintaanPeminjaman($_SESSION['username']);
+            $data['totalDiacc'] = $this->model('ViewProses_model')->countDiacc($_SESSION['username']);
+            $data['totalDitolak'] = $this->model('ViewProses_model')->countDitolak($_SESSION['username']);
+            $data['judul'] = 'dosen';
             $this->view('templates/header', $data);
             $this->view('dosen/index', $data);
             $this->view('templates/footer');
+            $this->view('dosen/modal', $data);
             if (isset($_SESSION['first_login']) && $_SESSION['first_login'] === true) {
 ?>
                 <script>
@@ -25,7 +26,6 @@ class Dosen extends Controller
                     });
                 </script>
             <?php
-                // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
                 $_SESSION['first_login'] = false;
             }
         } else {
@@ -38,52 +38,56 @@ class Dosen extends Controller
             }
         }
     }
-    public function peminjaman()
+    public function peminjaman($filter = null)
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetch();
+        if ($filter == null) {
+            $data['proses'] = $this->model('ViewProses_model')->fetch();
+        } else if ($filter == 'diacc') {
+            $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
+        } else if ($filter == 'ditolak') {
+            $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
+        }
         $this->view('templates/header', $data);
         $this->view('dosen/peminjaman', $data);
         $this->view('templates/footer');
+        $this->view('dosen/modal', $data);
     }
 
-    public function peminjamanDiAcc()
-    {
-        $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetchAcc();
-        $this->view('templates/header', $data);
-        $this->view('dosen/peminjaman', $data);
-        $this->view('templates/footer');
-    }
-
-    public function peminjamanDiTolak()
-    {
-        $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetchTolak();
-        $this->view('templates/header', $data);
-        $this->view('dosen/peminjaman', $data);
-        $this->view('templates/footer');
-    }
     public function prosesPinjam()
     {
         $data['judul'] = 'Peminjaman';
-        $data['proses'] = $this->model('Proses_model')->fetch();
+        $data['proses'] = $this->model('ViewProses_model')->fetch();
         $this->view('templates/header', $data);
         $this->view('dosen/prosesPinjam', $data);
         $this->view('templates/footer');
-        if (isset($_SESSION['popuppinjam']) && $_SESSION['popuppinjam'] === true) {
+        $this->view('dosen/modal', $data);
+        if (isset($_SESSION['gabole']) && $_SESSION['gabole'] === true) {
             ?>
             <script>
                 Swal.fire({
                     position: "center",
-                    icon: "success",
-                    title: "Berhasil Pinjam Ruangan",
+                    icon: "error",
+                    title: "Anda Masih Memiliki Peminjaman Yang Menunggu Diproses",
                     showConfirmButton: false,
                     showCloseButton: true,
                 });
             </script>
         <?php
-            $_SESSION['popuppinjam'] = false;
+            $_SESSION['gabole'] = false;
+        } else if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
+        ?>
+            <script>
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Password berhasil diubah",
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        <?php
+            $_SESSION['popuppw'] = false;
         } else if (isset($_SESSION['popupberhasil']) && $_SESSION['popupberhasil'] === true) {
         ?>
             <script>
@@ -96,7 +100,6 @@ class Dosen extends Controller
                 });
             </script>
         <?php
-            // Atur ulang variabel sesi popupberhasil agar pesan tidak ditampilkan lagi pada login berikutnya
             $_SESSION['popupberhasil'] = false;
         } else if (isset($_SESSION['popupgagal']) && $_SESSION['popupgagal'] === true) {
         ?>
@@ -117,13 +120,13 @@ class Dosen extends Controller
                 Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "Belum Pilih File",
+                    title: "Belum pilih file",
                     showConfirmButton: false,
                     showCloseButton: true,
                 });
             </script>
         <?php
-            $_SESSION['filetidaksesuai'] = false;
+            $_SESSION['popupbelumpilihfile'] = false;
         } else if (isset($_SESSION['filetidaksesuai']) && $_SESSION['filetidaksesuai'] === true) {
         ?>
             <script>
@@ -148,7 +151,7 @@ class Dosen extends Controller
 
             if ($idRuang && $tanggalPeminjam) {
                 $username = $_SESSION['username'];
-                $this->model('Proses_model')->insert($idRuang, $username, $tanggalPeminjam);
+                $this->model('ViewProses_model')->insert($idRuang, $username, $tanggalPeminjam);
 
                 header('Location: ' . BASEURL . '/dosen/prosesPinjam');
                 exit();
@@ -168,6 +171,7 @@ class Dosen extends Controller
         $this->view('templates/header', $data);
         $this->view('dosen/tanggalPeminjaman');
         $this->view('templates/footer');
+        $this->view('dosen/modal', $data);
     }
 
     public function ubahPassword()
@@ -177,20 +181,24 @@ class Dosen extends Controller
                 $_SESSION['popuppw'] = true;
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
             } else {
-                echo "GAGAL UBAH";
+                echo "<script>alert('Gagal Ubah')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
             }
         } else {
-            echo "GAGAL, pass lama salah";
+            echo "<script>alert('Password lama salah')</script>";
+            header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
         }
     }
 
     public function profile()
     {
         $data['judul'] = 'Profile';
-        $data['profile'] = $this->model('Dosen_model')->fetch_profile($_SESSION['username']);
+        $data['profile'] = $this->model('dosen_model')->fetch_profile($_SESSION['username']);
         $this->view('templates/header', $data);
         $this->view('dosen/profile', $data);
         $this->view('templates/footer');
+        $this->view('dosen/modal', $data);
+
         if (isset($_SESSION['popuppw']) && $_SESSION['popuppw'] === true) {
         ?>
             <script>
@@ -203,7 +211,6 @@ class Dosen extends Controller
                 });
             </script>
 <?php
-            // Atur ulang variabel sesi first_login agar pesan tidak ditampilkan lagi pada login berikutnya
             $_SESSION['popuppw'] = false;
         }
     }
@@ -211,18 +218,25 @@ class Dosen extends Controller
     public function formPinjam()
     {
         $_SESSION['tujuan'] = $_POST['tujuan'];
-        if ($this->model('Proses_model')->insert()) {
-            $_SESSION['popuppinjam'] = true;
-            header('Location: ' . BASEURL . '/dosen/prosesPinjam');
-            exit();
+
+        if ($this->model('Proses_model')->cekPinjam($_SESSION['username'])) {
+            $this->model('Jadwal_model')->setStatusPinjam($_POST['id_jadwal']);
+            if ($this->model('Proses_model')->insert()) {
+                $_SESSION['popuppinjam'] = true;
+                header('Location: ' . BASEURL . '/dosen/prosesPinjam');
+                exit();
+            } else {
+                echo "SEK GAGAL";
+            }
         } else {
-            echo "SEK GAGAL";
+            $_SESSION['gabole'] = true;
+            header('Location: ' . BASEURL . '/dosen/prosesPinjam');
         }
     }
 
     public function uploadFile($id_proses)
     {
-        // var_dump($_FILES); die;
+
         if (isset($_POST['submit'])) {
             $nama_file = $_FILES['suratPinjam']['name'];
             $ukuran = $_FILES['suratPinjam']['size'];
@@ -239,7 +253,7 @@ class Dosen extends Controller
                 if (in_array($ekstensiFile, $ekstensi) && $ukuran <= $maxFileSize) {
                     $nama = $id_proses . '-' . $_SESSION['username'] . '.' . $ekstensiFile;
                     if (move_uploaded_file($tmp, '../public/uploadFile/' . $nama)) {
-                        if ($this->model('Proses_model')->upFile($id_proses, $nama)) {
+                        if ($this->model('ViewProses_model')->upFile($id_proses, $nama)) {
                             $_SESSION['popupberhasil'] = true;
                             header('Refresh: 0; url=' . BASEURL . '/dosen/prosesPinjam');
                         }
@@ -269,7 +283,7 @@ class Dosen extends Controller
 
             $_SESSION['hari'] = $hari;
 
-            header('Location: ' . BASEURL . '/dosen/ruang' . $_SESSION['ruang']);
+            header('Location: ' . BASEURL . '/dosen/ruang/' . $_SESSION['ruang']);
             unset($_SESSION['ruang']);
         }
     }
@@ -291,72 +305,19 @@ class Dosen extends Controller
         return isset($days[$dayInEnglish]) ? $days[$dayInEnglish] : $dayInEnglish;
     }
 
-    public function ruang5()
+    public function ruang($lantai)
     {
-        $_SESSION['ruang'] = 5;
+        $_SESSION['ruang'] = $lantai;
         if (isset($_SESSION['tanggal'])) {
-            // $data['ruang'] = $this->model('Ruang_model')->fetch(5, $_SESSION['hari'], $_SESSION['waktuMulai'], $_SESSION['waktuSelesai']);
-            // $data['ruang'] = $this->model('StatusRg_model')->fetch(5);
-            // var_dump($_SESSION['hari']);
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(5, $_SESSION['hari']);
-            $data['judul'] = 'Lantai 5';
+            $this->model('Jadwal_model')->setStatus($_SESSION['hari'], $_SESSION['tanggal']);
+            $data['ruang'] = $this->model('ViewJadwal_model')->cekJadwal($lantai, $_SESSION['tanggal'], $_SESSION['hari']);
+            $data['judul'] = 'Lantai ' . $lantai;
+            $data['lantai'] = $lantai;
             $data['tanggal'] = $_SESSION['tanggal'];
             $this->view('templates/header', $data);
-            $this->view('dosen/ruang5', $data);
+            $this->view('dosen/ruang', $data);
             $this->view('templates/footer');
-            // unset($_SESSION['tanggal']);
-        } else {
-            header('Location: ' . BASEURL . '/dosen/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang6()
-    {
-        $_SESSION['ruang'] = 6;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('JadwalRuang_model')->fetch(6);
-            $data['judul'] = 'Lantai 6';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            // var_dump($data['tanggal']);
-            $this->view('templates/header', $data);
-            $this->view('dosen/ruang6', $data);
-            $this->view('templates/footer');
-            // unset($_SESSION['tanggal']);
-        } else {
-            header('Location: ' . BASEURL . '/dosen/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang7()
-    {
-        $_SESSION['ruang'] = 7;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(7);
-            $data['judul'] = 'Lantai 7';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            $this->view('templates/header', $data);
-            $this->view('dosen/ruang7', $data);
-            $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
-        } else {
-            header('Location: ' . BASEURL . '/dosen/tanggalPeminjaman');
-            exit();
-        }
-    }
-
-    public function ruang8()
-    {
-        $_SESSION['ruang'] = 8;
-        if (isset($_SESSION['tanggal'])) {
-            $data['ruang'] = $this->model('Ruang_model')->fetch(8);
-            $data['judul'] = 'Lantai 8';
-            $data['tanggal'] = $_SESSION['tanggal'];
-            $this->view('templates/header', $data);
-            $this->view('dosen/ruang8', $data);
-            $this->view('templates/footer');
-            unset($_SESSION['tanggal']);
+            $this->view('dosen/modal', $data);
         } else {
             header('Location: ' . BASEURL . '/dosen/tanggalPeminjaman');
             exit();
@@ -367,5 +328,16 @@ class Dosen extends Controller
     public function detailRuang($id_ruang)
     {
         echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
+    }
+
+    public function surat($id_proses)
+    {
+        $data['judul'] = 'Cetak Surat';
+        $data['proses'] = $this->model('ViewProses_model')->fetch_IdProses($id_proses);
+        $data['profil'] = $this->model('Dosen_model')->fetch_profile($_SESSION['username']);
+        // echo $data['profil']['nim']; die;
+        $this->view('templates/header', $data);
+        $this->view('dosen/pdf', $data);
+        $this->view('templates/footer');
     }
 }

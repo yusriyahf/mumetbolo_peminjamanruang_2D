@@ -10,19 +10,17 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= BASEURL; ?>/mahasiswa/ta=nggalPeminjaman" class=" btn btn-success btn-md mb-3 text-decoration-none">Ganti Tanggal</a>
-
-            <div class="btn-group mb-3">
-                <a href="<?= BASEURL; ?>/mahasiswa/ruang/5" class="btn btn-primary">Lantai 5</a>
-                <a href="<?= BASEURL; ?>/mahasiswa/ruang/6" class="btn btn-primary">Lantai 6</a>
-                <a href="<?= BASEURL; ?>/mahasiswa/ruang/7" class="btn btn-primary">Lantai 7</a>
-                <a href="<?= BASEURL; ?>/mahasiswa/ruang/8" class="btn btn-primary mr-1">Lantai 8</a>
-                <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-success" target="_blank">Download File</a>
+            <a href="<?= BASEURL; ?>/dosen/tanggalPeminjaman" class="btn btn-success btn-md">Ganti Tanggal</a>
+            <div class="btn-group ">
+                <a href="<?= BASEURL; ?>/dosen/ruang/5" class="btn btn-primary">Lantai 5</a>
+                <a href="<?= BASEURL; ?>/dosen/ruang/6" class="btn btn-primary">Lantai 6</a>
+                <a href="<?= BASEURL; ?>/dosen/ruang/7" class="btn btn-primary">Lantai 7</a>
+                <a href="<?= BASEURL; ?>/dosen/ruang/8" class="btn btn-primary">Lantai 8</a>
             </div>
-            <h6 class="m-0 font-weight-bold text-primary mb-3">Anda booking untuk <b><?= $_SESSION['hari']; ?> <?= $data['tanggal']; ?></b></h6>
-            <br>
+            <a href="<?= BASEURL; ?>/file/tatib.pdf" class="btn btn-success btn-md" target="_blank">Download File</a>
+            <h6 class="m-0 font-weight-bold text-primary mb-1 mt-3">Anda booking untuk <b><?= $_SESSION['hari']; ?> <?= $data['tanggal']; ?></b></h6>
 
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm mt-1 btn-primary shadow-sm tombolTambahData" data-toggle="modal" data-target="#formModal">
                 <div id="clock"></div>
             </button>
 

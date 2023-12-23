@@ -9,16 +9,16 @@
                 <img src="../public/img/ruang.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="../public/img/5.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/l5.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/6.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/l6.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/7.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/l7.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../public/img/8.jpg" class="d-block w-100" alt="...">
+                <img src="../public/img/l8.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">

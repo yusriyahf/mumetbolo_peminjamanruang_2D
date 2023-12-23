@@ -181,10 +181,12 @@ class Mahasiswa extends Controller
                 $_SESSION['popuppw'] = true;
                 header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
             } else {
-                echo "GAGAL UBAH";
+                echo "<script>alert('Gagal Ubah')</script>";
+                header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
             }
         } else {
-            echo "GAGAL, pass lama salah";
+            echo "<script>alert('Password lama salah')</script>";
+            header('Refresh: 0; url=' . BASEURL . '/' . $_SESSION['tipe'] . '/profile');
         }
     }
 
@@ -328,11 +330,11 @@ class Mahasiswa extends Controller
         echo json_encode($this->model('Ruang_model')->fetch_single($id_ruang));
     }
 
-    public function surat($id_proses, $username)
+    public function surat($id_proses)
     {
         $data['judul'] = 'Cetak Surat';
         $data['proses'] = $this->model('ViewProses_model')->fetch_IdProses($id_proses);
-        $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($username);
+        $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($_SESSION['username']);
         // echo $data['profil']['nim']; die;
         $this->view('templates/header', $data);
         $this->view('mahasiswa/pdf', $data);

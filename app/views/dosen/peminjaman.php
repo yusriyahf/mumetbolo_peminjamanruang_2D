@@ -21,8 +21,8 @@
         <div class="card-body">
             <div class="btn-group mb-3">
                 <a href="<?= BASEURL; ?>/dosen/peminjaman" class="btn btn-primary">Semua</a>
-                <a href="<?= BASEURL; ?>/dosen/peminjamanDiacc" class="btn btn-primary">Disetujui</a>
-                <a href="<?= BASEURL; ?>/dosen/peminjamanDiTolak" class="btn btn-primary">Ditolak</a>
+                <a href="<?= BASEURL; ?>/dosen/peminjaman/diacc" class="btn btn-primary">Disetujui</a>
+                <a href="<?= BASEURL; ?>/dosen/peminjaman/diTolak" class="btn btn-primary">Ditolak</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
