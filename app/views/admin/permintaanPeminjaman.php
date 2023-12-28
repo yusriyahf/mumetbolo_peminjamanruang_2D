@@ -71,9 +71,6 @@
                                             <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                             </a>
-                                            <!-- <a href="#" class="btn btn-danger btn-split btn-sm tolakPeminjaman" style="margin-right: 4px;" data-toggle="modal" data-target="#tolakPeminjamanModal" data-id_proses="<?= $proses['id_proses']; ?>" data-id_jadwal="<?= $proses['id_jadwal']; ?>">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </a> -->
                                         </td>
                                     </tr>
                         <?php

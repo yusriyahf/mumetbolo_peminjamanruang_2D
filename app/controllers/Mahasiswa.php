@@ -335,7 +335,6 @@ class Mahasiswa extends Controller
         $data['judul'] = 'Cetak Surat';
         $data['proses'] = $this->model('ViewProses_model')->fetch_IdProses($id_proses);
         $data['profil'] = $this->model('Mahasiswa_model')->fetch_profile($_SESSION['username']);
-        // echo $data['profil']['nim']; die;
         $this->view('templates/header', $data);
         $this->view('mahasiswa/pdf', $data);
         $this->view('templates/footer');

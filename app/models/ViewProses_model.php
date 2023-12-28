@@ -95,7 +95,6 @@ class ViewProses_model
 
     public function ubahStatus($id, $status, $pesan)
     {
-        // Lakukan query untuk mengubah status berdasarkan ID
         $query = "UPDATE " . $this->table . " SET status = '$status', pesan = '$pesan' WHERE id_proses = $id";
 
         if ($sql = $this->db->conn->query($query)) {

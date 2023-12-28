@@ -34,6 +34,5 @@
 <!-- End of Main Content -->
 
 <script>
-    // Mengatur nilai minimum pada elemen input tanggal menjadi tanggal sekarang
     document.getElementById('tanggal').min = new Date().toISOString().split('T')[0];
 </script>

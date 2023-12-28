@@ -13,8 +13,6 @@
                 <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i>
                 <span style="margin-left: 5px;"></i> Tambah Data Mahasiswa
             </button>
-
-            <!-- <a href="#" data-toggle="modal" class="btn btn-sm btn-primary" data-target="#formTambahModal">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariMahasiswa" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">

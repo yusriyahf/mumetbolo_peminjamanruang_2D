@@ -26,9 +26,8 @@ class auth extends Controller
 
                 header('Location: ' . BASEURL . '/' . $_SESSION['tipe']);
             } else {
-                //'gagal', 'diubah', 'danger', 'ruangan'
                 Flasher::setFlash('Login Gagal', 'Periksa kembali username dan password Anda!', 'danger', ' ');
-                header('Location: ' . BASEURL); // Redirect ke halaman login
+                header('Location: ' . BASEURL);
             }
         }
     }

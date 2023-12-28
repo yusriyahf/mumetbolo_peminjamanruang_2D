@@ -50,12 +50,9 @@ class Admin extends Controller
     public function tolakPeminjaman()
     {
         $id_proses = $_POST['id_proses'];
-        // $id_jadwal = $_POST['id_jadwal'];
-        // var_dump($id_proses);
-        // die;
         $status = 'ditolak';
         $pesan = $_POST['pesan'];
-        // $this->model('Jadwal_model')->setStatusTolak($_POST['id_jadwal']);
+
         if ($this->model('Proses_model')->ubahStatus($id_proses, $status, $pesan)) {
             $_SESSION['popuptolak'] = true;
             header('Location: ' . BASEURL . '/admin/peminjaman');
@@ -126,7 +123,6 @@ class Admin extends Controller
     public function peminjamanDiAcc()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('ViewProses_model')->getStatus();
             $data['proses'] = $this->model('ViewProses_model')->fetchAcc();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
@@ -146,7 +142,6 @@ class Admin extends Controller
     public function peminjamanDitolak()
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
-            // $data['status'] = $this->model('ViewProses_model')->getStatus();
             $data['proses'] = $this->model('ViewProses_model')->fetchTolak();
             $data['judul'] = 'Peminjaman';
             $this->view('templates/header', $data);
@@ -167,7 +162,6 @@ class Admin extends Controller
     {
         if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == 'admin') {
             $data['proses'] = $this->model('ViewProses_model')->fetch();
-            // $data['proses'] = $this->model('ViewProses_model')->fetch(null);
             $data['judul'] = 'Permintaan Peminjaman';
             $this->view('templates/header', $data);
             $this->view('admin/permintaanPeminjaman', $data);

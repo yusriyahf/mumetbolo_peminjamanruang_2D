@@ -12,7 +12,6 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#formTambahDosenModal">
                 <i class="fa fa-plus fa-xs" aria-hidden="true"></i></i> <span style="margin-left: 5px;"></i> Tambah Data Dosen
             </button>
-            <!-- <a href="#" data-toggle="modal" data-target="#formTambahDosenModal" class="btn-sm btn-primary text-decoration-none">Tambah Data Mahasiswa</a> -->
             <form action="<?= BASEURL; ?>/admin/cariDosen" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" name="keyword" placeholder="Cari Data" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
@@ -46,17 +45,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nim</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telp</th>
-                            <th>Alamat</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php $i = 1;
                         if (!empty($data['dsn']) && is_array($data['dsn'])) {
